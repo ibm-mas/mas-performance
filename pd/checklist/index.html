@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/pd/checklist/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Diagnosis Check List - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Diagnosis Check List";
+        var mkdocs_page_input_path = "pd/checklist.md";
+        var mkdocs_page_url = "/mas-performance/pd/checklist/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Best Practice</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/manage/bestpractice/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mas/sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mas/monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Diagnosis Check List</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#diagnostic-utility">Diagnostic Utility</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#performance-check-list">Performance Check List</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Performance Diagnosis &raquo;</li>
+      <li>Diagnosis Check List</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/pd/checklist.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="performance-diagnosis">Performance Diagnosis<a class="headerlink" href="#performance-diagnosis" title="Permanent link"></a></h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>A monitoring system is strongly recommended to track the environment health and the quality of services.</p>
+</div>
+<h3 id="diagnostic-utility">Diagnostic Utility<a class="headerlink" href="#diagnostic-utility" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Name</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OCP</td>
+<td><a href="../../mas/monitoring/guidance/">OpenShift Monitoring Service</a></td>
+<td>OpenShift Cluster and MAS</td>
+</tr>
+<tr>
+<td>DB2</td>
+<td><a href="../../misc/db2-performance-insight/#ibm-data-server-manager-ibm-dsm">IBM DSM</a></td>
+<td>DB2 Historical and Realtime Troubleshooting</td>
+</tr>
+<tr>
+<td>DB2</td>
+<td><a href="../../misc/db2-performance-insight/#db2top">db2top</a></td>
+<td>DB2 Realtime Troubleshooting</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>AWR, StatsPack</td>
+<td>Historical Troubleshooting</td>
+</tr>
+<tr>
+<td>JVM</td>
+<td>IBM Support Assistant</td>
+<td>Heap Dump and GC Log Analysis</td>
+</tr>
+<tr>
+<td>JVM</td>
+<td><a href="http://wiki.eclipse.org/MemoryAnalyzer">MAT</a></td>
+<td>JVM Dump Analysis</td>
+</tr>
+<tr>
+<td>Maximo</td>
+<td><a href="https://www.ibm.com/developerworks/community/blogs/a9ba1efe-b731-4317-9724-a181d6155e3a/entry/performance_maximo_activity_dashboard_perfmon?lang=en">PerfMon</a></td>
+<td>- Maximo UI Activity Tracing<br/> - <strong>Note</strong>: Enabling PerfMon may significantly degrade server performance. <br/> - Recommend for a single user with Dev/Test env only</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>mongotop</td>
+<td>MongoDB Realtime Troubleshooting</td>
+</tr>
+<tr>
+<td>HAR</td>
+<td><a href="https://chrome.google.com/webstore/detail/http-archive-viewer/ebbdbdmhegaoooipfnjikefdpeoaidml?hl=en">HTTP Archive Viewer</a></td>
+<td>HAR Analysis - for web page and client side (browser) performance</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td><a href="http://poorsql.com">Poor SQL</a></td>
+<td>Online SQL Formatter</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td><a href="http://squirrel-sql.sourceforge.net">Squirrl</a></td>
+<td>Universal SQL Client</td>
+</tr>
+<tr>
+<td>SSL</td>
+<td><a href="https://www.sslshopper.com">SSL Shopper</a></td>
+<td>Online certificate decode tool</td>
+</tr>
+</tbody>
+</table>
+<h2 id="performance-check-list">Performance Check List<a class="headerlink" href="#performance-check-list" title="Permanent link"></a></h2>
+<ul>
+<li>check node status. e.g. any NOT Ready worker nodes</li>
+<li>if there is any pod or node cpu, memeory usage approaching to the limit?</li>
+<li>if there is any pod restarted many time recently?</li>
+<li>if there is any JVM Heapdump dump?</li>
+<li>if there is any JVM Hung Thread </li>
+<li>if there is any node or pod with a high system or IO wait (20%)?</li>
+<li>if there is any node memory, disk or pid pressure?</li>
+<li>if the response time is high (over 2 sec)?</li>
+<li>if any long running (over 2 sec) or high cpu cost query?</li>
+<li>if there is network bottleneck (e.g. load-balancer)</li>
+<li>is app server or db server busy?<ul>
+<li>if app server is busy<ul>
+<li>check the request, limit value for cpu, memory</li>
+<li>should replic memebers be increased?</li>
+</ul>
+</li>
+<li>if db server is busy<ul>
+<li>check cpu, memory, disk current usage and limit value</li>
+<li>check any utility in the background. e.g. backup</li>
+<li>check db lock</li>
+<li>check if there is any high cost query</li>
+<li>check disk performance</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../ptbp/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
