@@ -1,0 +1,51 @@
+site_name: Maximo Application Suite (MAS) Performance Wiki
+site_url: https://ibm-mas.github.io/mas-performance
+
+repo_name: GitHub
+repo_url: https://github.com/ibm-mas/mas-performance
+edit_uri: blob/master/docs/
+
+nav:
+  - 'Home': index.md
+  - 'MAS':
+    - 'Best Practice':
+      - 'OpenShift Container Platform': mas/ocp/bestpractice.md
+      - 'MAS Core': mas/core/bestpractice.md
+      - 'MAS IoT': mas/iot/bestpractice.md
+      - 'MAS Manage': mas/manage/bestpractice.md
+      - 'AWS': mas/aws/bestpractice.md
+      - 'IBM Cloud': mas/ibmcloud/bestpractice.md
+      - 'MongoDB': mas/mongodb/bestpractice.md
+    - 'Sizing Guidance': mas/sizing/guidance.md
+    - 'Monitoring': mas/monitoring/guidance.md
+  - 'Maximo 7.x':
+    - 'Best Practice': maximo-7/bestpractice.md
+  - 'Performance Diagnosis':
+    - 'Performance Test Best Practice': pd/ptbp.md
+    - 'Diagnosis Check List': pd/checklist.md
+
+
+theme:
+  name: readthedocs
+  language: en
+  highlightjs: true
+  hljs_languages:
+    - yaml
+  prev_next_buttons_location: none
+  feature:
+    - navigation.instant
+
+extra_css:
+  - extra.css
+
+markdown_extensions:
+  - toc:
+      permalink: 
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji 
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
