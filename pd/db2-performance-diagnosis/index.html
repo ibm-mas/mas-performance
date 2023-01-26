@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/pd/db2-performance-diagnosis/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>DB2 Performance Diagnosis - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "DB2 Performance Diagnosis";
+        var mkdocs_page_input_path = "pd/db2-performance-diagnosis.md";
+        var mkdocs_page_url = "/mas-performance/pd/db2-performance-diagnosis/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Best Practice</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/manage/bestpractice/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mas/sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mas/monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">DB2 Performance Diagnosis</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Performance Diagnosis &raquo;</li>
+      <li>DB2 Performance Diagnosis</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/pd/db2-performance-diagnosis.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h3 id="db2top">DB2TOP<a class="headerlink" href="#db2top" title="Permanent link"></a></h3>
+<p>db2top can be used for a real-time diagnosis.</p>
+<ul>
+<li>Command: <code>db2top -db &lt;dbname&gt;</code><ul>
+<li>press <strong>h</strong>: help screen </li>
+<li>press <strong>I</strong>: reset the interval time (default is 2 seconds) </li>
+<li>press <strong>m</strong>: memory screen </li>
+<li>press <strong>B</strong>: bottleneck screen </li>
+<li>press <strong>b</strong>: bufferpool screen </li>
+<li>press <strong>T</strong>: Table screen </li>
+<li>press <strong>U</strong>: locks screen</li>
+<li>press <strong>u</strong>: utility screen to check if runstat is running</li>
+<li>press <strong>D</strong>: Dynamic SQL screen </li>
+<li>Catch High CPU SQL in Dynamic SQL screen, do:<ul>
+<li>Press <strong>z</strong> and <strong>5</strong> to sort by cpu usage</li>
+<li>Copy SQL Hashcode </li>
+<li>Press <strong>L</strong> and Paste SQL Hashcode</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Notes: Be caution to take any snapshot. </li>
+<li>See more details on <a href="http://www-01.ibm.com/support/docview.wss?uid=swg27009542&amp;aid=1">User Manual</a> </li>
+</ul>
+<h3 id="diagnosis-commands">Diagnosis Commands<a class="headerlink" href="#diagnosis-commands" title="Permanent link"></a></h3>
+<ul>
+<li>
+<p><strong>list memory allocation:</strong></p>
+<div class="highlight"><pre><span></span><code>db2mtrk -i -d –v
+</code></pre></div>
+</li>
+<li>
+<p><strong>list long run query:</strong></p>
+<div class="highlight"><pre><span></span><code>SELECT ELAPSED_TIME_MIN,SUBSTR(AUTHID,1,10) AS AUTH_ID, AGENT_ID,APPL_STATUS,SUBSTR(STMT_TEXT,1,20) AS SQL_TEXT FROM SYSIBMADM.LONG_RUNNING_SQL WHERE ELAPSED_TIME_MIN &gt; 0 ORDER BY ELAPSED_TIME_MIN DESC;
+</code></pre></div>
+</li>
+<li>
+<p><strong>list backup/restore status:</strong></p>
+<div class="highlight"><pre><span></span><code>db2pd -barstats -d &lt;dbname&gt;
+</code></pre></div>
+</li>
+<li>
+<p><strong>list most active tables:</strong></p>
+<div class="highlight"><pre><span></span><code>SELECT SUBSTR(TABSCHEMA,1,10) AS SCHEMA,SUBSTR(TABNAME,1,20) AS NAME,TABLE_SCANS,ROWS_READ,ROWS_INSERTED,ROWS_DELETED FROM TABLE(MON_GET_TABLE(&#39;&#39;,&#39;&#39;,-1)) ORDER BY ROWS_READ DESC FETCH FIRST 5 ROWS ONLY
+</code></pre></div>
+</li>
+<li>
+<p><strong>list most active indexes:</strong></p>
+<div class="highlight"><pre><span></span><code>SELECT SUBSTR(TABSCHEMA,1,10) AS SCHEMA,SUBSTR(TABNAME,1,20) AS NAME,IID,NLEAF, NLEVELS,INDEX_SCANS,KEY_UPDATES,BOUNDARY_LEAF_NODE_SPLITS + NONBOUNDARY_LEAF_NODE_SPLITS AS PAGE_SPLITS FROM TABLE(MON_GET_INDEX(&#39;&#39;,&#39;&#39;,-1)) ORDER BY INDEX_SCANS DESC FETCH FIRST 5 ROWS ONLY
+</code></pre></div>
+</li>
+<li>
+<p><strong>list db2 advise for the statement:</strong></p>
+<div class="highlight"><pre><span></span><code>db2advis -database bludb  -s &quot;select * from maximo.ahfactorhistory where ahdriverhistoryid = 123 for read only&quot;  -n MAXIMO -q MAXIMO
+</code></pre></div>
+</li>
+<li>
+<p><strong>list the query execution plan:</strong></p>
+<div class="highlight"><pre><span></span><code>db2expln -database bludb -schema MAXIMO -package % -statement &quot;select * from maximo.ahfactorhistory where ahdriverhistoryid = 123 for read only&quot; -terminal -graph   &gt; query1_access_plan.txt
+</code></pre></div>
+</li>
+<li>
+<p><strong>list all indexes for a specific table:</strong></p>
+<div class="highlight"><pre><span></span><code>select * from syscat.indexes i where TABNAME =&#39;ITEMSTRUCT&#39;
+</code></pre></div>
+</li>
+<li>
+<p><strong>list insert/update/delete/tablescan stats for a specific table:</strong></p>
+<div class="highlight"><pre><span></span><code>SELECT rows_read,rows_inserted,rows_updated,rows_deleted,table_scans FROM TABLE(MON_GET_TABLE(&#39;MAXIMO&#39;,&#39;ASSET&#39;,-2))
+</code></pre></div>
+</li>
+<li>
+<p><strong>list insert/update/delete/tablescan stats for all tables:</strong></p>
+<div class="highlight"><pre><span></span><code>SELECT SUBSTR(TABSCHEMA,1,10) AS SCHEMA,SUBSTR(TABNAME,1,20) AS NAME,TABLE_SCANS,ROWS_READ,ROWS_INSERTED,ROWS_DELETED FROM TABLE(MON_GET_TABLE(&#39;&#39;,&#39;&#39;,-1)) ORDER BY ROWS_READ DESC FETCH FIRST 5 ROWS ONLY&quot;
+</code></pre></div>
+</li>
+<li>
+<p><strong>list error message:</strong></p>
+<div class="highlight"><pre><span></span><code>db2 ? &lt;sqlerror&gt;
+</code></pre></div>
+</li>
+<li>
+<p><strong><code>db2pd</code>:</strong> monitor and troubleshoot DB2 database command</p>
+</li>
+<li><strong><code>db2diag</code>:</strong> db2diag logs analysis tool command</li>
+<li><strong><code>db2set</code>:</strong> db2 global settings</li>
+<li><strong><code>db2 get dbm cfg</code>:</strong> db2 database manager configuration </li>
+<li><strong><code>db2 get db cfg</code>:</strong> db2 database configuration </li>
+</ul>
+<h3 id="ibm-data-server-manager-ibm-dsm">IBM Data Server Manager (IBM DSM)<a class="headerlink" href="#ibm-data-server-manager-ibm-dsm" title="Permanent link"></a></h3>
+<p>IBM DSM is useful to do both real-time/ historical data diagnosis, find out the expensive sql query, justify cpu spent on sql execution or other e.g. sorting, parsing, fetching, io and so on. It requires pre-configuration. </p>
+<p>A high-level set up:</p>
+<ul>
+<li>Download the latest version of Data Server Manager from <a href="https://www.ibm.com/services/forms/preLogin.do?source=swg-rddsm">IBM developerWorks</a> or <a href="https://www.ibm.com/software/passportadvantage/pao_customer.html">IBM Passport Advantage Online</a>, then extract to /opt/ibm/dsm</li>
+<li>run setup.sh to set up and create admin user</li>
+<li>run start.sh to start the server, url is http://hostname:11080/console</li>
+<li>after log on the console, select a time period e.g. peak time, then generate report. </li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../checklist/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

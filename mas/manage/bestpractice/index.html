@@ -60,7 +60,7 @@
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#app-server">App Server</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#db-server">DB Server</a>
+    <li class="toctree-l3"><a class="reference internal" href="#load-balancer">Load-Balancer</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#manage-pod-functionality">Manage Pod Functionality</a>
     </li>
@@ -69,6 +69,16 @@
     <li class="toctree-l3"><a class="reference internal" href="#websphere-liberty">WebSphere Liberty</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#configure-jvm-options-in-manage-app">Configure JVM options in Manage app</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#db-general">DB - general</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#db-db2db2wh">DB - DB2/DB2wh</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#db-oracle">DB - Oracle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#db-mssql">DB - MSSQL</a>
     </li>
         </ul>
     </li>
@@ -97,6 +107,8 @@
                   <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
                   </li>
               </ul>
       </div>
@@ -150,8 +162,8 @@
 <span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
 <span class="nn">...</span><span class="w"></span>
 </code></pre></div>
-<h2 id="db-server">DB Server<a class="headerlink" href="#db-server" title="Permanent link"></a></h2>
-<p>Follow <a href="../../../maximo-7/bestpractice/">Maximo 7 Best Practice</a> for db configuration and tuning. </p>
+<h2 id="load-balancer">Load-Balancer<a class="headerlink" href="#load-balancer" title="Permanent link"></a></h2>
+<p>Lab test shows <strong>roundrobin</strong> has more stable and better performance than <strong>leastconn</strong> policy which is the default. Follow <a href="../../ocp/bestpractice/#load-balance-algorithm">this link</a> to update load balance policy. </p>
 <h2 id="manage-pod-functionality">Manage Pod Functionality<a class="headerlink" href="#manage-pod-functionality" title="Permanent link"></a></h2>
 <p>Follow <a href="https://ibm-mas.github.io/cli/guides/mas-pods-explained/#manage-pods">this page</a> to understand the manage pod functionality. </p>
 <h2 id="ltpa-timeout">LTPA timeout<a class="headerlink" href="#ltpa-timeout" title="Permanent link"></a></h2>
@@ -159,8 +171,55 @@
 <h2 id="websphere-liberty">WebSphere Liberty<a class="headerlink" href="#websphere-liberty" title="Permanent link"></a></h2>
 <p>Due to the architecture change, Maximo 8.x (MAS Manage app) is deployed on WebSphere Liberty Base 21.0.0.5 with OpenJ9. As of WebSphere Liberty 18.0.0.1, the thread growth algorithm is enhanced to grow thread capacity more aggressively so as to react more rapidly to peak loads. For many environments, this autonomic tuning provided by the Open Liberty thread pool works well with no configuration or tuning by the operator. If necessary, you can adjust <code>coreThreads</code> and <code>maxThreads</code> value. Follow <a href="https://www.ibm.com/docs/en/was-liberty/core?topic=tuning-liberty">this page</a> for tuning liberty</p>
 <h3 id="configure-jvm-options-in-manage-app">Configure JVM options in Manage app<a class="headerlink" href="#configure-jvm-options-in-manage-app" title="Permanent link"></a></h3>
-<p>Follow <a href="https://www.ibm.com/docs/en/maximo-manage/continuous-delivery?topic=application-configuring-jvm-options">this page</a> to configure JVM options
-Fo</p>
+<p>Follow <a href="https://www.ibm.com/docs/en/maximo-manage/continuous-delivery?topic=application-configuring-jvm-options">this page</a> to configure JVM options</p>
+<h2 id="db-general">DB - general<a class="headerlink" href="#db-general" title="Permanent link"></a></h2>
+<ul>
+<li>disk performance is critial for db performance. Recommend<ul>
+<li>disk throughput &gt; 200 MB/s</li>
+<li>storage class: recommend a storage with 100+ IOPS</li>
+</ul>
+</li>
+</ul>
+<h3 id="db-db2db2wh">DB - DB2/DB2wh<a class="headerlink" href="#db-db2db2wh" title="Permanent link"></a></h3>
+<p>DB2 Tuning in <a href="../../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf">Maximo 7.6.x Best practice</a> is applicable. </p>
+<p><strong>Highlights:</strong></p>
+<ul>
+<li>increase maxsequence cache to 50</li>
+<li>run runstats and/or reorg to update index periodically</li>
+<li>separate system storage, user storage, backup storage, transaction logs storage, temporary tablespace storage on as different disks if possible. </li>
+<li>Use <a href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a> to troubleshoot and tuning the db and SQL.</li>
+<li>Manage requires <strong>row-organized</strong> tables. Check db2w db setting (by default it uses column based) and update the setting by <code>db2 update db cfg using DFT_TABLE_ORG ROW</code></li>
+<li><strong>Manage</strong> does <strong>NOT</strong> support MMP or tale partition in the current version, but consider to archive records over 1-year old. Optim is the one of the tools can be used for archiving. see <a href="https://www.ibm.com/support/pages/installing-ibm-maximo-archiving-751-ibm-maximo-asset-management-v76">this guide</a> and <a href="https://www.youtube.com/watch?v=qr_0SpWrabc">this video</a> for details. </li>
+<li>Increase the concurrently running statements allowed for a DB2 application. This issue occcurs when loading a large amount of data via MIF or api call. See <a href="https://www.ibm.com/support/pages/how-many-concurrently-running-statements-allowed-db2-java-application-and-how-increase-it">this link</a> for the tuning. </li>
+<li><strong>storageclass</strong><ul>
+<li>for ibm cloud:  performance(Custom) block storage with 100+ IOPS for data storage, block gold for system and block silver for backup</li>
+<li>for aws cloud: if using EFS for db, consider Provisioned mode to have a constant throughput. For more disk options, see details in this <a href="https://docs.aws.amazon.com/efs/latest/ug/performance.html">page</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="db-oracle">DB - Oracle<a class="headerlink" href="#db-oracle" title="Permanent link"></a></h3>
+<ul>
+<li><a href="../../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf">Maximo 7.6.x Best practice</a> is applicable</li>
+</ul>
+<h3 id="db-mssql">DB - MSSQL<a class="headerlink" href="#db-mssql" title="Permanent link"></a></h3>
+<ul>
+<li>
+<p><a href="../../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf">Maximo 7.6.x Best practice</a> is applicable</p>
+</li>
+<li>
+<p>additional settings for MSSQL Server 2019</p>
+<ul>
+<li>compatibility level: if maximo db is upgraded from the old version and the performance degradtation is observed after the upgrade, consider to set compatibility level to the old version to keep the execution plan same.</li>
+<li>isolation level: 
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB</span><span class="w"> </span><span class="n">NAME</span><span class="o">&gt;</span><span class="w">  </span>
+<span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">ALLOW_SNAPSHOT_ISOLATION</span><span class="w"> </span><span class="k">ON</span><span class="w">  </span>
+
+<span class="w">        </span><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB</span><span class="w"> </span><span class="n">NAME</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">READ_COMMITTED_SNAPSHOT</span><span class="w"> </span><span class="k">ON</span><span class="w">  </span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div><footer>
