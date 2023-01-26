@@ -154,18 +154,18 @@
 <h2 id="aws-storage">AWS Storage<a class="headerlink" href="#aws-storage" title="Permanent link"></a></h2>
 <p><strong>EBS storages</strong> like gp2, gp3 is supported by OCP in AWS. <strong>Note:</strong> EBS storage is ReadWriteOnce. The volume can be mounted as read-write by a single node. <strong>io1</strong> and <strong>io2</strong> are SSD-based EBS that provides the higher performance. Check <a href="https://aws.amazon.com/ebs/volume-types/">Amazon EBS volume types</a> for extra info like throughput, tuning and cost. </p>
 <p>Below is a <strong>sample yaml</strong> to create io1 storageclass with <strong>100 iopsPerGB</strong>. </p>
-<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span><span class="w"></span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span><span class="w"></span>
-<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io1</span><span class="w"></span>
-<span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/aws-ebs</span><span class="w"></span>
-<span class="nt">parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">iopsPerGB</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;100&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io1</span><span class="w"></span>
-<span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete</span><span class="w"></span>
-<span class="nt">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Immediate</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io1</span>
+<span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/aws-ebs</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
+<span class="w">  </span><span class="nt">iopsPerGB</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;100&#39;</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io1</span>
+<span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete</span>
+<span class="nt">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Immediate</span>
 </code></pre></div>
 <p><strong>EFS Storage</strong> can be used as <strong>ReadWriteMany</strong> storageclass. EFS has different metered throughput modes.</p>
 <ul>

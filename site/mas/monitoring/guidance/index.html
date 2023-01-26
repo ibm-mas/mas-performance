@@ -117,7 +117,7 @@
                 <h1 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link"></a></h1>
 <p>Monitoring your OpenShift clusters is critical for the environment health, the quality of services. It helps ensure that all deployed workloads are running smoothly and that the environment is properly scoped. </p>
 <h2 id="openshift-monitoring-service-promethusgrafana">OpenShift Monitoring Service (Promethus/Grafana)<a class="headerlink" href="#openshift-monitoring-service-promethusgrafana" title="Permanent link"></a></h2>
-<p>OpenShift Container Platform includes a pre-installed monitoring stack that is based on the Prometheus/Grafana. <strong>MAS</strong> also provides app-level promethus metrics and a set of Grafana dashboards for application health. </p>
+<p>OpenShift Container Platform includes a pre-installed monitoring stack that is based on the Prometheus/Grafana. <strong>MAS</strong> also provides app-level promethus metrics and a set of Grafana dashboards for application health. More installation, configuration details can be found in <a href="https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=monitoring-configuring-red-hat-openshift-cluster">IBM MAS Monitoring</a></p>
 <div class="admonition tip">
 <p class="admonition-title">Best practice for OpenShift Monitoring Service</p>
 <ul>
@@ -127,34 +127,34 @@
 </ul>
 </div>
 <p>Below is the sample for configmap cluster-monitoring-config</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
-<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-monitoring-config</span><span class="w"></span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-monitoring</span><span class="w"></span>
-<span class="nt">data</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">config.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">    </span><span class="no">enableUserWorkload: true</span><span class="w"></span>
-<span class="w">    </span><span class="no">prometheusK8s:</span><span class="w"></span>
-<span class="w">      </span><span class="no">retention: 90d</span><span class="w"></span>
-<span class="w">      </span><span class="no">volumeClaimTemplate:</span><span class="w"></span>
-<span class="w">        </span><span class="no">spec:</span><span class="w"></span>
-<span class="w">          </span><span class="no">storageClassName: nfs-client</span><span class="w"></span>
-<span class="w">          </span><span class="no">resources:</span><span class="w"></span>
-<span class="w">            </span><span class="no">requests:</span><span class="w"></span>
-<span class="w">              </span><span class="no">cpu: 200m</span><span class="w"></span>
-<span class="w">              </span><span class="no">storage: 300Gi</span><span class="w"></span>
-<span class="w">              </span><span class="no">memory: 2Gi</span><span class="w"></span>
-<span class="w">            </span><span class="no">limits:</span><span class="w"></span>
-<span class="w">              </span><span class="no">cpu: 2</span><span class="w"></span>
-<span class="w">              </span><span class="no">memory: 4Gi</span><span class="w"></span>
-<span class="w">    </span><span class="no">alertmanagerMain:</span><span class="w"></span>
-<span class="w">      </span><span class="no">volumeClaimTemplate:</span><span class="w"></span>
-<span class="w">        </span><span class="no">spec:</span><span class="w"></span>
-<span class="w">          </span><span class="no">storageClassName: nfs-client</span><span class="w"></span>
-<span class="w">          </span><span class="no">resources:</span><span class="w"></span>
-<span class="w">            </span><span class="no">requests:</span><span class="w"></span>
-<span class="w">              </span><span class="no">storage: 20Gi</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-monitoring-config</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-monitoring</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">enableUserWorkload: true</span>
+<span class="w">    </span><span class="no">prometheusK8s:</span>
+<span class="w">      </span><span class="no">retention: 90d</span>
+<span class="w">      </span><span class="no">volumeClaimTemplate:</span>
+<span class="w">        </span><span class="no">spec:</span>
+<span class="w">          </span><span class="no">storageClassName: nfs-client</span>
+<span class="w">          </span><span class="no">resources:</span>
+<span class="w">            </span><span class="no">requests:</span>
+<span class="w">              </span><span class="no">cpu: 200m</span>
+<span class="w">              </span><span class="no">storage: 300Gi</span>
+<span class="w">              </span><span class="no">memory: 2Gi</span>
+<span class="w">            </span><span class="no">limits:</span>
+<span class="w">              </span><span class="no">cpu: 2</span>
+<span class="w">              </span><span class="no">memory: 4Gi</span>
+<span class="w">    </span><span class="no">alertmanagerMain:</span>
+<span class="w">      </span><span class="no">volumeClaimTemplate:</span>
+<span class="w">        </span><span class="no">spec:</span>
+<span class="w">          </span><span class="no">storageClassName: nfs-client</span>
+<span class="w">          </span><span class="no">resources:</span>
+<span class="w">            </span><span class="no">requests:</span>
+<span class="w">              </span><span class="no">storage: 20Gi</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

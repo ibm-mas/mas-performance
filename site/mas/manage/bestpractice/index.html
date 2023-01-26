@@ -142,27 +142,27 @@
                 <h1 id="mas-manage">MAS Manage<a class="headerlink" href="#mas-manage" title="Permanent link"></a></h1>
 <h2 id="app-server">App Server<a class="headerlink" href="#app-server" title="Permanent link"></a></h2>
 <p>MAS Manage has different bundle types e.g. All, UI, MEA, Report and CRON to configure app server. Adjust the resource settings like cpu, memory, replic to match the workload. The setting is in ManageWorkspaces CR. Below is the sample. </p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps.mas.ibm.com/v1</span><span class="w"></span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ManageWorkspace</span><span class="w"></span>
-<span class="nn">...</span><span class="w"></span>
-<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
-<span class="w"> </span><span class="nt">settings</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">serverBundles</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span><span class="w"></span>
-<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
-<span class="w">          </span><span class="nt">routeSubDomain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
-<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
-<span class="nn">...</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps.mas.ibm.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ManageWorkspace</span>
+<span class="nn">...</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">settings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serverBundles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span>
+<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span>
+<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">routeSubDomain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span>
+<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span>
+<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nn">...</span>
 </code></pre></div>
 <h2 id="load-balancer">Load-Balancer<a class="headerlink" href="#load-balancer" title="Permanent link"></a></h2>
 <p>Lab test shows <strong>roundrobin</strong> has more stable and better performance than <strong>leastconn</strong> policy which is the default. Follow <a href="../../ocp/bestpractice/#load-balance-algorithm">this link</a> to update load balance policy. </p>

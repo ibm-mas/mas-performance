@@ -128,19 +128,19 @@
 <ul>
 <li>IoT CRD defines 3 default size deployments: <strong>dev, small, medium</strong> that controls the default settings for pod replics, cpu and memory. For production, <strong>medium</strong> is required.
 Sample yaml for medium deployment in IoT CR 
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iot.ibm.com/v1</span><span class="w"></span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IoT</span><span class="w"></span>
-<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">masinst1</span><span class="w"></span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mas-masinst1-iot</span><span class="w"></span>
-<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">bindings</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">jdbc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span><span class="w"></span>
-<span class="w">    </span><span class="nt">kafka</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span><span class="w"></span>
-<span class="w">    </span><span class="nt">mongo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span><span class="w"></span>
-<span class="w">  </span><span class="nt">settings</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iot.ibm.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IoT</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">masinst1</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mas-masinst1-iot</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bindings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">jdbc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">    </span><span class="nt">kafka</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">    </span><span class="nt">mongo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">  </span><span class="nt">settings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
 </code></pre></div></li>
 <li>If need to adjust the default setting for a deployment, go the iot-operator pod, then change the corresponding yaml files under <code>/opt/ansible/roles/&lt;ibm-iot-operator&gt;/vars</code> folder, e.g. <code>/opt/ansible/roles/ibm-iot-actions/vars/size_medium.yml</code></li>
 </ul>
