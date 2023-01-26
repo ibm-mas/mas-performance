@@ -117,7 +117,13 @@
               
                 <h1 id="mas-core">MAS Core<a class="headerlink" href="#mas-core" title="Permanent link"></a></h1>
 <h2 id="workload-scaling-configmap">Workload Scaling ConfigMap<a class="headerlink" href="#workload-scaling-configmap" title="Permanent link"></a></h2>
-<p>Since MAS 8.10, a configmap  <code>custom-wl-scaling</code> is used to set the resource settings for cpu, memory and replic. Modify the default value or create a custom one if needed. Below is the sample of <code>workloadScaling.yaml</code>.
+<p>Since 8.10, MAS core allows users to customize resource settings for cpu, memory and replica counts per component. By default MAS ships with three default configmaps for workload scaling:</p>
+<ul>
+<li>{mas_instance_id}-wl-cust-small</li>
+<li>{mas_instance_id}-wl-cust-medium</li>
+<li>{mas_instance_id}-wl-cust-large</li>
+</ul>
+<p>You can modify the default configmaps or create a custom one if needed. Should you decide to create a custom workload scaling configmap, it must be specified using the <a href="https://github.com/ibm-mas/ansible-devops/blob/master/ibm/mas_devops/roles/suite_install/templates/core_v1_suite.yml.j2#L41">MAS Suite CR</a>. Below is a snippet of a custom configmap for workload scaling. You should understand what you are doing before you change the default values, as decreasing resources can have undesirable effects.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">coreidpcfg</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
@@ -136,13 +142,13 @@
 <span class="w">    </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200m</span>
 <span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512Mi</span>
-</code></pre></div></p>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <ul>
 <li>high workload impact pods: <strong>core-ipd, core-api, license-mediator</strong></li>
 <li>check <a href="https://ibm-mas.github.io/cli/guides/mas-pods-explained/">MAS Pods Explained</a> to understand the insight of each pod functionality </li>
-<li>check the health of <a href="../../mongodb/bestpractice/">mongodb</a> and sls pods if any performance issue is detected</li>
+<li>check the health of <a href="../../mongodb/bestpractice/">mongodb</a> and sls api-licensing pods (in the SLS namespace) if any performance issue is detected</li>
 </ul>
 </div>
               
