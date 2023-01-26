@@ -3,5 +3,7 @@
 !!!info
     This site will be upgraded periodically. More topics will be added soon. 
 
-This site contains best practices for configuration, tuning, sizing and troubleshooting diagnosis tips for both **Maximo Application Suite (MAS)** and **Maximo v7**. 
+This site provides best practices, sizing and troubleshooting guidelines to improve the performance of **IBM Maximo Application Suite (MAS)**. 
+
+[Maximo 7.x Best Practices](./maximo-7/bestpractice.md) are also available on the site.  Most DB configurations in the best practice are still applicable to MAS Manage app. 
 

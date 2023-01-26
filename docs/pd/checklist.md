@@ -20,6 +20,24 @@
 |SQL | [Squirrl](http://squirrel-sql.sourceforge.net) | Universal SQL Client |
 |SSL | [SSL Shopper](https://www.sslshopper.com)| Online certificate decode tool | 
 
+## Factors in system performance
+
+System performance depends on more than the applications and the database. The network architecture affects performance. Application server configuration can hurt or improve performance. The way that you deploy Maximo across servers affects the way the products perform. Many other factors come into play in providing the end-user experience of system performance.
+Subsequent sections in this paper address the following topics:
+
+* System architecture setup including OCP, Instance Type, Storage
+* App and DB server configuration
+* Network issues
+* Bandwidth
+* Load balancing
+* Database tuning
+* SQL tuning
+* Scheduled tasks (cron tasks)
+* Reporting
+* Integration with other systems using the integration framework
+* Troubleshooting
+
+
 ## Performance Check List
 
 - check node status. e.g. any NOT Ready worker nodes

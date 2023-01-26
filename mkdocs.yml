@@ -23,6 +23,7 @@ nav:
   - 'Performance Diagnosis':
     - 'Performance Test Best Practice': pd/ptbp.md
     - 'Diagnosis Check List': pd/checklist.md
+    - 'DB2 Performance Diagnosis': pd/db2-performance-diagnosis.md
 
 
 theme:
