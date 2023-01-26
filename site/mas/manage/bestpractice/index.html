@@ -72,8 +72,10 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#db-general">DB - general</a>
+    <li class="toctree-l3"><a class="reference internal" href="#db">DB</a>
         <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#disk">Disk</a>
+    </li>
     <li class="toctree-l4"><a class="reference internal" href="#db-db2db2wh">DB - DB2/DB2wh</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#db-oracle">DB - Oracle</a>
@@ -172,13 +174,12 @@
 <p>Due to the architecture change, Maximo 8.x (MAS Manage app) is deployed on WebSphere Liberty Base 21.0.0.5 with OpenJ9. As of WebSphere Liberty 18.0.0.1, the thread growth algorithm is enhanced to grow thread capacity more aggressively so as to react more rapidly to peak loads. For many environments, this autonomic tuning provided by the Open Liberty thread pool works well with no configuration or tuning by the operator. If necessary, you can adjust <code>coreThreads</code> and <code>maxThreads</code> value. Follow <a href="https://www.ibm.com/docs/en/was-liberty/core?topic=tuning-liberty">this page</a> for tuning liberty</p>
 <h3 id="configure-jvm-options-in-manage-app">Configure JVM options in Manage app<a class="headerlink" href="#configure-jvm-options-in-manage-app" title="Permanent link"></a></h3>
 <p>Follow <a href="https://www.ibm.com/docs/en/maximo-manage/continuous-delivery?topic=application-configuring-jvm-options">this page</a> to configure JVM options</p>
-<h2 id="db-general">DB - general<a class="headerlink" href="#db-general" title="Permanent link"></a></h2>
+<h2 id="db">DB<a class="headerlink" href="#db" title="Permanent link"></a></h2>
+<h3 id="disk">Disk<a class="headerlink" href="#disk" title="Permanent link"></a></h3>
+<p>disk performance is critial for db performance. Recommend a storage or disk with</p>
 <ul>
-<li>disk performance is critial for db performance. Recommend<ul>
 <li>disk throughput &gt; 200 MB/s</li>
 <li>storage class: recommend a storage with 100+ IOPS</li>
-</ul>
-</li>
 </ul>
 <h3 id="db-db2db2wh">DB - DB2/DB2wh<a class="headerlink" href="#db-db2db2wh" title="Permanent link"></a></h3>
 <p>DB2 Tuning in <a href="../../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf">Maximo 7.6.x Best practice</a> is applicable. </p>

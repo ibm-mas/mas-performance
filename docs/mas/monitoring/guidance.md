@@ -4,7 +4,7 @@ Monitoring your OpenShift clusters is critical for the environment health, the q
 
 ## OpenShift Monitoring Service (Promethus/Grafana)
 
-OpenShift Container Platform includes a pre-installed monitoring stack that is based on the Prometheus/Grafana. **MAS** also provides app-level promethus metrics and a set of Grafana dashboards for application health. 
+OpenShift Container Platform includes a pre-installed monitoring stack that is based on the Prometheus/Grafana. **MAS** also provides app-level promethus metrics and a set of Grafana dashboards for application health. More installation, configuration details can be found in [IBM MAS Monitoring](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=monitoring-configuring-red-hat-openshift-cluster)
 
 !!!tip "Best practice for OpenShift Monitoring Service"
     - enable User Workload: `enableUserWorkload: false`
@@ -43,6 +43,9 @@ data:
             requests:
               storage: 20Gi
 ```
+
+
+
 
 !!!note 
     - Except OpenShift Monitoring Service (Promethus/Grafana), there are other paid solutions like  **IBM Instana**, **New Relic**, **Data Dog** that also support OCP. 
