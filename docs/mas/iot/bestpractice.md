@@ -52,3 +52,8 @@ Below deployment configurations are recommended as starting value with medium an
 * MSProxy - 4 MSProxies with 1 CPU and 4GB
 * MessageGateWay - 1 MGW 6 CPUs and 16GB along with 4 TcpIop threads
 
+### Modify TcpThread in MessageGateWay(MGW) pod
+- edit `/var/messagesight/data/config/server.cfg`
+- add a line  `TcpThreads = 4`
+- do the above changes on all MGW Pod, then restart the pods
+
