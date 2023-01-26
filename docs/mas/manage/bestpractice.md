@@ -48,11 +48,14 @@ Due to the architecture change, Maximo 8.x (MAS Manage app) is deployed on WebSp
 Follow [this page](https://www.ibm.com/docs/en/maximo-manage/continuous-delivery?topic=application-configuring-jvm-options) to configure JVM options
 
 
-## DB - general
+## DB
 
-- disk performance is critial for db performance. Recommend
-    * disk throughput > 200 MB/s
-    * storage class: recommend a storage with 100+ IOPS
+### Disk
+
+disk performance is critial for db performance. Recommend a storage or disk with
+
+* disk throughput > 200 MB/s
+* storage class: recommend a storage with 100+ IOPS
 
 ### DB - DB2/DB2wh
 
