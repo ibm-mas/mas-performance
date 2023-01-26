@@ -65,6 +65,10 @@
     <li class="toctree-l3"><a class="reference internal" href="#aws-msk">AWS MSK</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#message-rate-and-ethernet-network-bandwidth">Message Rate and Ethernet Network Bandwidth</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#modify-tcpthread-in-messagegatewaymgw-pod">Modify TcpThread in MessageGateWay(MGW) pod</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -168,6 +172,12 @@ Sample yaml for medium deployment in IoT CR
 <ul>
 <li>MSProxy - 4 MSProxies with 1 CPU and 4GB</li>
 <li>MessageGateWay - 1 MGW 6 CPUs and 16GB along with 4 TcpIop threads</li>
+</ul>
+<h3 id="modify-tcpthread-in-messagegatewaymgw-pod">Modify TcpThread in MessageGateWay(MGW) pod<a class="headerlink" href="#modify-tcpthread-in-messagegatewaymgw-pod" title="Permanent link"></a></h3>
+<ul>
+<li>edit <code>/var/messagesight/data/config/server.cfg</code></li>
+<li>add a line  <code>TcpThreads = 4</code></li>
+<li>do the above changes on all MGW Pod, then restart the pods</li>
 </ul>
               
             </div>
