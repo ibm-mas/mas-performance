@@ -1,7 +1,8 @@
 # Welcome to MAS Performance Wiki
 
 !!!info
-    This site will be upgraded periodically. More topics will be added soon. 
+    - This site will be updated periodically. More topics will be added soon.
+    - Lab benchmarks are not published, but can be shared upon request, with completion of an NDA.
 
 This site provides best practices, sizing and troubleshooting guidelines to improve the performance of **IBM Maximo Application Suite (MAS)**. 
 
