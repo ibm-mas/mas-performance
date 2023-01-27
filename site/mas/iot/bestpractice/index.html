@@ -65,6 +65,10 @@
     <li class="toctree-l3"><a class="reference internal" href="#aws-msk">AWS MSK</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#message-rate-and-ethernet-network-bandwidth">Message Rate and Ethernet Network Bandwidth</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#modify-tcpthread-in-messagegatewaymgw-pod">Modify TcpThread in MessageGateWay(MGW) pod</a>
+    </li>
+        </ul>
     </li>
     </ul>
                 </li>
@@ -128,19 +132,19 @@
 <ul>
 <li>IoT CRD defines 3 default size deployments: <strong>dev, small, medium</strong> that controls the default settings for pod replics, cpu and memory. For production, <strong>medium</strong> is required.
 Sample yaml for medium deployment in IoT CR 
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iot.ibm.com/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IoT</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">masinst1</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mas-masinst1-iot</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">bindings</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">jdbc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
-<span class="w">    </span><span class="nt">kafka</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
-<span class="w">    </span><span class="nt">mongo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
-<span class="w">  </span><span class="nt">settings</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iot.ibm.com/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IoT</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">masinst1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mas-masinst1-iot</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">bindings</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jdbc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span><span class="w"></span>
+<span class="w">    </span><span class="nt">kafka</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mongo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span><span class="w"></span>
+<span class="w">  </span><span class="nt">settings</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span><span class="w"></span>
 </code></pre></div></li>
 <li>If need to adjust the default setting for a deployment, go the iot-operator pod, then change the corresponding yaml files under <code>/opt/ansible/roles/&lt;ibm-iot-operator&gt;/vars</code> folder, e.g. <code>/opt/ansible/roles/ibm-iot-actions/vars/size_medium.yml</code></li>
 </ul>
@@ -168,6 +172,12 @@ Sample yaml for medium deployment in IoT CR
 <ul>
 <li>MSProxy - 4 MSProxies with 1 CPU and 4GB</li>
 <li>MessageGateWay - 1 MGW 6 CPUs and 16GB along with 4 TcpIop threads</li>
+</ul>
+<h3 id="modify-tcpthread-in-messagegatewaymgw-pod">Modify TcpThread in MessageGateWay(MGW) pod<a class="headerlink" href="#modify-tcpthread-in-messagegatewaymgw-pod" title="Permanent link"></a></h3>
+<ul>
+<li>edit <code>/var/messagesight/data/config/server.cfg</code></li>
+<li>add a line  <code>TcpThreads = 4</code></li>
+<li>do the above changes on all MGW Pod, then restart the pods</li>
 </ul>
               
             </div>

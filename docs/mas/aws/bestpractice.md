@@ -2,7 +2,7 @@
 
 ## Instance Type
 
-There are many instance type available in AWS. Based on the benchmark, recommend **M5, M6** instances (e.g.M5.4xlarge) as master or worker nodes and **P3, P4** as GPU nodes. 
+There are many instance types available in AWS. Based on the benchmark, recommend **M5, M6** instances (e.g.M5.4xlarge) as master or worker nodes and **P3, P4** as GPU nodes. 
 
 !!!note
     - Depending on the regions, some instances may not be available. Use [AWS Pricing Calculator](https://calculator.aws/#/) to check the instance availability and cost. 
@@ -11,7 +11,7 @@ There are many instance type available in AWS. Based on the benchmark, recommend
 
 ## Classic Load Balancer Idle Timeout
 
-Each OCP cluster creates 1 class load balancer and 2 network load balancers in AWS. AWS classic load balancer has a default idle time **60** seconds. In some cases, this value is not enough for a long time transaction e.g. asset health check notebook. Consider to adjust this value to what the application needs e.g. 300 seconds.
+Each OCP cluster creates 1 class load balancer and 2 network load balancers in AWS. AWS classic load balancer has a default idle time **60** seconds. In some cases, this value is not enough for a long time transaction (e.g. asset health check notebook). Consider to adjust this value to what the application needs (e.g. 300 seconds).
 
 Also, monitoring classic load-balance performance is strongly recommend, particularly with IoT related app. (Note: Surge Queue Length's default/hard code limit is **1024**. when queue is fully, the tcp handshake will fail)
 
