@@ -129,7 +129,7 @@
               
                 <h1 id="openshift-container-platform">OpenShift Container Platform<a class="headerlink" href="#openshift-container-platform" title="Permanent link"></a></h1>
 <h2 id="cluster-insights-advisor">Cluster Insights Advisor<a class="headerlink" href="#cluster-insights-advisor" title="Permanent link"></a></h2>
-<p>Highly recommend to use OpenShift cluster Insights Advisor that to check any issue related to the current version, nodes and mis-configurations. It is the first step for the problem diagnosis. </p>
+<p>Highly recommend to use OpenShift cluster Insights Advisor that to check for any issue related to the current version, nodes and mis-configurations. It is the first step for the problem diagnosis. </p>
 <p>Steps:</p>
 <ul>
 <li>Login on OpenShift Console</li>
@@ -138,7 +138,7 @@
 <li>Click Insights Advisor</li>
 </ul>
 <h2 id="pid-limit-for-docker">PID limit for docker<a class="headerlink" href="#pid-limit-for-docker" title="Permanent link"></a></h2>
-<p>This settings how many processes can be run within one single container. If it is too small, it can cause folk bomb issue. E.g. db2w instance may be unavailable when there are thousands of connections/agents upcoming or Openshift Container Storage not behaving well with a large amount of PVCs. </p>
+<p>This settings control how many processes can be run within one single container. If it is too small, it can cause folk bomb issue. E.g. db2w instance may be unavailable when there are thousands of connections/agents upcoming or Openshift Container Storage not behaving well with a large amount of PVCs. </p>
 <p><strong>OOB value for OCP platforms:</strong></p>
 <table>
 <thead>
@@ -174,16 +174,16 @@ $ shutdown -r now
 </code></pre></div></p>
 <h2 id="haproxy-router">HAProxy Router<a class="headerlink" href="#haproxy-router" title="Permanent link"></a></h2>
 <h3 id="ingress-controller">Ingress Controller<a class="headerlink" href="#ingress-controller" title="Permanent link"></a></h3>
-<p>Openshift HAProxy supports up to 20k connection per pod. Consider to scale up ingress pod for any app (like IoT) with a high volume connection workload. </p>
+<p>Openshift HAProxy supports up to 20k connections per pod. Consider to scale up ingress pod for any app (like IoT) with a high volume connection workload. </p>
 <p><strong>Scale up ingress controller</strong></p>
 <ul>
 <li><strong>command:</strong>  <code>oc patch -n openshift-ingress-operator ingresscontroller/default --patch '{"spec":{"replicas": 3}}' --type=merge</code></li>
 </ul>
 <h3 id="max-connection">Max Connection<a class="headerlink" href="#max-connection" title="Permanent link"></a></h3>
-<p>One of the most important tunable parameters for HAProxy scalability is the <code>maxconn</code> parameter. The router can handle a maximum number of 20000 concurrent connections by using <code>oc adm router --max-connections=xxxxx</code>. This parameter will be impacted by node settings <code>sysctl fs.nr_open</code> and <code>sysctl fs.file-max</code>. HAproxy will not start if maxconn is high, but node setting is low. </p>
+<p>One of the most important tunable parameters for HAProxy scalability is the <code>maxconn</code> parameter. The router can handle a maximum number of 20k concurrent connections by using <code>oc adm router --max-connections=xxxxx</code>. This parameter will be impacted by node settings <code>sysctl fs.nr_open</code> and <code>sysctl fs.file-max</code>. HAproxy will not start if maxconn is high, but node setting is low. </p>
 <p><strong>Note:</strong> OpenShift Container Platform <strong>no longer</strong> supports modifying Ingress Controller deployments by setting environment variables such as ROUTER_THREADS, ROUTER_DEFAULT_TUNNEL_TIMEOUT, ROUTER_DEFAULT_CLIENT_TIMEOUT, ROUTER_DEFAULT_SERVER_TIMEOUT, and RELOAD_INTERVAL. You can modify the Ingress Controller deployment, but if the Ingress Operator is enabled, the configuration is overwritten.</p>
 <h3 id="load-balance-algorithm">Load Balance Algorithm<a class="headerlink" href="#load-balance-algorithm" title="Permanent link"></a></h3>
-<p>There are 3 load-balancing algorithms: <strong>source, roundrobin, and leastconn. leastconn</strong> is the default. Set up annotations for each route to change the default algorithm. e.g. <code>haproxy.router.openshift.io/balance=roundrobin</code></p>
+<p>There are 3 load-balancing algorithms: <strong>source, roundrobin, and leastconn</strong> (default: leastconn). Set up annotations for each route to change the default algorithm. e.g. <code>haproxy.router.openshift.io/balance=roundrobin</code></p>
               
             </div>
           </div><footer>

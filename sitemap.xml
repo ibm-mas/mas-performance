@@ -2,72 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/aws/bestpractice/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/core/bestpractice/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/ibmcloud/bestpractice/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/iot/bestpractice/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/manage/bestpractice/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/mongodb/bestpractice/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/monitoring/guidance/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/ocp/bestpractice/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/mas/sizing/guidance/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/maximo-7/bestpractice/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/pd/checklist/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/pd/db2-performance-diagnosis/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-mas.github.io/mas-performance/pd/ptbp/</loc>
-         <lastmod>2023-01-26</lastmod>
+         <lastmod>2023-01-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
