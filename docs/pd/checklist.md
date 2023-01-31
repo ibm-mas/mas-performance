@@ -18,7 +18,9 @@
 |HAR | [HTTP Archive Viewer](https://chrome.google.com/webstore/detail/http-archive-viewer/ebbdbdmhegaoooipfnjikefdpeoaidml?hl=en) | HAR Analysis - for web page and client side (browser) performance |
 |SQL | [Poor SQL](http://poorsql.com) | Online SQL Formatter | 
 |SQL | [Squirrl](http://squirrel-sql.sourceforge.net) | Universal SQL Client |
-|SSL | [SSL Shopper](https://www.sslshopper.com)| Online certificate decode tool | 
+|SSL | [SSL Shopper](https://www.sslshopper.com)| Online certificate decode tool |
+|OS  | [top](https://www.redhat.com/sysadmin/interpret-top-output) | Process and thread level analysis, hotspot analysis - top is available in most containers and on OCP worker nodes|
+|OCP | oc debug node/<node name> | Worker node debugging |
 
 ## Factors in system performance
 
