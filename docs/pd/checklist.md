@@ -8,8 +8,8 @@
 | Scope                   | Name                      | Used for                                           |
 | ------------------------|-------------------------- | ----------------------------------------------------- |
 |OCP | [OpenShift Monitoring Service](../mas/monitoring/guidance.md)  | OpenShift Cluster and MAS  |
-|DB2 | [IBM DSM](../../misc/db2-performance-insight/#ibm-data-server-manager-ibm-dsm) | DB2 Historical and Realtime Troubleshooting|
-|DB2 | [db2top](../../misc/db2-performance-insight/#db2top) | DB2 Realtime Troubleshooting|
+|DB2 | [IBM DSM](../pd/db2-performance-diagnosis.md#ibm-data-server-manager-ibm-dsm) | DB2 Historical and Realtime Troubleshooting|
+|DB2 | [db2top](../pd/db2-performance-diagnosis.md#db2top) | DB2 Realtime Troubleshooting|
 |Oracle | AWR, StatsPack| Historical Troubleshooting |
 |JVM | IBM Support Assistant| Heap Dump and GC Log Analysis |
 |JVM | [MAT](http://wiki.eclipse.org/MemoryAnalyzer)| JVM Dump Analysis |

@@ -65,7 +65,7 @@ DB2 Tuning in [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best
 
 - increase maxsequence cache to 50
 - run runstats and/or reorg to update index periodically
-- separate system storage, user storage, backup storage, transaction logs storage, temporary tablespace storage on as different disks if possible. 
+- separate system storage, user storage, backup storage, transaction logs storage, temporary tablespace storage on different disks if possible. 
 - Use [DB2 Performance Diagnosis](../../pd/db2-performance-diagnosis.md) to troubleshoot and tuning the db and SQL.
 - Manage requires **row-organized** tables. Check db2w db setting (by default it uses column based) and update the setting by `db2 update db cfg using DFT_TABLE_ORG ROW`
 - **Manage** does **NOT** support MMP or table partition in the current version, but consider to archive records over 1-year old. Optim is the one of the tools can be used for archiving. see [this guide](https://www.ibm.com/support/pages/installing-ibm-maximo-archiving-751-ibm-maximo-asset-management-v76) and [this video](https://www.youtube.com/watch?v=qr_0SpWrabc) for details. 
@@ -84,7 +84,7 @@ DB2 Tuning in [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best
 - [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf) is applicable
 
 - additional settings for MSSQL Server 2019
-    - compatibility level: if maximo db is upgraded from the old version and the performance degradtation is observed after the upgrade, consider to set compatibility level to the old version to keep the execution plan same.
+    - compatibility level: if maximo db is upgraded from the old version and the performance degradation is observed after the upgrade, consider to set compatibility level to the old version to keep the execution plan same.
     - isolation level: 
 ```sql
         ALTER DATABASE <DB NAME>  

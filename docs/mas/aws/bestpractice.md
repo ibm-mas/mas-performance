@@ -13,12 +13,12 @@ There are many instance types available in AWS. Based on the benchmark, recommen
 
 Each OCP cluster creates 1 class load balancer and 2 network load balancers in AWS. AWS classic load balancer has a default idle time **60** seconds. In some cases, this value is not enough for a long time transaction (e.g. asset health check notebook). Consider to adjust this value to what the application needs (e.g. 300 seconds).
 
-Also, monitoring classic load-balance performance is strongly recommend, particularly with IoT related app. (Note: Surge Queue Length's default/hard code limit is **1024**. when queue is fully, the tcp handshake will fail)
+Also, monitoring classic load-balance performance is strongly recommend, particularly with IoT related app. (Note: Surge Queue Length's defaults to a hardcoded limit of **1024**. When queue is fully, the tcp handshake will fail)
 
 
 ## Amazon DocumentDB
 
- DocumentDB that is a fully managed MongoDB compatibility database. It can be used by both IBM Suite License Service (SLS) and MAS Core. However, there are functional differences between DocumentDB and MongoDB. Check [this link](https://docs.aws.amazon.com/documentdb/latest/developerguide/functional-differences.html) for more details.
+ DocumentDB is a fully managed MongoDB compatibility database. It can be used by both IBM Suite License Service (SLS) and MAS Core. However, there are functional differences between DocumentDB and MongoDB. Check [this link](https://docs.aws.amazon.com/documentdb/latest/developerguide/functional-differences.html) for more details.
  
  **Note:** When using DocumentDB, it requires to set `RetryWrite=false` in SLS and Suite CRs. 
 
@@ -34,7 +34,7 @@ MAS supports MSK which is a fully managed apache Kafka service.
 
 ## AWS Storage
 
-**EBS storages** like gp2, gp3 is supported by OCP in AWS. **Note:** EBS storage is ReadWriteOnce. The volume can be mounted as read-write by a single node. **io1** and **io2** are SSD-based EBS that provides the higher performance. Check [Amazon EBS volume types](https://aws.amazon.com/ebs/volume-types/) for extra info like throughput, tuning and cost. 
+**EBS storages** like gp2, gp3 are supported by OCP in AWS. **Note:** EBS storage is ReadWriteOnce. The volume can be mounted as read-write by a single node. **io1** and **io2** are SSD-based EBS that provides the higher performance. Check [Amazon EBS volume types](https://aws.amazon.com/ebs/volume-types/) for extra info like throughput, tuning and cost. 
 
 Below is a **sample yaml** to create io1 storageclass with **100 iopsPerGB**. 
 

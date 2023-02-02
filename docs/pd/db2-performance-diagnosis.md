@@ -16,7 +16,7 @@ db2top can be used for a real-time diagnosis.
         - Press **z** and **5** to sort by cpu usage
         - Copy SQL Hashcode 
         - Press **L** and Paste SQL Hashcode
-* Notes: Be caution to take any snapshot. 
+* Notes: Be cautions when taking any snapshot. 
 * See more details on [User Manual](http://www-01.ibm.com/support/docview.wss?uid=swg27009542&aid=1) 
 
 ### Diagnosis Commands
@@ -102,6 +102,6 @@ A high-level set up:
 * Download the latest version of Data Server Manager from [IBM developerWorks](https://www.ibm.com/services/forms/preLogin.do?source=swg-rddsm) or [IBM Passport Advantage Online](https://www.ibm.com/software/passportadvantage/pao_customer.html), then extract to /opt/ibm/dsm
 * run setup.sh to set up and create admin user
 * run start.sh to start the server, url is http://hostname:11080/console
-*  after log on the console, select a time period e.g. peak time, then generate report. 
+* log on the console, select a time period (e.g. peak time) and then generate report. 
 
 

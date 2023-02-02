@@ -45,7 +45,7 @@ IoT uses Kafka to process the messages. Follow the [Kafka Configuration Referenc
 
 ## Message Rate and Ethernet Network Bandwidth
 
-Depending on the cloud providers, worker node instance has difference network bandwidth. It determines how fast the end devices can send the request. Message rate is limited by the message size and the bandwidth of ethernet network. To achieve higher rates and/or larger messages it will require a 10GB ethernet. The network bandwidth also impacts the response latency. The higher bandwidth, the lower latency.  
+Depending on the cloud providers, worker node instance has different network bandwidth. It determines how fast the end devices can send the request. Message rate is limited by the message size and the bandwidth of ethernet network. To achieve higher rates and/or larger messages it will require a 10GB ethernet. The network bandwidth also impacts the response latency. The higher bandwidth, the lower latency.  
 
 Below deployment configurations are recommended as starting value with medium and large workload. 
 
