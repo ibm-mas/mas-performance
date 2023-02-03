@@ -1,5 +1,60 @@
 # MAS IoT 
 
+## MQTT vs HTTP Messaging
+The MQTT protocol is the preferred messaging protocol for data ingest in to the MAS IoT service. HTTP messaging support was added to MAS IoT for low volume scenarios and is not designed to be used for message rates greater than 1K msgs/sec.
+
+MQTT message ingest rates are 2-3 orders of magnitude faster than HTTP. The primary reason being that HTTP messaging requires a TLS handshake and authentication on every message published. The authentication requires a database lookup for the device authentication token.  As such, HTTP messaging puts a strain on the authentication service and the IoT database.
+
+In order to achieve high data ingest rates with MAS IoT service, use the MQTT protocol and keep the device connection open while publishing messages.  
+
+### Best practice messaging pattern
+
+```
+MQTT CONNECT
+MQTT PUBLISH (in loop until all messages are published)
+```
+
+### Messaging Anti-pattern
+
+```
+MQTT CONNECT
+MQTT PUBLISH
+MQTT DISCONNECT
+MQTT CONNECT
+MQTT PUBLISH
+MQTT DISCONNECT
+...
+```
+
+## Data Ingest rates, devices, and connections
+The MQTT service in MAS IoT was designed to handle many device connections, each publishing at low rates. As such, when designing a data ingest application for MAS IoT it should distribute the load over many MQTT devices or applications in order to maximize message rates. Single device or application connections will be throttled based on the IoT Fair use policy (see below).
+
+## IoT Fair Use Policy
+IoT data ingest throttling limits are per device and are based on the device class (i.e. Device, Gateway, Application).  These limits are in place to prevent DoS attacks from rogue (i.e. badly behaving) devices. The throttling limits do not scale with the MAS IoT deployment size. For more information on MAS IoT messaging quotas see [https://www.ibm.com/docs/en/mapms/1_cloud?topic=features-quotas](https://www.ibm.com/docs/en/mapms/1_cloud?topic=features-quotas)
+
+
+## Messaging QoS
+The messaging QoS specified when publishing an MQTT message also has a strong impact on messaging rates.
+
+QoS in order of fastest to slowest:
+
+- QoS 0 - at most once (data loss possible, no message persistence or ACKs)
+- QoS 1 - at least once (duplicates are possible, messages persisted and ACKed)
+- QoS 2 - exactly once (application client required to maintain state, messages persisted and two phase commit between client/server)
+
+QoS >0 performance considerations
+
+- requires disk persistence in MAS IoT messaging components and therefore disk I/O performance becomes critical with QoS >0.
+- the MQTT specification provides a kind of protocol level flow control negotiation between client and server. The number of unacked messages allowed on the session is negotiated between client and server and if the client has no more available msg ids it must pause publishing until msg IDs become available. Msg IDs become available when messages ACKs are received. See MQTT spec for details: [https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_QoS_1:_At](https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_QoS_1:_At)
+
+## Summary of factors that influence data ingestion rate
+
+- Choice of messaging protocol: MQTT (high volume) vs HTTP (low volume)
+- Messaging Pattern: do NOT close MQTT sessions after each message published. leave connections open.
+- Number of devices: Higher message rates are possible when the load is distributed over more connections
+- Choice of device class: Fair use quotas are based on device class (https://www.ibm.com/docs/en/mapms/1_cloud?topic=features-quotas)[https://www.ibm.com/docs/en/mapms/1_cloud?topic=features-quotas]
+- Choice of QoS: high levels of messaging guarantees come with higher costs 
+
 ## IoT Deployment
 
 - IoT CRD defines 3 default size deployments: **dev, small, medium** that controls the default settings for pod replics, cpu and memory. For production, **medium** is required.
@@ -52,8 +107,4 @@ Below deployment configurations are recommended as starting value with medium an
 * MSProxy - 4 MSProxies with 1 CPU and 4GB
 * MessageGateWay - 1 MGW 6 CPUs and 16GB along with 4 TcpIop threads
 
-### Modify TcpThread in MessageGateWay(MGW) pod
-- edit `/var/messagesight/data/config/server.cfg`
-- add a line  `TcpThreads = 4`
-- do the above changes on all MGW Pod, then restart the pods
 

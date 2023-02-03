@@ -142,27 +142,27 @@
                 <h1 id="mas-manage">MAS Manage<a class="headerlink" href="#mas-manage" title="Permanent link"></a></h1>
 <h2 id="app-server">App Server<a class="headerlink" href="#app-server" title="Permanent link"></a></h2>
 <p>MAS Manage has different bundle types e.g. All, UI, MEA, Report and CRON to configure app server. Adjust the resource settings like cpu, memory, replic to match the workload. The settings are in ManageWorkspaces CR. Below is the sample. </p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps.mas.ibm.com/v1</span><span class="w"></span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ManageWorkspace</span><span class="w"></span>
-<span class="nn">...</span><span class="w"></span>
-<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
-<span class="w"> </span><span class="nt">settings</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">serverBundles</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span><span class="w"></span>
-<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
-<span class="w">          </span><span class="nt">routeSubDomain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span><span class="w"></span>
-<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
-<span class="nn">...</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps.mas.ibm.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ManageWorkspace</span>
+<span class="nn">...</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">settings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serverBundles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span>
+<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span>
+<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">routeSubDomain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span>
+<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span>
+<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nn">...</span>
 </code></pre></div>
 <h2 id="load-balancer">Load-Balancer<a class="headerlink" href="#load-balancer" title="Permanent link"></a></h2>
 <p>Lab test shows <strong>roundrobin</strong> has more stable and better performance than <strong>leastconn</strong> policy which is the default. Follow <a href="../../ocp/bestpractice/#load-balance-algorithm">this link</a> to update load balancer policy. </p>
@@ -187,7 +187,7 @@
 <ul>
 <li>increase maxsequence cache to 50</li>
 <li>run runstats and/or reorg to update index periodically</li>
-<li>separate system storage, user storage, backup storage, transaction logs storage, temporary tablespace storage on as different disks if possible. </li>
+<li>separate system storage, user storage, backup storage, transaction logs storage, temporary tablespace storage on different disks if possible. </li>
 <li>Use <a href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a> to troubleshoot and tuning the db and SQL.</li>
 <li>Manage requires <strong>row-organized</strong> tables. Check db2w db setting (by default it uses column based) and update the setting by <code>db2 update db cfg using DFT_TABLE_ORG ROW</code></li>
 <li><strong>Manage</strong> does <strong>NOT</strong> support MMP or table partition in the current version, but consider to archive records over 1-year old. Optim is the one of the tools can be used for archiving. see <a href="https://www.ibm.com/support/pages/installing-ibm-maximo-archiving-751-ibm-maximo-asset-management-v76">this guide</a> and <a href="https://www.youtube.com/watch?v=qr_0SpWrabc">this video</a> for details. </li>
@@ -210,7 +210,7 @@
 <li>
 <p>additional settings for MSSQL Server 2019</p>
 <ul>
-<li>compatibility level: if maximo db is upgraded from the old version and the performance degradtation is observed after the upgrade, consider to set compatibility level to the old version to keep the execution plan same.</li>
+<li>compatibility level: if maximo db is upgraded from the old version and the performance degradation is observed after the upgrade, consider to set compatibility level to the old version to keep the execution plan same.</li>
 <li>isolation level: 
 <div class="highlight"><pre><span></span><code><span class="w">        </span><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB</span><span class="w"> </span><span class="n">NAME</span><span class="o">&gt;</span><span class="w">  </span>
 <span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">ALLOW_SNAPSHOT_ISOLATION</span><span class="w"> </span><span class="k">ON</span><span class="w">  </span>
