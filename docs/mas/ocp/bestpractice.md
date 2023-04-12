@@ -60,3 +60,13 @@ One of the most important tunable parameters for HAProxy scalability is the `max
 
 There are 3 load-balancing algorithms: **source, roundrobin, and leastconn** (default: leastconn). Set up annotations for each route to change the default algorithm. e.g. `haproxy.router.openshift.io/balance=roundrobin`
 
+### Master and Worker Nodes Consideration
+
+There are a wide selection instance types that comprise varying combinations of CPU, memory, disk and network. Below are a few considerations:
+
+- Each worker node will reserve about 1 core for internal services. In order to avoid the side effect of overcommit, 16core/64G is a good starting type for a normal worker node. A 8-core instance may not have insufficent capacity while 32-core instance may lose a big cluster capacity due to an outage or failure.   
+- An instance with a high memory/cpu ratio e.g. 8:1 is recommended for database nodes. 
+- For the product env, a 8core/32G is recommended for master nodes to avoid any bottleneck for the internal services. 
+- An instance with 10GB ethernet is strongly recommended for the production env. 
+- Check the GPU chip type for gpu node selection. 
+
