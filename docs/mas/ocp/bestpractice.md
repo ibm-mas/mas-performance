@@ -60,7 +60,7 @@ One of the most important tunable parameters for HAProxy scalability is the `max
 
 There are 3 load-balancing algorithms: **source, roundrobin, and leastconn** (default: leastconn). Set up annotations for each route to change the default algorithm. e.g. `haproxy.router.openshift.io/balance=roundrobin`
 
-### Master and Worker Nodes Consideration
+## Master and Worker Nodes Consideration
 
 There are a wide selection instance types that comprise varying combinations of CPU, memory, disk and network. Below are a few considerations:
 
