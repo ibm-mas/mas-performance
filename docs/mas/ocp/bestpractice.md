@@ -65,7 +65,9 @@ There are 3 load-balancing algorithms: **source, roundrobin, and leastconn** (de
 There are a wide selection instance types that comprise varying combinations of CPU, memory, disk and network. Below are a few considerations:
 
 - Each worker node will reserve about 1 core for internal services. In order to avoid the side effect of overcommit, 16core/64G is a good starting type for a normal worker node. A 8-core instance may not have insufficent capacity while 32-core instance may lose a big cluster capacity due to an outage or failure.   
-- An instance with a high memory/cpu ratio e.g. 8:1 is recommended for database nodes. 
+- Using balanced CPU-memory worder nodes typically fits our work load -the ratio of CPU to memory is 1 to 4.
+- An instance with a higher memory/cpu ratio e.g. 8:1 is recommended for database nodes. 
+- The number of worker nodes >=3. This will give a high availability needing a smaller built in redundant capacity.
 - For the product env, a 8core/32G is recommended for master nodes to avoid any bottleneck for the internal services. 
 - An instance with 10GB ethernet is strongly recommended for the production env. 
 - Check the GPU chip type for gpu node selection. 
