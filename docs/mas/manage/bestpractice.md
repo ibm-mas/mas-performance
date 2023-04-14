@@ -1,5 +1,31 @@
 # MAS Manage
 
+## Maximo Transaction latency
+When describing Maximo transaction latency it is important to define the boundaries of what constitutes a standard or out-of-the-box Maixmo transaction. The description below does just that.
+
+### Terminology
+
+- CRUD refers to create, update, delete operations
+- MBO stands for Maximo Business Objects (which are hierarchical in nature)
+- Transaction latency is defined as the elapsed time between when the Maximo server receives the transaction request to the time when the Maximo server has sent the response. For UI users this also includes the elapsed time between when the Save button is clicked to when control is returned to the user.
+
+### Definition of a transaction
+An out of the box Maximo transaction is expected to complete with a latency of 2 seconds or less, where a transaction is defined as the creation, update, or deletion of a single MBO, containing no more than one child object and with no attachments or binary data (blobs).  Example include, but are not limited to:
+
+1. Creation of a single WorkOrder object. This includes generation of the WorkOrderStatus and WorkOrderAncestor records.
+2. Update of a single WorkOrder object. For example, changing states from Approved to Closed.
+3. Deletion of a single WorkOrder object.
+
+### Definition restrictions
+The following conditions are considered to be outside the scope of an out of the box Maximo transaction, and therefore do not fall under the 2 second latency characterization.
+
+1. For UI initiated transactions this does not include latency incurred from downloading UI resources (e.g. js, css, png, jpg, etc.)
+2. It applies to out of the box Maximo applications, but not customized applications or out of the box Maximo applications with automation scripts
+3. It does not apply to UI initiated transactions with a large number of xhr requests (or portlets), for example the Maximo start center. Large here means greater than 2 xhr requests per page.  Note, Maximo currently supports HTTP/1.1, so xhr requests initiated from a single user UI page are sequential, not concurrent.
+4. It does not apply to customized saved queries.
+5. It does not apply to bulk load requests.
+6. It does not apply to report related transactions
+
 ## App Server
 
 MAS Manage has different bundle types e.g. All, UI, MEA, Report and CRON to configure app server. Adjust the resource settings like cpu, memory, replic to match the workload. The settings are in ManageWorkspaces CR. Below is the sample. 
@@ -56,6 +82,15 @@ disk performance is critial for db performance. Recommend a storage or disk with
 
 * disk throughput > 200 MB/s
 * storage class: a storage with 100+ IOPS
+
+To measure disk performance on Linux use the `dd` command. The sample command below measures disk performance of the data volume inside a db2 pod running in OCP
+
+```
+[db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$ dd if=/dev/zero of=/mnt/bludata0/db2/archive_log/ddtest bs=128K count=8192
+8192+0 records in
+8192+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 2.84314 s, 378 MB/s
+[db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$
 
 ### DB - DB2/DB2wh
 
