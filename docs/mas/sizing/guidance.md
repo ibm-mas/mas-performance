@@ -32,18 +32,22 @@ Each OCP node running ODF services has:16 core / 64 GB memory
 
 ## MAS Resource Statistics
 
-| Namespace                    	| CPU Request 	| CPU Limits 	| Memory   Request(GB) 	| Memory   Limits(GB) 	|
-|------------------------------	|-------------	|-----------	|----------------------	|---------------------	|
-|            mas-masinst1-core 	| 0.71        	| 18.95     	| 6.18                 	| 32.50               	|
-|          mas-masinst1-manage 	| 2.5         	| 11.1      	| 4.04                 	| 17.00               	|
-|       mas-innovation-monitor 	| 3.5          	| 19.25       	| 12.84                	| 32.57               	|
-|           mas-innovation-iot 	| 19.66        	| 214.649      	| 57.08                	| 269.00               	|
-|                        mongo 	| 3           	| 9         	| 2.24                 	| 6.98                	|
-|                      ibm-sls 	| 0.12        	| 2.6       	| 0.56                 	| 4.50                	|
-|                        kafka 	| 9.2         	| 31        	| 30.38                	| 30.38               	|
-|          ibm-common-services 	| 0.81        	| 1.92      	| 1.30                 	| 2.73                	|
-|                   OpenShift  	| 3.2         	|           	| 28                   	|                     	|
-|                     Subtotal 	| 42.7(core)    | 308.469(core) | 142.62(GB)            | 395.66 (GB)           |
+* use below values as reference only. 
+* the footprint is based on the loads and spec settings. e.g. IoT T-shirt size, Manage bundle and replic #
+* the value below is based on IoT small T-shirt size and Manage with only all-in-one bundle and replic =1
+
+| App                   | CPU Request (core) |  CPU   Limits (core) | Memory Rquest (GB) |  Memory Limits(GB)  |
+|-----------------------|--------------------|----------------------|-------------------|---------------------|
+| Add                   | 6                  | 12                   | 13                | 26                  |
+| Assist                | 12.4               | 57.7                 | 19.46             | 62.38              |
+| Core                  | 1.5                | 18.95                | 6.27              | 32.5                |
+| Health                | 2.9                | 15.6                 | 7.12              | 30.84         |
+| HPU                   | 0.9                | 5.5                  | 0.92              | 6.5                 |
+| IoT                   | 19.66              | 214.65               | 57.08             | 269                 |
+| Manage                | 2.9                | 11.1                 | 4.04              | 17                  |
+| Monitor               | 5.4                | 32.4                 | 12.84             | 55.5                |
+| Optimizer             | 7.4                | 19.3                 | 25.57             | 117                 |
+| Predict               | 3.1                | 12.5                 | 6.13              | 24.5                |
 |        **Additional cost**    |  - - - - - - -| - - - - - - - | - - - - - - - - - - - | - - - - - - - - - - - |
 |                         ocs* 	|  14 	        |  32 	        |14 	                | 32 	                |
 | cp4d (with 2 db2w instances)* | 31.59       	| 40.7      	| 235.39               	| 249.70              	|
