@@ -13,6 +13,7 @@ nav:
       - 'MAS Core': mas/core/bestpractice.md
       - 'MAS IoT': mas/iot/bestpractice.md
       - 'MAS Manage': mas/manage/bestpractice.md
+      - 'MAS MIF/JMS': mas/mif-jms/bestpractice.md
       - 'AWS': mas/aws/bestpractice.md
       - 'IBM Cloud': mas/ibmcloud/bestpractice.md
       - 'MongoDB': mas/mongodb/bestpractice.md
