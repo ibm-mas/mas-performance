@@ -91,6 +91,7 @@ To measure disk performance on Linux use the `dd` command. The sample command be
 8192+0 records out
 1073741824 bytes (1.1 GB, 1.0 GiB) copied, 2.84314 s, 378 MB/s
 [db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$
+```
 
 ### DB - DB2/DB2wh
 
