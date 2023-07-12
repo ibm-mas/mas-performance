@@ -58,7 +58,7 @@ One of the most important tunable parameters for HAProxy scalability is the `max
 
 ### Load Balance Algorithm
 
-There are 3 load-balancing algorithms: **source, roundrobin, and leastconn** (default: leastconn). Set up annotations for each route to change the default algorithm. e.g. `haproxy.router.openshift.io/balance=roundrobin`
+Starting from OCP 4.10, there have been four load-balancing algorithms available: **source, roundrobin, random, and leastconn**. The default algorithm is set to **random**. In earlier versions of OCP, before 4.10, there were three load-balancing algorithms: **source, roundrobin, and leastconn**. The default algorithm in those versions was **leastconn**. Set up annotations for each route to change the default algorithm if needed. e.g. `haproxy.router.openshift.io/balance=roundrobin`
 
 ## Master and Worker Nodes Consideration
 

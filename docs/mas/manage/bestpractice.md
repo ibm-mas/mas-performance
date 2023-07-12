@@ -109,7 +109,13 @@ DB2 Tuning in [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best
 - **storageclass**
     - for ibm cloud:  performance(Custom) block storage with 100+ IOPS for data storage, block gold for system and block silver for backup
     - for aws cloud: if using EFS for db, consider Provisioned mode to have a constant throughput. For more disk options, see details in this [page](https://docs.aws.amazon.com/efs/latest/ug/performance.html)
-
+- For db2 registry (db2set):
+    - Set **db2_workload=maximo**. That makes db cfg variable **WLM_ADMISSION_CTRL** is set to **NO**
+    - Do NOT change the default values for **DB2_OVERRIDE_NUM_CPUS and DB2_OVERRIDE_THREADING_DEGREE**.
+- Verify db2 db cfg variable **WLM_ADMISSION_CTRL** is set to **NO**
+- For db2ucluster CR
+    - Do **NOT** set db2 instance memory. The operator will automatically calculate it based on the container memory limit.
+    - (Optional) for performance stability, set the same value to both container resource request and limit.
 
 ### DB - Oracle   
 
