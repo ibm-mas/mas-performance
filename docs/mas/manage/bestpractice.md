@@ -1,7 +1,7 @@
 # MAS Manage
 
 ## Maximo Transaction latency
-When describing Maximo transaction latency it is important to define the boundaries of what constitutes a standard or out-of-the-box Maixmo transaction. The description below does just that.
+When describing Maximo transaction latency it is important to define the boundaries of what constitutes a standard or out-of-the-box Maximo transaction. The description below does just that.
 
 ### Terminology
 
