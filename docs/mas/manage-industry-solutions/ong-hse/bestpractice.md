@@ -1,4 +1,4 @@
-# MAS Manage Oil and Gas
+# MAS Manage Oil and Gas/HSE
 
 ## Best Practice for Performance
 
