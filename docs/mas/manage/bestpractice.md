@@ -85,8 +85,11 @@ disk performance is critial for db performance. Recommend a storage or disk with
 
 To measure disk performance on Linux use the `dd` command. The sample command below measures disk performance of the data volume inside a db2 pod running in OCP
 
+!!! info "**CAUTION**"
+     Make sure that `ddtest` filename is appended to the end of the data path or the dd command will wipe the db2 data directory.
+
 ```
-[db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$ dd if=/dev/zero of=/mnt/bludata0/db2/archive_log/ddtest bs=128K count=8192
+[db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$ dd if=/dev/zero of=/<path of db2 data>/ddtest bs=128K count=8192
 8192+0 records in
 8192+0 records out
 1073741824 bytes (1.1 GB, 1.0 GiB) copied, 2.84314 s, 378 MB/s
