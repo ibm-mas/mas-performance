@@ -15,6 +15,9 @@ nav:
       - 'MAS Manage': mas/manage/bestpractice.md
       - 'MAS MIF/JMS': mas/mif-jms/bestpractice.md
       - 'MAS MIF/Kafka': mas/mif-kafka/bestpractice.md
+      - 'MAS Manage MIF/JMS': mas/mif-jms/bestpractice.md
+      - 'MAS Manage Industry Solutions': 
+        - 'Oil and Gas/HSE': mas/manage-industry-solutions/ong-hse/bestpractice.md
       - 'AWS': mas/aws/bestpractice.md
       - 'IBM Cloud': mas/ibmcloud/bestpractice.md
       - 'MongoDB': mas/mongodb/bestpractice.md
