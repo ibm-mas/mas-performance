@@ -13,7 +13,7 @@
 |Oracle | AWR, StatsPack| Historical Troubleshooting |
 |JVM | IBM Support Assistant| Heap Dump and GC Log Analysis |
 |JVM | [MAT](http://wiki.eclipse.org/MemoryAnalyzer)| JVM Dump Analysis |
-|Maximo | [PerfMon](https://www.ibm.com/developerworks/community/blogs/a9ba1efe-b731-4317-9724-a181d6155e3a/entry/performance_maximo_activity_dashboard_perfmon?lang=en) | - Maximo UI Activity Tracing<br/> - **Note**: Enabling PerfMon may significantly degrade server performance. <br/> - Recommend for a single user with Dev/Test env only|
+|Maximo | [PerfMon](https://www.ibm.com/support/pages/enabling-and-disabling-maximo-activity-dashboard-maximo-75-and-maximo-76) | - Maximo UI Activity Tracing<br/> - **Note**: Enabling PerfMon may significantly degrade server performance. <br/> - Recommend for a single user with Dev/Test env only|
 |MongoDB | mongotop | MongoDB Realtime Troubleshooting | 
 |HAR | [HTTP Archive Viewer](https://chrome.google.com/webstore/detail/http-archive-viewer/ebbdbdmhegaoooipfnjikefdpeoaidml?hl=en) | HAR Analysis - for web page and client side (browser) performance |
 |SQL | [Poor SQL](http://poorsql.com) | Online SQL Formatter | 
