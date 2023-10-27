@@ -1,5 +1,8 @@
 # MAS Manage
 
+## At what point is it necessary to partition a MAS Manage workload across more than one MAS instance?
+A new MAS instance is required to run MAS Manage workloads at the point in which the DB server can no longer be scaled up.  When the DB server can no longer be scaled up, the customer should plan to create a new MAS instance and move sites to the new MAS instance which will be using a new DB server.
+
 ## Maximo Transaction latency
 When describing Maximo transaction latency it is important to define the boundaries of what constitutes a standard or out-of-the-box Maximo transaction. The description below does just that.
 
