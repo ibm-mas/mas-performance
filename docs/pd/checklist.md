@@ -10,6 +10,7 @@
 |OCP | [OpenShift Monitoring Service](../mas/monitoring/guidance.md)  | OpenShift Cluster and MAS  |
 |DB2 | [IBM DSM](../pd/db2-performance-diagnosis.md#ibm-data-server-manager-ibm-dsm) | DB2 Historical and Realtime Troubleshooting|
 |DB2 | [db2top](../pd/db2-performance-diagnosis.md#db2top) | DB2 Realtime Troubleshooting|
+|DBTest| [DBTest](../pd/dbtest.md) | An utility to test db network latency and fetching time|
 |Oracle | AWR, StatsPack| Historical Troubleshooting |
 |JVM | IBM Support Assistant| Heap Dump and GC Log Analysis |
 |JVM | [MAT](http://wiki.eclipse.org/MemoryAnalyzer)| JVM Dump Analysis |
