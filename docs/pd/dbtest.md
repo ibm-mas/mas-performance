@@ -3,7 +3,9 @@
 **notes:** This utility requires **Java version 11 or higher**.
 
 The DBTest Utility has two modes:
+
 **Benchmark Mode:**(the default) is to measure database connection time, query execution time and data fetching time for every 100 records. 
+
 **Query Mode:**(the default) is to display the query result with database connection time, query execution time and data fetching time. 
 
 
@@ -32,7 +34,7 @@ java -classpath .:$(dirname "$(find /opt/ibm | grep oraclethin | head -n 1)")/* 
 
 ### Result Samples:
 
-In the presence of favorable network latency and a healthy database status, the anticipated data fetching time is less than 10 milliseconds.
+Given optimal network latency and a healthy database status, the expected data fetching time is less than 10 milliseconds.
 
 **Good Result:**
 ![Good Result](./images/dbtest-goodresult.png)
