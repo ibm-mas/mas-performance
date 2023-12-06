@@ -42,7 +42,7 @@ Given optimal network latency and a healthy database status, the expected data f
 **Bad Result:**
 ![Bad Result](./images/dbtest-badresult.png)
 
-![Alt text](image.png)
+
 ### Execute the utility in query mode
 
 ```bash
