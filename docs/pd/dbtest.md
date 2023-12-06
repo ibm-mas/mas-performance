@@ -6,9 +6,7 @@
 
 ## Test DB latency in Maximo UI Pod
 
-- go to maximo ui pod
-- go to the terminal
-- run below commands
+- go to maximo ui pod -> terminal tab, then execute below commands:
 
 ```bash
 # change to /tmp
