@@ -4,9 +4,9 @@
 
 The DBTest Utility has two modes:
 
-**Benchmark Mode:**(the default) is to measure database connection time, query execution time and data fetching time for every 100 records. 
+**Benchmark Mode (the default):** is to measure database connection time, query execution time and data fetching time for every 100 records. 
 
-**Query Mode:**(the default) is to display the query result with database connection time, query execution time and data fetching time. 
+**Query Mode:** is to display the query result with database connection time, query execution time and data fetching time. 
 
 
 Here is an example demonstrating how to utilize this utility in the Maximo UI pod.
@@ -42,10 +42,10 @@ Given optimal network latency and a healthy database status, the expected data f
 **Bad Result:**
 ![Bad Result](./images/dbtest-badresult.png)
 
+![Alt text](image.png)
+### Execute the utility in query mode
 
-### execute the utility in query mode
 ```bash
-
 java -classpath .:$(dirname "$(find /opt/ibm | grep oraclethin | head -n 1)")/* DBTestjava -q
 ```
 
