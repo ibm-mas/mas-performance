@@ -11,7 +11,7 @@ The DBTest Utility has two modes:
 
 Here is an example demonstrating how to utilize this utility in the Maximo UI pod.
 
-## Use DBTest in Maximo UI Pod
+### Use DBTest in Maximo UI Pod
 
 - go to maximo ui pod -> terminal tab, then execute below commands:
 
@@ -32,12 +32,36 @@ export SQLQUERY='select * from maximo.maxattribute'
 java -classpath .:$(dirname "$(find /opt/ibm | grep oraclethin | head -n 1)")/* DBTestjava
 ```
 
-### Result Samples:
+**Result Samples:**
 
 Given optimal network latency and a healthy database status, the expected data fetching time is less than 10 milliseconds.
 
 **Good Result:**
-<img src="./images/dbtest-goodresult.png" alt="Good Result" width="400" height="200">
+![Good Result](./images/dbtest-goodresult.png)
 
 **Bad Result:**
-<img src="./images/dbtest-badresult.png" alt="bad Result" width="400" height="200">
+![Bad Result](./images/dbtest-badresult.png)
+
+
+### execute the utility in query mode
+```bash
+
+java -classpath .:$(dirname "$(find /opt/ibm | grep oraclethin | head -n 1)")/* DBTestjava -q
+```
+
+**Output Sample:**
+
+```text
+(base) [~/javatool]$ java -classpath .:./lib/* DBTest -q
+Dec. 06, 2023 11:49:47 A.M. DBTest getConnection
+INFO: Loading Class took: 0.029 seconds
+Dec. 06, 2023 11:49:53 A.M. DBTest getConnection
+INFO: DB Connecting took: 6.55 seconds
+Dec. 06, 2023 11:49:53 A.M. DBTest printResult
+INFO: Query Execution took: 0.099 seconds
+APP, OPTIONNAME, DESCRIPTION, ESIGENABLED, VISIBLE, ALSOGRANTS, ALSOREVOKES, PREREQUISITE, SIGOPTIONID, LANGCODE, HASLD, ROWSTAMP
+---------------------------------------------------------------------------------------------------------------------------------
+APIKEY, READ, Access to API Keys application, 0, 1, null, ALL, null, 200004204, EN, 0, 290874862
+Dec. 06, 2023 11:49:54 A.M. DBTest printResult
+INFO: Fetching Record took: 0.058 seconds
+```
