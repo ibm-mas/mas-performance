@@ -32,6 +32,6 @@ java -classpath .:$(dirname "$(find /opt/ibm | grep oraclethin | head -n 1)")/* 
 
 ### Result Samples:
 
-![Good Result](./images dbtest-goodresult.png)
+![Good Result](./images/dbtest-goodresult.png)
 
 ![Bad Result](./images/dbtest-badresult.png)
