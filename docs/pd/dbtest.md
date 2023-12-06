@@ -37,7 +37,7 @@ java -classpath .:$(dirname "$(find /opt/ibm | grep oraclethin | head -n 1)")/* 
 Given optimal network latency and a healthy database status, the expected data fetching time is less than 10 milliseconds.
 
 **Good Result:**
-![Good Result](./images/dbtest-goodresult.png)
+<img src="./images/dbtest-goodresult.png" alt="Good Result" width="400" height="200">
 
 **Bad Result:**
-![Bad Result](./images/dbtest-badresult.png)
+<img src="./images/dbtest-badresult.png" alt="bad Result" width="400" height="200">
