@@ -20,6 +20,7 @@ nav:
         - 'Oil and Gas/HSE': mas/manage-industry-solutions/ong-hse/bestpractice.md
       - 'AWS': mas/aws/bestpractice.md
       - 'IBM Cloud': mas/ibmcloud/bestpractice.md
+      - 'Azure': mas/azure/bestpractice.md
       - 'MongoDB': mas/mongodb/bestpractice.md
     - 'Sizing Guidance': mas/sizing/guidance.md
     - 'Monitoring': mas/monitoring/guidance.md
