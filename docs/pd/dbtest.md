@@ -20,7 +20,7 @@ Here is an example demonstrating how to utilize this utility in the Maximo UI po
 cd /tmp
 
 # download DBTest
-curl -L -v -o DBTest.class https://ibm-mas.github.io/mas-performance/pd/download/DBTest.class
+curl -L -v -o DBTest.class https://ibm-mas.github.io/mas-performance/pd/download/DBTest/DBTest.class
 
 # set DBURL. If this utility is in maximo UI pod, set DBURL="$MXE_DB_URL"
 export DBURL='<jdbc url>' or export DBURL="$MXE_DB_URL"
