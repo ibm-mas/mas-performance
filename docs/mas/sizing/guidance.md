@@ -29,6 +29,9 @@ Each OCP node running ODF services has:16 core / 64 GB memory
 * a dedicated worker node or external db is recommended. 
 * db2 operator is an alternative. 
 
+## MAS Manage
+
+Based on the benchmark results, for sizing we recommend 50 - 75 user load per MAS Manage UI server bundle pod, which is equivalent to a JVM with 2 core on Maximo 7.6.x.
 
 ## MAS Resource Statistics
 
