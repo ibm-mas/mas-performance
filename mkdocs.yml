@@ -31,6 +31,7 @@ nav:
     - 'Diagnosis Check List': pd/checklist.md
     - 'DB2 Performance Diagnosis': pd/db2-performance-diagnosis.md
     - 'DBTest Utility': pd/dbtest.md
+    - 'JVM Performance Insight': pd/jvm-performance-insight.md
   - 'Reference':
     - 'Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned': https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere
 
