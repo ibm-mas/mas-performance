@@ -99,6 +99,16 @@ To measure disk performance on Linux use the `dd` command. The sample command be
 [db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$
 ```
 
+### Network latency between app and db server
+
+Reducing network latency is key to optimizing performance. Confirm latency is below 5ms by conducting a ping test. In cloud deployment scenarios, ensure both the database and OpenShift cluster are located within the same region, with the possibility of being in the same availability zone (AZ). Utilize the ping command to evaluate and pinpoint latency issues.
+
+
+### Large table optimization
+
+When optimizing large tables in the Manage app, it is recommended to transfer these tables to a dedicated tablespace on high-throughput disks, coupled with a dedicated buffer cache for enhanced performance. The speed of the disks and the availability of memory play crucial roles in this optimization strategy. Additionally, ensure that index statistics are regularly updated, and address any problematic queries to further optimize the system.
+
+
 ### DB - DB2/DB2wh
 
 DB2 Tuning in [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf) is applicable. 
