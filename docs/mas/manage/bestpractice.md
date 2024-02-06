@@ -101,7 +101,7 @@ To measure disk performance on Linux use the `dd` command. The sample command be
 
 ### Network latency between app and db server
 
-Reducing network latency is key to optimizing performance. Confirm latency is below 5ms by conducting a ping test. In cloud deployment scenarios, ensure both the database and OpenShift cluster are located within the same region, with the possibility of being in the same availability zone (AZ). Utilize the ping command to evaluate and pinpoint latency issues.
+Reducing network latency is key to optimizing performance. Confirm latency is below 50ms by conducting a ping test. In cloud deployment scenarios, ensure both the database and OpenShift cluster are located within the same region, with the possibility of being in the same availability zone (AZ). Utilize the ping command to evaluate and pinpoint latency issues.
 
 
 ### Large table optimization
