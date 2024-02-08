@@ -15,4 +15,6 @@
 
 - Scaling up the core-api pod can enhance the downloading experience for the mobile app.
 
+- Consider scaling up the mobile pods when the CPU usage of a pod exceeds 4.
+
 - Optimal disk throughput for the database is crucial for a smooth app downloading experience.
