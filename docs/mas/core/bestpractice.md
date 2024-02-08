@@ -63,44 +63,55 @@ spec:
                 memory: <mem limit>
 ```
 
-|Login rate (logins/minute)| MongoDB CPU limit | MongoDB Memory limit |
-|--------------------------|-------------------|----------------------|
-|75                        |2                  |4                     |
-|150                       |2                  |4                     |
-|300                       |4                  |8                     |
-|600                       |6                  |12                    |
-|1200                      |8                  |16                    |
+|Login rate (logins/minute)| MongoDB CPU limit | MongoDB Memory limit (GB)|
+|--------------------------|-------------------|--------------------------|
+|75                        |2                  |4                         |
+|150                       |2                  |4                         |
+|300                       |4                  |8                         |
+|600                       |6                  |12                        |
+|1200                      |8                  |16                        |
 
 
 ### Scaling coreidp service (MAS core namespace)
 The table below provides some general guidance on scaling the coreidp service based on number of concurrent users and login rate. To scale the coreidp service use the [podTemplates workload customization](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods) feature in MAS.
 
-|Login rate (logins/minute)| coreidp replicas |coreidp CPU limit | coreidp Memory limit |
-|--------------------------|------------------|------------------|----------------------|
-|75                        |1                 |6                 |1                     |
-|150                       |1                 |6                 |1                     |
-|300                       |1                 |6                 |1                     |
-|600                       |2                 |6                 |2                     |
-|1200                      |4                 |6                 |3                     |
+|Login rate (logins/minute)| coreidp replicas |coreidp CPU limit | coreidp Memory limit (GB) |
+|--------------------------|------------------|------------------|---------------------------|
+|75                        |1                 |6                 |1                          |
+|150                       |1                 |6                 |1                          |
+|300                       |1                 |6                 |1                          |
+|600                       |2                 |6                 |2                          |
+|1200                      |4                 |6                 |3                          |
 
 ### Scaling licensing-mediator service (MAS core namespace)
 The table below provides some general guidance on scaling the licensing-mediator service based on number of concurrent users and login rate. The coreidp service calls the licensing-mediator service which in turn calls the api-licensing service in the SLS namespace for license checkin/checkout operations. To scale the licensing-mediator service use the [podTemplates workload customization](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods) feature in MAS.
 
-|Login rate (logins/minute)| licensing-mediator replicas |licensing-mediator CPU limit |licensing-mediator Memory limit |
-|--------------------------|-----------------------------|-----------------------------|--------------------------------|
-|75                        |1                            |1                            |1                               |
-|150                       |1                            |1                            |1                               |
-|300                       |2                            |2                            |1                               |
-|600                       |4                            |3                            |1                               |
-|1200                      |6                            |3                            |1                               |
+|Login rate (logins/minute)| licensing-mediator replicas |licensing-mediator CPU limit |licensing-mediator Memory limit (GB) |
+|--------------------------|-----------------------------|-----------------------------|-------------------------------------|
+|75                        |1                            |1                            |1                                    |
+|150                       |1                            |1                            |1                                    |
+|300                       |2                            |2                            |1                                    |
+|600                       |4                            |3                            |1                                    |
+|1200                      |6                            |3                            |1                                    |
 
 ### Scaling api-licensing service (SLS namespace)
 The table below provides some general guidance on scaling the api-licensing service based on number of concurrent users and login rate. To scale the api-licensing service use the [podTemplates workload customization](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods) feature in MAS.
 
-|Login rate (logins/minute)| api-licensing replicas |api-licensing CPU limit |api-licensing Memory limit |
-|--------------------------|------------------------|------------------------|---------------------------|
-|75                        |1                       |1                       |2                          |
-|150                       |1                       |2                       |2                          |
-|300                       |2                       |2                       |2                          |
-|600                       |2                       |2                       |2                          |
-|1200                      |2                       |2                       |2                          |
+|Login rate (logins/minute)| api-licensing replicas |api-licensing CPU limit |api-licensing Memory limit (GB) |
+|--------------------------|------------------------|------------------------|--------------------------------|
+|75                        |1                       |1                       |2                               |
+|150                       |1                       |2                       |2                               |
+|300                       |2                       |2                       |2                               |
+|600                       |2                       |2                       |2                               |
+|1200                      |2                       |2                       |2                               |
+
+### Scaling coreapi service (MAS core namespace)
+The table below provides some general guidance on scaling the coreapi service based on number of concurrent users and login rate. To scale the coreapi service use the [podTemplates workload customization](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods) feature in MAS.
+
+|Login rate (logins/minute)| coreapi replicas |coreapi CPU limit |coreapi Memory limit (GB) |
+|--------------------------|------------------|------------------|--------------------------|
+|75                        |3                 |1                 |2                         |
+|150                       |3                 |1                 |2                         |
+|300                       |3                 |1                 |2                         |
+|600                       |3                 |2                 |2                         |
+|1200                      |3                 |3                 |2                         |
