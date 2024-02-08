@@ -1,5 +1,5 @@
 # MAS Core
-The MAS core namespace contains several important services required for user login and authentication, application management, MAS adoption metrics, licensing, etc. To understand the insight of each service/pod functionality in MAS core check [MAS Pods Explained](https://ibm-mas.github.io/cli/guides/mas-pods-explained/) .
+The MAS core namespace contains several important services required for user login and authentication, application management, MAS adoption metrics, licensing, etc. To understand the insight of each service/pod functionality in MAS core, check [MAS Pods Explained](https://ibm-mas.github.io/cli/guides/mas-pods-explained/) .
 
 ## Scaling MAS core for large number of concurrent users
 The following are the key components/dependencies that require scaling as the number of concurrent MAS users grows.
@@ -11,7 +11,7 @@ The following are the key components/dependencies that require scaling as the nu
     - coreapi pods (if users directly login to a MAS application, bypassing the Suite navigator page, this decreases the load on coreapi pods)
 - SLS namespace:
     - api-licensing pods
-- k8s apiserver pods (coreapi pods issue k8s api calls to retrieve information for MAS application CRs, configmaps, etc.)
+- k8s apiserver pods (coreapi pods issue k8s api calls to retrieve information from MAS application CRs, configmaps, etc.)
 
 !!!Caveat
     The scaling guidance described below is provided from lab benchmark testing and may vary based on the differences in workload, environment, or configuration settings.
