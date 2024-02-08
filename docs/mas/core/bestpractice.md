@@ -1,5 +1,5 @@
 # MAS Core
-The MAS core namespace contains several crucial services required for user login and authentication, application management, MAS adoption metrics, licensing, etc. To understand the insight of each service/pod functionality in MAS core check [MAS Pods Explained](https://ibm-mas.github.io/cli/guides/mas-pods-explained/) .
+The MAS core namespace contains several important services required for user login and authentication, application management, MAS adoption metrics, licensing, etc. To understand the insight of each service/pod functionality in MAS core check [MAS Pods Explained](https://ibm-mas.github.io/cli/guides/mas-pods-explained/) .
 
 ## Scaling MAS core for large number of concurrent users
 The following are the key components/dependencies that require scaling as the number of concurrent MAS users grows.
