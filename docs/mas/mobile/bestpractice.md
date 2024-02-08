@@ -13,7 +13,7 @@
     `oc -n openshift-ingress-operator patch ingresscontroller/default --type=merge -p '{"spec":{"tuningOptions": {"serverTimeout": "300s"}}}'`
     
 
-- Scaling up the core-api pod can enhance the downloading experience for the mobile app.
+- Scaling up the coreapi pod can enhance the downloading experience for the mobile app.
 
 - Consider scaling up the mobile pods when the CPU usage of a pod exceeds 4.
 
