@@ -23,13 +23,13 @@ cd /tmp
 curl -L -v -o DBTest.class https://ibm-mas.github.io/mas-performance/pd/download/DBTest/DBTest.class
 
 # set DBURL. If this utility is in maximo UI pod, set DBURL="$MXE_DB_URL"
-export DBURL='<jdbc url>' or export DBURL="$MXE_DB_URL"
+export DBURL="<jdbc url>" or export DBURL="$MXE_DB_URL" or export DBURL="${MXE_DB_URL}sslTrustStoreLocation=${java_truststore};sslTrustStorePassword=${java_truststore_password};"
 export DBUSERNAME='<username>'
 export DBPASSWORD='<password>'
 export SQLQUERY='select * from maximo.maxattribute'
 
 # execute the utility in benchmark mode
-java -classpath .:$(dirname "$(find /opt/ibm | grep oraclethin | head -n 1)")/* DBTestjava
+java -classpath .:$(dirname "$(find /opt/ibm | grep ".cache/WEB-INF/lib/oraclethin" | head -n 1)")/* DBTest
 ```
 
 **Result Samples:**
@@ -46,7 +46,7 @@ Given optimal network latency and a healthy database status, the expected data f
 ### Execute the utility in query mode
 
 ```bash
-java -classpath .:$(dirname "$(find /opt/ibm | grep oraclethin | head -n 1)")/* DBTestjava -q
+java -classpath .:$(dirname "$(find /opt/ibm | grep ".cache/WEB-INF/lib/oraclethin" | head -n 1)")/* DBTest -q
 ```
 
 **Output Sample:**
