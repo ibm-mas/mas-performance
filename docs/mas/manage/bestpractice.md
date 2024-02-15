@@ -57,6 +57,26 @@ spec:
 ...
 ```
 
+```yaml
+spec:
+    settings:
+        resources:
+            manageAdmin:
+                limits:
+                cpu: '2'
+                memory: 4Gi
+                requests:
+                cpu: '0.2'
+                memory: 500Mi
+            serverBundles:
+                limits:
+                cpu: '6'
+                memory: 10Gi
+                requests:
+                cpu: '0.2'
+                memory: 1Gi
+```
+
 ## Load-Balancer
 
 Lab test shows **roundrobin** has more stable and better performance than **leastconn** policy which is the default. Follow [this link](../ocp/bestpractice.md#load-balance-algorithm) to update load balancer policy. 
