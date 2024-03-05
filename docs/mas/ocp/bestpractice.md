@@ -21,7 +21,7 @@ This settings control how many processes can be run within one single container.
 | Platform Version       | Default Value |
 |------------------------|---------------|
 | IBM ROKS (4.8)         | 231239        |
-| AWS ROSA               | 1024 (Not Specified) |
+| AWS ROSA               | [4096 in OpenShift 4.11 and higher](https://access.redhat.com/articles/7033551) |
 | Azure Self-Managed OCP | 1024          |
 
 **Steps to check or update PID limit:**
