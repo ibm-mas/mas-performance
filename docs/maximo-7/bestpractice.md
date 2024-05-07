@@ -11,4 +11,5 @@
 * [Maximo Best Practices for System Performance 7.5.x (Version 2.1)](./download/Maximo Best Practices for System Performance 7.5.x.pdf)
 * [Improving Start Center performance in Maximo](https://www.ibm.com/support/pages/improving-start-center-performance-maximo)
 * [System Properties to Monitor and Troubleshoot Performance](https://www.ibm.com/support/pages/system-properties-monitor-and-troubleshoot-performance)
+* [Maximo Report Performance Guide 7.6.x (Version 1)](./download/Maximo_Version76_ReportPerformance_Guide_Rev1.pdf)
 
