@@ -18,3 +18,5 @@
 - Consider scaling up the mobile pods when the CPU usage of a pod exceeds 4.
 
 - Optimal disk throughput for the database is crucial for a smooth app downloading experience.
+
+- Observations from lab tests suggest that balanced node resource utilization is crucial for optimal performance. It is worth noting that the default topology spread constraints in the ManageWorkspace Custom Resource (CR) are set to "topologyKey: topology.kubernetes.io/zone". However, in a single-zone cluster, if the pod is not being evenly distributed across worker nodes, considerto be set to "topologyKey: topology.kubernetes.io/hostname" instead. 
