@@ -19,6 +19,7 @@ nav:
       - 'MAS Mobile': mas/mobile/bestpractice.md
       - 'MAS Manage Industry Solutions': 
         - 'Oil and Gas/HSE': mas/manage-industry-solutions/ong-hse/bestpractice.md
+        - 'Transportation': mas/manage-industry-solutions/transportation/bestpractice.md
       - 'AWS': mas/aws/bestpractice.md
       - 'IBM Cloud': mas/ibmcloud/bestpractice.md
       - 'Azure': mas/azure/bestpractice.md

@@ -134,7 +134,7 @@ When optimizing large tables in the Manage app, it is recommended to transfer th
 DB2 Tuning in [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf) is applicable. 
 
 !!! info "**IMPORTANT**"
-    The containerized DB2U and DB2WH deployments do NOT support text search (Regular DB2 has text search).
+    The containerized DB2U and DB2WH deployments do NOT support text search (Regular DB2 has text search).  
     As a result, some queries may perform poorly on containerized DB2 relative to Oracle DB and SQL Server, which both support text search.
 
     Searching records by Description on the list page is a typical scenario whose performance can benefit from text search capability of the database, especially if no other indexed attributes are included in the query. 
