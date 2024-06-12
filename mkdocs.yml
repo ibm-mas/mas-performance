@@ -12,14 +12,18 @@ nav:
       - 'OpenShift Container Platform': mas/ocp/bestpractice.md
       - 'MAS Core': mas/core/bestpractice.md
       - 'MAS IoT': mas/iot/bestpractice.md
-      - 'MAS Manage': mas/manage/bestpractice.md
-      - 'MAS MIF/JMS': mas/mif-jms/bestpractice.md
-      - 'MAS MIF/Kafka': mas/mif-kafka/bestpractice.md
-      - 'MAS Manage MIF/JMS': mas/mif-jms/bestpractice.md
-      - 'MAS Mobile': mas/mobile/bestpractice.md
-      - 'MAS Manage Industry Solutions': 
-        - 'Oil and Gas/HSE': mas/manage-industry-solutions/ong-hse/bestpractice.md
-        - 'Transportation': mas/manage-industry-solutions/transportation/bestpractice.md
+      - 'MAS Manage': 
+        - 'Overview': mas/manage/bestpractice.md
+        - 'Mobile': mas/mobile/bestpractice.md
+        - 'Integration Framework (MIF)':
+          - 'JMS': mas/mif-jms/bestpractice.md
+          - 'Kafka': mas/mif-kafka/bestpractice.md
+        - 'Industry Solutions': 
+          - 'Oil and Gas/HSE': mas/manage-industry-solutions/ong-hse/bestpractice.md
+          - 'Transportation': mas/manage-industry-solutions/transportation/bestpractice.md
+        - 'Work Order Intelligence (AI)':
+          - 'Training': mas/manage/woi-train.md
+          - 'Inferencing': mas/manage/woi-infer.md
       - 'AWS': mas/aws/bestpractice.md
       - 'IBM Cloud': mas/ibmcloud/bestpractice.md
       - 'Azure': mas/azure/bestpractice.md
