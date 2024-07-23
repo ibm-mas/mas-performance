@@ -57,6 +57,14 @@ db2top can be used for a real-time diagnosis.
     db2advis -database bludb  -s "select * from maximo.ahfactorhistory where ahdriverhistoryid = 123 for read only"  -n MAXIMO -q MAXIMO
     ```
 
+- **[checking for indexes the need to be rebuilt](https://www.ibm.com/docs/en/db2/11.5?topic=organization-index-reorganization)**
+
+    ```
+    db2 reorgchk current statistics on schema 'MAXIMO' > /tmp/reorgchk.log
+    ```
+
+    Any indexes or tables with an `*` in the REORG column, indicate that they are candidates for reorg.
+
 - **list the query execution plan:**
     
     ```
