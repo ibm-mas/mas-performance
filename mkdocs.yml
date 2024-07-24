@@ -18,7 +18,8 @@ nav:
         - 'Integration Framework (MIF)':
           - 'JMS': mas/mif-jms/bestpractice.md
           - 'Kafka': mas/mif-kafka/bestpractice.md
-        - 'Industry Solutions': 
+        - 'Industry Solutions':
+          - 'Manage IT': mas/manage-it/bestpractice.md 
           - 'Oil and Gas/HSE': mas/manage-industry-solutions/ong-hse/bestpractice.md
           - 'Transportation': mas/manage-industry-solutions/transportation/bestpractice.md
         - 'Work Order Intelligence (AI)':
