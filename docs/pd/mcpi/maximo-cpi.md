@@ -11,7 +11,7 @@
 
 ### What is IBM Maximo Cluster Performance Insights
 
-**IBM Maximo Cluster Performance Insights**, is a new utility that use short and long term snapshots to addresses specific best practices for deployment of Maximo App Suite. It can assist in pinpointing areas that need improvement and provide actionable insights for optimizing the MAS deployment. 
+**IBM Maximo Cluster Performance Insights (Maximo CPI)**, is a new utility that use short and long term snapshots to addresses specific best practices for deployment of Maximo App Suite. It can assist in pinpointing areas that need improvement and provide actionable insights for optimizing the MAS deployment. 
 
 Maximo Clients can conduct a self-assessment to ensure adherence to best practices, optimize resource use, and diagnose performance issues. This process helps in evaluating current practices, identifying areas for improvement, and enhancing overall efficiency and effectiveness.
 
@@ -45,21 +45,21 @@ The utility gathers only metrics data, excluding any sensitive information. It i
         ![alt text](image-1.png)
 
 - **Run on OpenShift Cluster**
-    - Download [mhc deployment yaml](./mhc-deployment.yaml)
+    - Download [maximo-cpi deployment yaml](./maximo-cpi-deployment.yaml)
     - Optional: modify mhc-deployment.yaml if needed
     - Login on OpenShift Cluster Console
-    - Click + to import YAML, then Drag and drop mhc deployment yaml
+    - Click + to import YAML, then Drag and drop maximo-cpi-deployment.yaml
     - Data Collection
         - login into the cluster console
-        - go to **mhc** project
+        - go to **maximo-cpi** project
         - click on mhc-deployment-xxx pod
         - go to **Terminal** tab
             - login on OpenShift Cluster: `oc login https://<openshift-master-url>:<port> -u <username> -p <password>` or `oc login https://<openshift-master-url>:<port> --token=<token>`
             - execute data collection command: `collect-metric.sh`
             - **note:** when the command finishes executing, it returns the path to the MHC JSON file. See the sample in the **Run on Docker** section
     - Data Review
-        - go to **mhc** project -> Networking -> Routes
-        - click on **mhc-viewer-route** url
+        - go to **maximo-cpi** project -> Networking -> Routes
+        - click on **mcpi-viewer-route** url
         - review the data: Under **Load a MAS Harmony Checker JSON file from the server's path**, enter the path to the MHC JSON file e.g. **/tmp/mhc-2024-08-01-19-36.json** See the sample in the **Run on Docker** section
 
 
@@ -84,7 +84,7 @@ The utility gathers only metrics data, excluding any sensitive information. It i
 
 - Issue Description: Observe the unbalance resource usage among the nodes. E.g. some nodes use 80% cpu, but the other uses 20% cpu. 
 - Reason: Imbalanced placement OpenShift schedules the service / pod based on the resource cost increment , not the real resource usage. 
-- Solution: migrate pods from busy nodes to non-busy nodes with min movements. This is a typical bin-packing (NP-Hard) problem. MHC uses the greedy algorithm since the time and minimum steps are not critical. 
+- Solution: migrate pods from busy nodes to non-busy nodes with min movements. This is a typical bin-packing (NP-Hard) problem. Maximo CPI uses the greedy algorithm since the time and minimum steps are not critical. 
 - Actions:
     - execute **node-balance.sh**. The output will provide **movepod command** if any issue is detected
     - execute **movepod.sh** to move the pods.

@@ -2,34 +2,34 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: mhc
+  name: maximo-cpi
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mhc-deployment
-  namespace: mhc
+  name: maximo-cpi-deployment
+  namespace: maximo-cpi
   labels:
-    app: mhc
+    app: mcpi
 spec:
   replicas: 1
   imagePullPolicy: Always
   selector:
     matchLabels:
-      app: mhc
+      app: mcpi
   template:
     metadata:
       labels:
-        app: mhc
+        app: mcpi
     spec:
       #securityContext:
       #  runAsUser: 0  # no specify, the openshift uses the restricted by default
-      # serviceAccountName: mhc
+      # serviceAccountName: mcpi
       #imagePullSecrets:
       #  - name: ibm-entitlement
       containers:
-        - name: mhc
-          image: quay.io/brianzhu_ibm/mhc:latest
+        - name: mcpi
+          image: quay.io/brianzhu_ibm/mcpi:latest
           env:
             - name: INCLUSTER
               value: "true"
@@ -37,11 +37,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mhc-service
-  namespace: mhc
+  name: mcpi-service
+  namespace: maximo-cpi
 spec:
   selector:
-    app: mhc
+    app: mcpi
   ports:
     - name: viewer-port
       protocol: TCP
@@ -51,13 +51,13 @@ spec:
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: mhc-viewer-route
-  namespace: mhc
+  name: mcpi-viewer-route
+  namespace: maximo-cpi
   labels: {}
 spec:
   to:
     kind: Service
-    name: mhc-service
+    name: mcpi-service
     weight: 100
   port:
     targetPort: viewer-port
