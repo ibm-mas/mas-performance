@@ -31,22 +31,22 @@ The utility gathers only metrics data, excluding any sensitive information. It i
 ### User guide
 
 - **Run on Docker**
-    - Download the docker container: `docker pull quay.io/brianzhu_ibm/mhc:latest`
-    - Run the docker container: `docker run -dit -p 8888:8888 --name mhc quay.io/brianzhu_ibm/mhc:latest`
+    - Download the docker container: `docker pull quay.io/brianzhu_ibm/mcpi:latest`
+    - Run the docker container: `docker run -dit -p 8888:8888 --name mcpi quay.io/brianzhu_ibm/mcpi:latest`
     - Data Collection
-        - enter into the docker container: `docker exec -it --user root mhc bash`
+        - enter into the docker container: `docker exec -it --user root mcpi bash`
         - login on OpenShift Cluster: `oc login https://<openshift-master-url>:<port> -u <username> -p <password>` or `oc login https://<openshift-master-url>:<port> --token=<token>`
         - execute data collection command: `collect-metric.sh`
         - **note:** when the command finishes executing, it returns the path to the MHC JSON file. Below is a sample of the returning. In this case, the path to the MHC JSON file is **/tmp/mhc-2024-08-01-19-36.json**
         ![alt text](image.png)
     - Data Review
-        - launch the mhc viewer url ([http://localhost:8888](http://localhost:8888)) in the browser 
+        - launch the mcpi viewer url ([http://localhost:8888](http://localhost:8888)) in the browser 
         - review the data: Under **Load a MAS Harmony Checker JSON file from the server's path**, enter the path to the MHC JSON file e.g. **/tmp/mhc-2024-08-01-19-36.json** Below is the sample snapshot
         ![alt text](image-1.png)
 
 - **Run on OpenShift Cluster**
-    - Download [maximo-cpi deployment yaml](./maximo-cpi-deployment.yaml)
-    - Optional: modify mhc-deployment.yaml if needed
+    - Download [maximo-cpi-deployment.yamll](./maximo-cpi-deployment.yaml)
+    - Optional: modify maximo-cpi-deployment.yaml if needed
     - Login on OpenShift Cluster Console
     - Click + to import YAML, then Drag and drop maximo-cpi-deployment.yaml
     - Data Collection
@@ -65,7 +65,7 @@ The utility gathers only metrics data, excluding any sensitive information. It i
 
 ### Most Common User Scenarios
 
-#### 1) Best practice to minimizing footprint through MHC
+#### 1) Best practice to minimizing footprint through Maximo CPI
 
 - Step 1: Eliminate the surplus nodes if exist
 - Step 2: Balance CPU and Memory Request%; Align CPU and Memory Requests to match hardware specifications, such as a ratio of 1:4 or 1:8.
@@ -75,7 +75,7 @@ The utility gathers only metrics data, excluding any sensitive information. It i
 #### 2) Best practice for performance troubleshooting and configuration checking
 
 - Step 1: Heatmap viewer provides the problematic pods and nodes
-- Step 2: Harmony Checker viewer provides the metric details 
+- Step 2: Maximo CPI viewer provides the metric details 
 - Step 3: Identify the severity and functional impacts
 - Step 4: Vertically and horizontally adjust the pod/service/node and apply the recommended OpenShift Configuration if needed
 - Repeat Step 1 – 4 if needed
