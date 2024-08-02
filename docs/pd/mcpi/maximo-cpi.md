@@ -51,7 +51,7 @@ The utility gathers only metrics data, excluding any sensitive information. It i
     - Data Collection
         - login into the cluster console
         - go to **maximo-cpi** project
-        - click on mhc-deployment-xxx pod
+        - click on mcpi-deployment-xxx pod
         - go to **Terminal** tab
             - login on OpenShift Cluster: `oc login https://<openshift-master-url>:<port> -u <username> -p <password>` or `oc login https://<openshift-master-url>:<port> --token=<token>`
             - execute data collection command: `collect-metric.sh`
