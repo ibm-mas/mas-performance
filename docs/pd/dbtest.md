@@ -11,7 +11,17 @@ The DBTest Utility has two modes:
 
 Here is an example demonstrating how to utilize this utility in the Maximo UI pod.
 
-### Use DBTest in Maximo UI Pod
+### Run DBTest in MAS Manage maxinst pod
+
+- go to maxinst pod in the MAS Manage namespace -> terminal tab, then execute below commands:
+
+```
+cd /tmp
+curl -L -v -o run-dbtest-in-maxinst-pod.sh https://ibm-mas.github.io/mas-performance/pd/download/DBTest/run-dbtest-in-maxinst-pod.sh
+bash run-dbtest-in-maxinst-pod.sh
+```
+
+### Run DBTest in Maximo UI Pod
 
 - go to maximo ui pod -> terminal tab, then execute below commands:
 
@@ -29,7 +39,7 @@ export DBPASSWORD='<password>'
 export SQLQUERY='select * from maximo.maxattribute'
 
 # execute the utility in benchmark mode
-java -classpath .:$(dirname "$(find /opt/ibm | grep ".cache/WEB-INF/lib/oraclethin" | head -n 1)")/* DBTest
+java -classpath .:$(dirname "$(find /opt | grep "oraclethin.jar" | head -n 1)")/* DBTest
 ```
 
 **Result Samples:**
@@ -46,7 +56,7 @@ Given optimal network latency and a healthy database status, the expected data f
 ### Execute the utility in query mode
 
 ```bash
-java -classpath .:$(dirname "$(find /opt/ibm | grep ".cache/WEB-INF/lib/oraclethin" | head -n 1)")/* DBTest -q
+java -classpath .:$(dirname "$(find /opt | grep "oraclethin.jar" | head -n 1)")/* DBTest -q
 ```
 
 **Output Sample:**

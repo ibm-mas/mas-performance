@@ -37,6 +37,7 @@ nav:
     - 'Diagnosis Check List': pd/checklist.md
     - 'DB2 Performance Diagnosis': pd/db2-performance-diagnosis.md
     - 'DBTest Utility': pd/dbtest.md
+    - 'PingTest Utility': pd/pingtest.md
     - 'IBM Maximo Cluster Performance Insights': pd/mcpi/maximo-cpi.md
     - 'JVM Performance Insight': pd/jvm-performance-insight.md
   - 'Reference':
