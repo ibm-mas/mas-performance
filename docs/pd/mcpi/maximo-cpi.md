@@ -84,9 +84,10 @@ The utility gathers only metrics data, excluding any sensitive information. It i
 - Issue Description: Observe the unbalance resource usage among the nodes. E.g. some nodes use 80% cpu, but the other uses 20% cpu. 
 - Reason: Imbalanced placement OpenShift schedules the service / pod based on the resource cost increment , not the real resource usage. 
 - Solution: migrate pods from busy nodes to non-busy nodes with min movements. This is a typical bin-packing (NP-Hard) problem. Maximo CPI uses the greedy algorithm since the time and minimum steps are not critical. 
-- Actions:
+- Actions:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚠️&nbsp;**Moving pods can be disruptive at times, as it may cause an outage while the stateful service pod is being relocated.**
     - execute **node-balance.sh**. The output will provide **movepod command** if any issue is detected
     - execute **movepod.sh** to move the pods.
+
 
 #### 4) Scheduled Scaling
 
