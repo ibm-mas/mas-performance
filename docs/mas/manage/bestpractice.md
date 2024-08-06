@@ -160,6 +160,14 @@ DB2 Tuning in [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best
 - For db2ucluster CR
     - Do **NOT** set db2 instance memory. The operator will automatically calculate it based on the container memory limit.
     - (Optional) for performance stability, set the same value to both container resource request and limit.
+- **For db2 monitor switches**
+    - The best practice is turn off all monitor switches except the Timestamp in dbm cfg.
+    - If turn on monitor switches in dbm cfg, will cause monitor switches are turned on by default for all DB2 sessions, this will bring 5%-10% overhead on the overall database performance, depends on the workload and database server hardware spec. 
+    So we should not turn on monitor switches in dbm cfg.
+    - When we need to take DB2 monitor data, we should only turn on monitor switches in a specific session by the following command:  
+       db2 update monitor switches using BUFFERPOOL on LOCK on SORT on STATEMENT on TIMESTAMP on TABLE on UOW on  
+    And turn off all monitor switches immediately after getting required monitor data by the following command:   
+       db2 update monitor switches using BUFFERPOOL off LOCK off SORT off STATEMENT off TIMESTAMP off TABLE off UOW off
 
 ### DB - Oracle   
 
