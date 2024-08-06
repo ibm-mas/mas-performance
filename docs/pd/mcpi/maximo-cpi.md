@@ -45,7 +45,7 @@ The utility gathers only metrics data, excluding any sensitive information. It i
         ![alt text](image-1.png)
 
 - **Run on OpenShift Cluster**
-    - Download [maximo-cpi-deployment.yamll](./maximo-cpi-deployment.yaml)
+    - Download [maximo-cpi-deployment.yaml](./maximo-cpi-deployment.yaml)
     - Login on OpenShift Cluster Console
     - Click + to import YAML, then Drag and drop maximo-cpi-deployment.yaml
     - Data Collection
