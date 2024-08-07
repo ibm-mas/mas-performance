@@ -30,7 +30,7 @@ spec:
       customizationArchiveUrl: https://ibm.box.com/shared/static/oj9z062b7x8hcywndnv6n57gya7e1ypz.zip
 ```
 
-- Wait for the MAS Manage worspace operator to update the server bundle pods with the Ping servlet class and restart the server bundle pods
+- Wait for the MAS Manage workspace operator to update the server bundle pods with the Ping servlet class and restart the server bundle pods
 
 ### Using the Ping servlet utility to test request timeouts outside the OCP cluster
 
@@ -54,7 +54,7 @@ $ curl https://tenant1.manage.masperf4.ibmmas.com/maximo/ping?timeout=300
 
 ### Using the Ping servlet utility to test request timeouts inside the OCP cluster
 
-- Obtain the internal IP address of the MAS Manage UI server bundle pod.
+- Obtain the internal Cluster IP address of the MAS Manage UI service.
 - Go to maxinst pod in the MAS Manage namespace -> terminal tab, then execute below commands:
 
 ```
@@ -63,5 +63,4 @@ $ curl --insecure https://172.30.237.166:443/maximo/ping?timeout=300
 $
 ```
 
-If you receive a response from the request issued to the internal pod IP, but do not receive a response issued externally from outside the cluster it could be the
-case that an external gateway service or load balancer is closing the connection due to a shorter timeout set on the gateway. Check is a network administrator.
+If you receive a response from the request issued to the internal Cluster IP address of the MAS Manage UI service, but do not receive a response issued externally from outside the cluster, it could be the case that an external gateway service or load balancer is closing the connection due to a shorter timeout set on the gateway. Check is a network administrator.
