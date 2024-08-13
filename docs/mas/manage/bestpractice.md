@@ -103,8 +103,8 @@ Follow [this link](https://www.ibm.com/docs/en/maximo-manage/continuous-delivery
 
 disk performance is critial for db performance. Recommend a storage or disk with
 
-* disk throughput > 200 MB/s
-* storage class: a storage with 100+ IOPS
+* disk throughput: > 250 MB/s
+* IOPS: 10 IOPS/GB to 100 IOPS/GB (depending on volume size)
 
 To measure disk performance on Linux use the `dd` command. The sample command below measures disk performance of the data volume inside a db2 pod running in OCP
 
