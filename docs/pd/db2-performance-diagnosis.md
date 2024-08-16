@@ -89,6 +89,18 @@ db2top can be used for a real-time diagnosis.
     SELECT SUBSTR(TABSCHEMA,1,10) AS SCHEMA,SUBSTR(TABNAME,1,20) AS NAME,TABLE_SCANS,ROWS_READ,ROWS_INSERTED,ROWS_DELETED FROM TABLE(MON_GET_TABLE('','',-1)) ORDER BY ROWS_READ DESC FETCH FIRST 5 ROWS ONLY"
     ```
 
+- **list top 10 big tables:**
+    
+    ```
+    select creator, name, avgrowsize, card, stats_time, avgrowsize*card as tbsize, npages*t.pagesize/1024/1024 as tbsize_inMB from sysibm.systables t1, syscat.tablespaces t where creator not like 'DB2%' and t1.tbspace=t.tbspace order by tbsize desc fetch first 10 rows only 
+    ```
+
+- **list data and index size for one table:**
+    
+    ```
+    select tabschema, tabname, DATA_OBJECT_P_SIZE/1024 as data_inMB, INDEX_OBJECT_P_SIZE/1024 as index_inMB,LONG_OBJECT_P_SIZE/1024 LongObj_inMB, LOB_OBJECT_P_SIZE/1024 as LOB_inMB from table(sysproc.admin_get_tab_info('MAXIMO','WORKORDER')) 
+    ```
+
 - **list error message:**
 
     ```
