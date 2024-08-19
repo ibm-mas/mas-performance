@@ -151,7 +151,7 @@ DB2 Tuning in [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best
 - **Manage** does **NOT** support MMP or table partition in the current version, but consider to archive records over 1-year old. Optim is the one of the tools can be used for archiving. see [this guide](https://www.ibm.com/support/pages/installing-ibm-maximo-archiving-751-ibm-maximo-asset-management-v76) and [this video](https://www.youtube.com/watch?v=qr_0SpWrabc) for details. 
 - Increase the concurrently running statements allowed for a DB2 application. This issue occcurs when loading a large amount of data via MIF or api call. See [this link](https://www.ibm.com/support/pages/how-many-concurrently-running-statements-allowed-db2-java-application-and-how-increase-it) for the tuning. 
 - **storageclass**
-    - for ibm cloud:  performance(Custom) block storage with 100+ IOPS for data storage, block gold for system and block silver for backup
+    - for ibm cloud: performance block storage (custom or gold, depending on volume size), block silver for backup
     - for aws cloud: if using EFS for db, consider Provisioned mode to have a constant throughput. For more disk options, see details in this [page](https://docs.aws.amazon.com/efs/latest/ug/performance.html)
 - For db2 registry (db2set):
     - Set **db2_workload=maximo**. That makes db cfg variable **WLM_ADMISSION_CTRL** is set to **NO**
