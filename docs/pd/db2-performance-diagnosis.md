@@ -100,6 +100,12 @@ db2top can be used for a real-time diagnosis.
     ```
     select tabschema, tabname, DATA_OBJECT_P_SIZE/1024 as data_inMB, INDEX_OBJECT_P_SIZE/1024 as index_inMB,LONG_OBJECT_P_SIZE/1024 LongObj_inMB, LOB_OBJECT_P_SIZE/1024 as LOB_inMB from table(sysproc.admin_get_tab_info('MAXIMO','WORKORDER')) 
     ```
+- **compression check:**
+
+    ```
+    select name, compression from sysibm.systables where name ='<tbname>';
+    select name, compression from sysibm.sysindexes where name ='<indexname>';
+    ```
 
 - **list error message:**
 
