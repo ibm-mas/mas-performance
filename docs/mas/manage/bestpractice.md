@@ -188,3 +188,5 @@ DB2 Tuning in [Maximo 7.6.x Best practice](../../maximo-7/download/Maximo%20Best
         SET READ_COMMITTED_SNAPSHOT ON  
 ```
 
+### **Note:** It is highly recommended to refresh index statistics after migrating Maximo from version 7 to version 8. In some cases, rebuilding indexes may also be necessary.
+
