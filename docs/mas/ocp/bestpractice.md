@@ -70,5 +70,6 @@ There are a wide selection instance types that comprise varying combinations of 
 - The number of worker nodes >=3. This will give a high availability needing a smaller built in redundant capacity.
 - For the product env, a 8core/32G is recommended for master nodes to avoid any bottleneck for the internal services. 
 - An instance with 10GB ethernet is strongly recommended for the production env. 
+- A minimum of 300GB storage per worker node is strongly recommended to accommodate MAS app build process requirements.
 - Check the GPU chip type for gpu node selection. 
 
