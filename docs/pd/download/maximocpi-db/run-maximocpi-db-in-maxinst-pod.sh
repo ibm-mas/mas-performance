@@ -27,4 +27,4 @@ else
     export SQLQUERY="select * from ${DBSCHEMAOWNER}.maxattribute"
 fi
 
-java -classpath .:/tmp/maximocpi-db.jar:/opt/IBM/SMP/maximo/tools/maximo/lib/* "${JAVA_TOOL_OPTIONS}" com.ibm.maximo.mcpi.DBHarmony -tl
+java -classpath .:/tmp/maximocpi-db.jar:/opt/IBM/SMP/maximo/applications/maximo/lib/* "${JAVA_TOOL_OPTIONS}" com.ibm.maximo.mcpi.DBHarmony -tl
