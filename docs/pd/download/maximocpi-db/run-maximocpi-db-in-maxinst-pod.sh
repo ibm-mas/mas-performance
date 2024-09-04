@@ -4,8 +4,8 @@
 cd /tmp
 
 curl -L -v -o maximocpi-db.jar https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/maximocpi-db.jar > /dev/null 2>&1
-curl -L -v -o lib.zip https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/lib.zip > /dev/null 2>&1
-unzip lib.zip
+#curl -L -v -o lib.zip https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/lib.zip > /dev/null 2>&1
+#unzip lib.zip
 
 IFS='=' read -r key value <<< $(cat /etc/database/operator/secret/maximo.properties |grep mxe.db.url=)
 if [[ "${value}" == *"sslConnection=true"* ]]; then
@@ -28,4 +28,4 @@ else
     export SQLQUERY="select * from ${DBSCHEMAOWNER}.maxattribute"
 fi
 
-java -classpath .:/tmp/maximocpi-db.jar:/opt/IBM/SMP/maximo/applications/maximo/lib/* "${JAVA_TOOL_OPTIONS}" com.ibm.maximo.mcpi.DBHarmony -tl
+java -classpath .:/tmp/maximocpi-db.jar:/tmp/lib/*:/opt/IBM/SMP/maximo/applications/maximo/lib/* "${JAVA_TOOL_OPTIONS}" com.ibm.maximo.mcpi.DBHarmony -tl
