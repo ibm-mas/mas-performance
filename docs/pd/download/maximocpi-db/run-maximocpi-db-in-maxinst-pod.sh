@@ -1,5 +1,5 @@
 #!/bin/bash
-# curl -L -v -o run-maximocpi-db-in-maxinst-pod.sh https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/run-maximocpi-db-in-maxinst-pod.sh
+# curl -L -v -o run-maximocpi-db-in-maxinst-pod.sh https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/run-maximocpi-db-in-maxinst-pod.sh > /dev/null 2>&1
 
 cd /tmp
 
