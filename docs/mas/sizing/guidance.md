@@ -1,8 +1,8 @@
 # Sizing Guidance
 
 !!! danger "Critical Note"
-    The sizing number in this page is based on a standard workload. Used as reference only.
-    The current calculator lacks information about the storage size for worker nodes. We are working on an update now. A minimum of 300GB of storage per worker node is strongly recommended to meet the requirements of the MAS app build process. 
+    - The sizing number in this page is based on a standard workload. Used as reference only.
+    - The current calculator lacks information about the storage size for worker nodes. We are working on an update now. A minimum of 300GB of storage per worker node is strongly recommended to meet the requirements of the MAS app build process. 
 
 
 ## Sizing Calculation Sheet 
