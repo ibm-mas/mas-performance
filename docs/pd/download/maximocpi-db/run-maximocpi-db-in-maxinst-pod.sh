@@ -3,7 +3,7 @@
 
 cd /tmp
 
-curl -L -v -o maximocpi-db.jar https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/maximocpi-db.jar
+curl -L -v -o maximocpi-db.jar https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/maximocpi-db.jar > /dev/null 2>&1
 
 
 IFS='=' read -r key value <<< $(cat /etc/database/operator/secret/maximo.properties |grep mxe.db.url=)
@@ -27,4 +27,4 @@ else
     export SQLQUERY="select * from ${DBSCHEMAOWNER}.maxattribute"
 fi
 
-java -classpath .:/opt/IBM/SMP/maximo/tools/maximo/lib/* "${JAVA_TOOL_OPTIONS}" com.ibm.maximo.mcpi.DBHarmony -tl
+java -classpath .:/tmp/maximocpi-db.jar:/opt/IBM/SMP/maximo/tools/maximo/lib/* "${JAVA_TOOL_OPTIONS}" com.ibm.maximo.mcpi.DBHarmony -tl
