@@ -68,8 +68,8 @@ spec:
 |75                        |2                  |4                         |
 |150                       |2                  |4                         |
 |300                       |4                  |8                         |
-|600                       |6                  |12                        |
-|1200                      |8                  |16                        |
+|600                       |8                  |12                        |
+|1200                      |12                 |16                        |
 
 
 ### Scaling coreidp service (MAS core namespace)
