@@ -24,6 +24,7 @@ nav:
         - 'Work Order Intelligence (AI)':
           - 'Training': mas/manage/woi-train.md
           - 'Inferencing': mas/manage/woi-infer.md
+      - 'MAS Visual Inspection': mas/mvi/bestpractice.md
       - 'AWS': mas/aws/bestpractice.md
       - 'IBM Cloud': mas/ibmcloud/bestpractice.md
       - 'Azure': mas/azure/bestpractice.md
