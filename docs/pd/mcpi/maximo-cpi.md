@@ -1,4 +1,4 @@
-# Coming soon ...
+📢 **Announcement: IBM Maximo CPI (Cluster Performance Insight) is available for Redhat Marketplace. Chech [here](https://swc.saas.ibm.com/en-us/redhat-marketplace/products/ibm-maximo-cluster-performance-insights) for more details.**
 
 !!! danger "Critical Note"
     **IBM Maximo Cluster Performance Insights is offered "AS IS", WITH NO WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING THE WARRANTY OF TITLE, NON-INFRINGEMENT OR NON-INTERFERENCE AND THE IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.**
