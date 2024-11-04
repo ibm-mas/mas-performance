@@ -7,7 +7,7 @@
 
 ## Sizing Calculation Sheet 
 
-Use [Sizing Calculation Sheet](https://ibm.seismic.com/Link/Content/DC8bqDGgWfRpJ8QF8qd3m2WqG9D8) for MAS sizing. 
+Use [Sizing Calculation Sheet](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=premises-requirements-capacity-planning) for MAS sizing. 
 
 
 ## Factors that impact the sizing consideration
