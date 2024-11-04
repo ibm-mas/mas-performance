@@ -48,7 +48,6 @@ Based on the benchmark results, for sizing we recommend 50 - 75 user load per MA
 | Assist                | 12.4               | 57.7                 | 19.46             | 62.38              |
 | Core                  | 1.5                | 18.95                | 6.27              | 32.5                |
 | Health                | 2.9                | 15.6                 | 7.12              | 30.84         |
-| HPU                   | 0.9                | 5.5                  | 0.92              | 6.5                 |
 | IoT                   | 19.66              | 214.65               | 57.08             | 269                 |
 | Manage                | 2.9                | 11.1                 | 4.04              | 17                  |
 | Monitor               | 5.4                | 32.4                 | 12.84             | 55.5                |
