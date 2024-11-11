@@ -71,6 +71,8 @@ spec:
 |600                       |8                  |12                        |
 |1200                      |12                 |16                        |
 
+!!!NOTE
+    The CPU/memory limit recommendations above are per MongoDB pod. A typical MongoDB CE cluster has three such pods.
 
 ### Scaling coreidp service (MAS core namespace)
 The table below provides some general guidance on scaling the coreidp service based on number of concurrent users and login rate. To scale the coreidp service use the [podTemplates workload customization](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods) feature in MAS.
