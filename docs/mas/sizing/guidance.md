@@ -17,6 +17,10 @@ Use [Sizing Calculation Sheet](https://www.ibm.com/docs/en/mas-cd/continuous-del
 * mongodb service
 * kafka service
 
+### OpenShift
+
+It is recommended to keep the CPU limit and Memory limit overcommit levels below 300% to prevent potential node pressure. In most cases, if the CPU limit and Memory limit overcommit levels below 300% this should be sufficient to avoid node pressure.
+
 ### OCS (OpenShift Container Storage)
 
 If using OCS to manage the storage class, OCS service itself requires minimum 3 nodes with 14 core / 32G (Note: this is the total request amount, not per node).
