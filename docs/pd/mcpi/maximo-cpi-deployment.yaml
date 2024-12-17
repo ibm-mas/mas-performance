@@ -37,6 +37,14 @@ spec:
           env:
             - name: INCLUSTER
               value: "true"
+# mount pvc (optional)
+#          volumeMounts:
+#            - name: mcpi-volume
+#              mountPath: /tmp/data
+#      volumes:
+#        - name: mcpi-volume
+#          persistentVolumeClaim:
+#            claimName: mcpi-pvc-claim
 ---
 apiVersion: v1
 kind: Service
