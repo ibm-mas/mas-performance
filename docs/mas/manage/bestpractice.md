@@ -119,29 +119,6 @@ To measure disk performance on Linux use the `dd` command. The sample command be
 [db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$
 ```
 
-Use the [sar](https://linux.die.net/man/1/sar) command line tool to check for disk performance. The example below shows that disk `dev8-64` is reporting as 100% utilized and with a svctm of 677.48 milliseconds.
-
-```
-$ sar -d 1
-
-Average:          DEV       tps     rkB/s     wkB/s   areq-sz    aqu-sz     await     svctm     %util
-Average:    dev202-16      2.29     50.81      0.00     22.23      0.00      0.81      0.17      0.04
-Average:    dev202-112      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-Average:     dev202-0     71.62      0.19   2717.52     37.95      0.26      3.64      0.15      1.09
-Average:    dev202-32     26.67      0.00    257.90      9.67      0.03      1.17      0.20      0.52
-Average:     dev253-0     59.57      0.00    257.90      4.33      0.10      1.64      0.10      0.59
-Average:       dev8-0      0.05      0.00      0.00      0.00      0.00      0.00      1.00      0.00
-Average:      dev8-16      0.05      0.00      0.00      0.00      0.00      0.00      1.00      0.00
-Average:     dev253-1      0.00      0.00      0.00      0.00      0.00      0.00      0.00      0.00
-Average:      dev8-32      0.05      0.00      0.00      0.00      0.00      1.00      1.00      0.00
-Average:     dev253-2      2.57      0.00     10.86      4.22      0.00      1.04      0.98      0.25
-Average:      dev8-48      2.62      0.00     10.86      4.15      0.00      0.96    381.85    100.01
-Average:      dev8-64      1.48      0.00     40.19     27.23      0.00      1.06    677.48    100.01
-Average:     dev253-3      1.43      0.00     40.19     28.13      0.00      1.20      0.73      0.10
-Average:      dev8-80      0.05      0.00      0.00      0.00      0.00      1.00      1.00      0.00
-```
-
-
 
 ### Network latency between app and db server
 
