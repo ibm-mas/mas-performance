@@ -41,7 +41,6 @@ Subsequent sections in this paper address the following topics:
 * Integration with other systems using the integration framework
 * Troubleshooting
 
-
 ## Performance Check List
 
 - check node status. e.g. any NOT Ready worker nodes
@@ -65,6 +64,20 @@ Subsequent sections in this paper address the following topics:
         - check if there is any high cost query
         - check disk performance
 
+## Memory and GC diagnostics
 
+It may sometimes be necessary to collect a heap dump from JVMs which are under memory pressure (e.g. the MAS Manage server bundle JVMs). Symptoms of memory pressure include:
 
+- pods restarting due to JVM process that experienced OOM exception
+- pods with unusually high CPU utilization due to excessive garbage collection.
+
+The steps below demonstrate how to collect a heap dump from a MAS Liberty JVM and copy the heapdump from the pod to your laptop for analysis with tools like [MAT](https://wiki.eclipse.org/MemoryAnalyzer/).
+
+- oc exec -it -n &lt;namespace&gt; &lt;pod id&gt; -- bash
+- server dump defaultServer --archive=/tmp/package_file_name.dump.zip --include=heap
+- exit
+- oc cp --retries=10 -n &lt;namespace&gt; &lt;pod id&gt;:/tmp/package_file_name.dump.zip &lt;path on laptop&gt;/package_file_name.dump.zip
+- Extract zip file and open *.phd file with a heap analyzer like [MAT](https://wiki.eclipse.org/MemoryAnalyzer/)
+
+For pods which run non-Liberty JVMs you can also use [jcmd](https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Ftasks%2Facquiringheapdump.html) to generate a heapdump.
 
