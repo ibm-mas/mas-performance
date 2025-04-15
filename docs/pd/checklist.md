@@ -77,7 +77,7 @@ The steps below demonstrate how to collect a heap dump from a MAS Liberty JVM an
 - server dump defaultServer --archive=/tmp/package_file_name.dump.zip --include=heap
 - exit
 - oc cp --retries=10 -n &lt;namespace&gt; &lt;pod id&gt;:/tmp/package_file_name.dump.zip &lt;path on laptop&gt;/package_file_name.dump.zip
-- Extract zip file and open *.phd file with a heap analyzer like [MAT](https://wiki.eclipse.org/MemoryAnalyzer/)
+- Extract zip file and open *.phd file with a heap analyzer like [MAT](https://wiki.eclipse.org/MemoryAnalyzer/). When installing MAT make sure the [IBM DTFJ plugins are installed](https://help.eclipse.org/latest/topic/org.eclipse.mat.ui.help/tasks/installDTFJ.html?cp=50_3_1).
 
 For pods which run non-Liberty JVMs you can also use [jcmd](https://help.eclipse.org/latest/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Ftasks%2Facquiringheapdump.html) to generate a heapdump.
 
