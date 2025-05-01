@@ -37,7 +37,9 @@ nav:
     - 'Performance Test Best Practice': pd/ptbp.md
     - 'Diagnosis Check List': pd/checklist.md
     - 'DB2 Performance Diagnosis': pd/db2-performance-diagnosis.md
-    - 'DBTest Utility': pd/dbtest.md
+    - 'DBTest Utility':
+      - 'MAS Manage': pd/dbtest.md
+      - 'Maximo 7.6': pd/dbtest-76.md
     - 'PingTest Utility': pd/pingtest.md
     - 'IBM Maximo Cluster Performance Insights': pd/mcpi/maximo-cpi.md
     - 'JVM Performance Insight': pd/jvm-performance-insight.md

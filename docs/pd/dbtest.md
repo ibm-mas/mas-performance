@@ -1,4 +1,4 @@
-# DBTest Utility
+# DBTest Utility in MAS Manage
 
 **notes:** This utility requires **Java version 11 or higher**.
 
