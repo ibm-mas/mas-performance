@@ -24,6 +24,7 @@ nav:
         - 'Work Order Intelligence (AI)':
           - 'Training': mas/manage/woi-train.md
           - 'Inferencing': mas/manage/woi-infer.md
+        - "Scripting Best Practice": https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview
       - 'MAS Visual Inspection': mas/mvi/bestpractice.md
       - 'AWS': mas/aws/bestpractice.md
       - 'IBM Cloud': mas/ibmcloud/bestpractice.md
