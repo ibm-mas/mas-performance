@@ -42,7 +42,7 @@ nav:
       - 'MAS Manage': pd/dbtest.md
       - 'Maximo 7.6': pd/dbtest-76.md
     - 'PingTest Utility': pd/pingtest.md
-    - 'IBM Maximo Cluster Performance Insights': pd/mcpi/maximo-cpi.md
+    - 'IBM Maximo Cluster Performance Insights': https://ibm-mas.github.io/mcpi/ #pd/mcpi/maximo-cpi.md
     - 'JVM Performance Insight': pd/jvm-performance-insight.md
   - 'Reference':
     - 'Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned': https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere
