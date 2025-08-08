@@ -40,6 +40,10 @@ Each OCP node running ODF services has:16 core / 64 GB memory
 
 Based on the benchmark results, for sizing we recommend 50 - 75 user load per MAS Manage UI server bundle pod, which is equivalent to a JVM with 2 core on Maximo 7.6.x.
 
+## AI Service
+
+Based on the benchmark results, nl2oslc models should be configured with 20 workers and 8Gi of memory (MAX_INFERENCE_MEMORY), to improve parallelism of inference requests. At the time of this writing the Watson X service is the primary bottleneck. Additionally, the Watson X service imposes an upper limit of 8 requests per second per apikey.
+
 ## MAS Resource Statistics
 
 * use below values as reference only. 
