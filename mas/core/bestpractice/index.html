@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/mas/core/bestpractice/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>MAS Core - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MAS Core";
+        var mkdocs_page_input_path = "mas/core/bestpractice.md";
+        var mkdocs_page_url = "/mas-performance/mas/core/bestpractice/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Best Practice</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">MAS Core</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#scaling-mas-core-for-large-number-of-concurrent-users">Scaling MAS core for large number of concurrent users</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#mongodb">MongoDB</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#scaling-coreidp-service-mas-core-namespace">Scaling coreidp service (MAS core namespace)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#scaling-licensing-mediator-service-mas-core-namespace">Scaling licensing-mediator service (MAS core namespace)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#scaling-api-licensing-service-sls-namespace">Scaling api-licensing service (SLS namespace)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#scaling-coreapi-service-mas-core-namespace">Scaling coreapi service (MAS core namespace)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >MAS Manage</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../manage/bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MAS</li>
+          <li class="breadcrumb-item">Best Practice</li>
+      <li class="breadcrumb-item active">MAS Core</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/mas/core/bestpractice.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mas-core">MAS Core<a class="headerlink" href="#mas-core" title="Permanent link"></a></h1>
+<p>The MAS core namespace contains several important services required for user login and authentication, application management, MAS adoption metrics, licensing, etc. To understand the insight of each service/pod functionality in MAS core, check <a href="https://ibm-mas.github.io/cli/guides/mas-pods-explained/">MAS Pods Explained</a> .</p>
+<h2 id="scaling-mas-core-for-large-number-of-concurrent-users">Scaling MAS core for large number of concurrent users<a class="headerlink" href="#scaling-mas-core-for-large-number-of-concurrent-users" title="Permanent link"></a></h2>
+<p>The following are the key components/dependencies that require scaling as the number of concurrent MAS users grows.</p>
+<ul>
+<li>MongoDB (used extensively by coreidp, api-licensing, adoptionusage, and other MAS/SLS microservices)</li>
+<li>MAS core namespace:<ul>
+<li>coreidp pods</li>
+<li>licencing-mediator pods</li>
+<li>coreapi pods (if users directly login to a MAS application, bypassing the Suite navigator page, this decreases the load on coreapi pods)</li>
+</ul>
+</li>
+<li>SLS namespace:<ul>
+<li>api-licensing pods</li>
+</ul>
+</li>
+<li>k8s apiserver pods (coreapi pods issue k8s api calls to retrieve information from MAS application CRs, configmaps, etc.)</li>
+</ul>
+<div class="admonition caveat">
+<p class="admonition-title">Caveat</p>
+<p>The scaling guidance described below is provided from lab benchmark testing and may vary based on the differences in workload, environment, or configuration settings.</p>
+</div>
+<h3 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link"></a></h3>
+<p>MongoDB is a crucial dependency for MAS core services, if not scaled properly MongoDB can quickly become bottleneck as the number of concurrent users increases. A common symptom of an undersized MongoDB cluster is liveness probe timeouts and pod restarts of the MAS core services which depend on MongoDB (e.g. coreidp).</p>
+<p>For useful MongoDB troubleshooting commands see <a href="../../mongodb/bestpractice/">MongoDB Troubleshooting</a></p>
+<h4 id="key-mongodb-metrics-to-monitor">Key MongoDB metrics to monitor<a class="headerlink" href="#key-mongodb-metrics-to-monitor" title="Permanent link"></a></h4>
+<p>The following MongoDB metrics are important to monitor</p>
+<ul>
+<li>Memory utilization: by default MongoDB will attempt to cache the active data set in memory (in the WiredTiger cache). If there are a large number of cache evictions or the mongod servers are oomkilled these can be indicators that the memory allocation is too small.  Consider increasing the memory allocated to mongod server.</li>
+<li>CPU utilization: check that the mongod servers have not reached their allocated cpu limit</li>
+<li>Average read/write latency: average read and write latency should be under 50 milliseconds. If not it could be due to an undersized MongoDB cluster. Check that the MongoDB cluster has sufficient memory allocation and check disk performance.</li>
+<li>Lock waiters: a large number of lock waiters indicates contention on collections/documents in MongoDB</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When using the ibm.mas_devops collection to install MAS you can optionally install Grafana with the <a href="https://github.com/ibm-mas/ansible-devops/blob/master/ibm/mas_devops/roles/cluster_monitoring/README.md">cluster_monitoring ansible role</a>. Once Grafana is installed via the cluster_monitoring ansible role you can then install MongoDB using the <a href="https://github.com/ibm-mas/ansible-devops/blob/master/ibm/mas_devops/roles/mongodb/README.md">mongodb ansible role</a>. The mongodb ansible role includes a Grafana dashboard for monitoring the MongoDB cluster.</p>
+<p>If your using a MongoDB cluster hosted by a cloud provider uses the monitoring dashboards provided by the cloud provider. </p>
+</div>
+<h4 id="important-mongodb-databases-and-collections">Important MongoDB databases and collections<a class="headerlink" href="#important-mongodb-databases-and-collections" title="Permanent link"></a></h4>
+<p>The following databases and collections in MongoDB are accessed frequently during user login and authentication.</p>
+<ul>
+<li>Database: mas_{{mas-instance-id}}_core<ul>
+<li>Collection: User (user lookup during authentication)</li>
+<li>Collection: OauthToken (token creation/deletion)</li>
+</ul>
+</li>
+<li>Database: {{sls-id}}_sls_licensing<ul>
+<li>Collection: licenses (checkin/checkout licenses)</li>
+</ul>
+</li>
+<li>Database: mas_{{mas-instance-id}}_adoptionusage<ul>
+<li>Collection: users (daily adoption usage statistics)</li>
+<li>Collection: users_hourly (hourly adoption usage statistics)</li>
+</ul>
+</li>
+</ul>
+<h4 id="scaling-mongodb-community">Scaling MongoDB community<a class="headerlink" href="#scaling-mongodb-community" title="Permanent link"></a></h4>
+<p>The table below provides some general guidance on scaling MongoDB based on number of concurrent users and login rate. To scale MongoDB community edition you should specify the desired cpu/mem limits in the MongoDBCommunity CR.</p>
+<div class="highlight"><pre><span></span><code>spec:
+  statefulset:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: mongod
+            resources:
+              limits:
+                cpu: &lt;cpu limit&gt;
+                memory: &lt;mem limit&gt;
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Login rate (logins/minute)</th>
+<th>MongoDB CPU limit</th>
+<th>MongoDB Memory limit (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>75</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>150</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>300</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr>
+<td>600</td>
+<td>8</td>
+<td>12</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>12</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CPU/memory limit recommendations above are per MongoDB pod. A typical MongoDB CE cluster has three such pods.</p>
+</div>
+<h3 id="scaling-coreidp-service-mas-core-namespace">Scaling coreidp service (MAS core namespace)<a class="headerlink" href="#scaling-coreidp-service-mas-core-namespace" title="Permanent link"></a></h3>
+<p>The table below provides some general guidance on scaling the coreidp service based on number of concurrent users and login rate. To scale the coreidp service use the <a href="https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods">podTemplates workload customization</a> feature in MAS.</p>
+<table>
+<thead>
+<tr>
+<th>Login rate (logins/minute)</th>
+<th>coreidp replicas</th>
+<th>coreidp CPU limit</th>
+<th>coreidp Memory limit (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>75</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr>
+<td>150</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr>
+<td>300</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr>
+<td>600</td>
+<td>2</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>4</td>
+<td>6</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scaling-licensing-mediator-service-mas-core-namespace">Scaling licensing-mediator service (MAS core namespace)<a class="headerlink" href="#scaling-licensing-mediator-service-mas-core-namespace" title="Permanent link"></a></h3>
+<p>The table below provides some general guidance on scaling the licensing-mediator service based on number of concurrent users and login rate. The coreidp service calls the licensing-mediator service which in turn calls the api-licensing service in the SLS namespace for license checkin/checkout operations. To scale the licensing-mediator service use the <a href="https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods">podTemplates workload customization</a> feature in MAS.</p>
+<table>
+<thead>
+<tr>
+<th>Login rate (logins/minute)</th>
+<th>licensing-mediator replicas</th>
+<th>licensing-mediator CPU limit</th>
+<th>licensing-mediator Memory limit (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>75</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>150</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>300</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>600</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>6</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scaling-api-licensing-service-sls-namespace">Scaling api-licensing service (SLS namespace)<a class="headerlink" href="#scaling-api-licensing-service-sls-namespace" title="Permanent link"></a></h3>
+<p>The table below provides some general guidance on scaling the api-licensing service based on number of concurrent users and login rate. To scale the api-licensing service use the <a href="https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods">podTemplates workload customization</a> feature in MAS.</p>
+<table>
+<thead>
+<tr>
+<th>Login rate (logins/minute)</th>
+<th>api-licensing replicas</th>
+<th>api-licensing CPU limit</th>
+<th>api-licensing Memory limit (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>75</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>150</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>300</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>600</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scaling-coreapi-service-mas-core-namespace">Scaling coreapi service (MAS core namespace)<a class="headerlink" href="#scaling-coreapi-service-mas-core-namespace" title="Permanent link"></a></h3>
+<p>The table below provides some general guidance on scaling the coreapi service based on number of concurrent users and login rate. To scale the coreapi service use the <a href="https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods">podTemplates workload customization</a> feature in MAS.</p>
+<table>
+<thead>
+<tr>
+<th>Login rate (logins/minute)</th>
+<th>coreapi replicas</th>
+<th>coreapi CPU limit</th>
+<th>coreapi Memory limit (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>75</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>150</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>300</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>600</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1200</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../ocp/bestpractice/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../iot/bestpractice/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
