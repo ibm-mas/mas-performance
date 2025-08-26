@@ -23,11 +23,12 @@ PODNAME=$(oc get pods -n ${MAS_MANAGE_NS}|grep Running|grep maxinst|awk '{print 
 #echo ${PODNAME}
 
 # collect data
-log_info "collect db metric for instance: ${MAS_INSTANCE_NAME}"
+log_info "maxiomcpi-db: latency test mode, Instance: ${MAS_INSTANCE_NAME}"
 oc cp /opt/app-root/src/conf/maximocpi-db/maximocpi-db-client.sh ${MAS_MANAGE_NS}/${PODNAME}:/tmp/maximocpi-db-client.sh 2>/dev/null
 if [ -z "$2" ]; then 
   oc exec -n ${MAS_MANAGE_NS} ${PODNAME} -- bash -c "bash /tmp/maximocpi-db-client.sh -tl"
 else
+  log_info "maxiomcpi-db: latency test mode, SQLQUERY: $2"
   oc exec -n ${MAS_MANAGE_NS} ${PODNAME} -- bash -c "bash /tmp/maximocpi-db-client.sh -tl \"$2\""
 fi
 

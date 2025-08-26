@@ -29,6 +29,7 @@ if [ -z "$2" ]; then
 fi
 
 # collect data
-log_info "collect db metric for instance: ${MAS_INSTANCE_NAME}"
+log_info "maximocpi-db: sql execution mode, Instance: ${MAS_INSTANCE_NAME}"
+log_info "maximocpi-db: sql execution mode, SQLQuery: $2"
 oc cp /opt/app-root/src/conf/maximocpi-db/maximocpi-db-client.sh ${MAS_MANAGE_NS}/${PODNAME}:/tmp/maximocpi-db-client.sh 2>/dev/null
 oc exec -n ${MAS_MANAGE_NS} ${PODNAME} -- bash -c "bash /tmp/maximocpi-db-client.sh -es \"$2\""
