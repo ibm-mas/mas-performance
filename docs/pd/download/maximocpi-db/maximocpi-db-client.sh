@@ -43,7 +43,7 @@ if [[ "$1" == "-tl" ]]; then
     fi
 fi
 
-if [ -z "$2" ]; then 
+if [ -n "$2" ]; then 
     export SQLQUERY="$2"
 fi
 
