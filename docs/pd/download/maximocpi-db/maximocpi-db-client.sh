@@ -34,5 +34,18 @@ IFS='=' read -r key value <<< $(cat /etc/database/operator/secret/maximo.propert
 export DBPASSWORD="${value}"
 
 IFS='=' read -r key value <<< $(cat /etc/database/operator/secret/maximo.properties |grep mxe.db.schemaowner=)
+export DBSCHEMAOWNER="${value}"
+if [[ "$1" == "-tl" ]]; then 
+    if [ -z "$DBSCHEMAOWNER" ]; then
+        export SQLQUERY="select * from maxattribute"
+    else
+        export SQLQUERY="select * from ${DBSCHEMAOWNER}.maxattribute"
+    fi
+fi
+
+if [ -z "$2" ]; then 
+    export SQLQUERY="$2"
+fi
+
 java -classpath /tmp/db-export/maximocpi-db.jar:/opt/IBM/SMP/maximo/applications/maximo/lib/* "${JAVA_TOOL_OPTIONS}" com.ibm.maximo.mcpi.DBHarmony $1
 
