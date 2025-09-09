@@ -31,7 +31,7 @@ The following conditions are considered to be outside the scope of an out of the
 
 ## App Server
 
-MAS Manage has different bundle types e.g. All, UI, MEA, Report and CRON to configure app server. Adjust the resource settings like cpu, memory, replic to match the workload. The settings are in ManageWorkspaces CR. Below is the sample. 
+MAS Manage has different bundle types e.g. All, UI, MEA, Report and CRON to configure app server. It is a best practice to isolate UI, CRON, MIF, and Report workloads on different server bundle types to reduce contention for resources within the same JVM/pod.  Adjust the resource settings like cpu, memory, replica to match the workload. The settings are in ManageWorkspaces CR. Below is the sample. 
 
 ```yaml
 apiVersion: apps.mas.ibm.com/v1
