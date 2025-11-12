@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/mas/manage/bestpractice/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Overview - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Overview";
+        var mkdocs_page_input_path = "mas/manage/bestpractice.md";
+        var mkdocs_page_url = "/mas-performance/mas/manage/bestpractice/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Best Practice</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >MAS Manage</a>
+    <ul class="current">
+                <li class="toctree-l3 current"><a class="reference internal current" href="#">Overview</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#at-what-point-is-it-necessary-to-partition-a-mas-manage-workload-across-more-than-one-mas-instance">At what point is it necessary to partition a MAS Manage workload across more than one MAS instance?</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#maximo-transaction-latency">Maximo Transaction latency</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#app-server">App Server</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#load-balancer">Load-Balancer</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#manage-pod-functionality">Manage Pod Functionality</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#ltpa-timeout">LTPA timeout</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#websphere-liberty">WebSphere Liberty</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#db">DB</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MAS</li>
+          <li class="breadcrumb-item">Best Practice</li>
+          <li class="breadcrumb-item">MAS Manage</li>
+      <li class="breadcrumb-item active">Overview</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/mas/manage/bestpractice.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mas-manage">MAS Manage<a class="headerlink" href="#mas-manage" title="Permanent link"></a></h1>
+<h2 id="at-what-point-is-it-necessary-to-partition-a-mas-manage-workload-across-more-than-one-mas-instance">At what point is it necessary to partition a MAS Manage workload across more than one MAS instance?<a class="headerlink" href="#at-what-point-is-it-necessary-to-partition-a-mas-manage-workload-across-more-than-one-mas-instance" title="Permanent link"></a></h2>
+<p>A new MAS instance is required to run MAS Manage workloads at the point in which the DB server can no longer be scaled up.  When the DB server can no longer be scaled up, the customer should plan to create a new MAS instance and move sites to the new MAS instance which will be using a new DB server.</p>
+<h2 id="maximo-transaction-latency">Maximo Transaction latency<a class="headerlink" href="#maximo-transaction-latency" title="Permanent link"></a></h2>
+<p>When describing Maximo transaction latency it is important to define the boundaries of what constitutes a standard or out-of-the-box Maximo transaction. The description below does just that.</p>
+<h3 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link"></a></h3>
+<ul>
+<li>CRUD refers to create, update, delete operations</li>
+<li>MBO stands for Maximo Business Objects (which are hierarchical in nature)</li>
+<li>Transaction latency is defined as the elapsed time between when the Maximo server receives the transaction request to the time when the Maximo server has sent the response. For UI users this also includes the elapsed time between when the Save button is clicked to when control is returned to the user.</li>
+</ul>
+<h3 id="definition-of-a-transaction">Definition of a transaction<a class="headerlink" href="#definition-of-a-transaction" title="Permanent link"></a></h3>
+<p>An out of the box Maximo transaction is expected to complete with a latency of 2 seconds or less, where a transaction is defined as the creation, update, or deletion of a single MBO, containing no more than one child object and with no attachments or binary data (blobs).  Example include, but are not limited to:</p>
+<ol>
+<li>Creation of a single WorkOrder object. This includes generation of the WorkOrderStatus and WorkOrderAncestor records.</li>
+<li>Update of a single WorkOrder object. For example, changing states from Approved to Closed.</li>
+<li>Deletion of a single WorkOrder object.</li>
+</ol>
+<h3 id="definition-restrictions">Definition restrictions<a class="headerlink" href="#definition-restrictions" title="Permanent link"></a></h3>
+<p>The following conditions are considered to be outside the scope of an out of the box Maximo transaction, and therefore do not fall under the 2 second latency characterization.</p>
+<ol>
+<li>For UI initiated transactions this does not include latency incurred from downloading UI resources (e.g. js, css, png, jpg, etc.)</li>
+<li>It applies to out of the box Maximo applications, but not customized applications or out of the box Maximo applications with automation scripts</li>
+<li>It does not apply to UI initiated transactions with a large number of xhr requests (or portlets), for example the Maximo start center. Large here means greater than 2 xhr requests per page.  Note, Maximo currently supports HTTP/1.1, so xhr requests initiated from a single user UI page are sequential, not concurrent.</li>
+<li>It does not apply to customized saved queries.</li>
+<li>It does not apply to bulk load requests.</li>
+<li>It does not apply to report related transactions</li>
+</ol>
+<h2 id="app-server">App Server<a class="headerlink" href="#app-server" title="Permanent link"></a></h2>
+<p>MAS Manage has different bundle types e.g. All, UI, MEA, Report and CRON to configure app server. It is a best practice to isolate UI, CRON, MIF, and Report workloads on different server bundle types to reduce contention for resources within the same JVM/pod.  Adjust the resource settings like cpu, memory, replica to match the workload. The settings are in ManageWorkspaces CR. Below is the sample. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps.mas.ibm.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ManageWorkspace</span>
+<span class="nn">...</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">settings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serverBundles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span>
+<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mea</span>
+<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">routeSubDomain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bundleType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span>
+<span class="w">          </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isMobileTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">isUserSyncTarget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span>
+<span class="w">          </span><span class="nt">replica</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">settings</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">manageAdmin</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2&#39;</span>
+<span class="w">                </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4Gi</span>
+<span class="w">                </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.2&#39;</span>
+<span class="w">                </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500Mi</span>
+<span class="w">            </span><span class="nt">serverBundles</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;6&#39;</span>
+<span class="w">                </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span>
+<span class="w">                </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0.2&#39;</span>
+<span class="w">                </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+</code></pre></div>
+<h2 id="load-balancer">Load-Balancer<a class="headerlink" href="#load-balancer" title="Permanent link"></a></h2>
+<p>Lab test shows <strong>roundrobin</strong> has more stable and better performance than <strong>leastconn</strong> policy which is the default. Follow <a href="../../ocp/bestpractice/#load-balance-algorithm">this link</a> to update load balancer policy. </p>
+<h2 id="manage-pod-functionality">Manage Pod Functionality<a class="headerlink" href="#manage-pod-functionality" title="Permanent link"></a></h2>
+<p>Follow <a href="https://ibm-mas.github.io/cli/guides/mas-pods-explained/#manage-pods">this link</a> to understand the manage pod functionality. </p>
+<h2 id="ltpa-timeout">LTPA timeout<a class="headerlink" href="#ltpa-timeout" title="Permanent link"></a></h2>
+<p>Using IBM Maximo Application Suite (MAS), Manage users will receive an error message saying to reload the application after 2 hours, even while actively working. This 2-hour timeout default is when the LTPA token in Manage expires, and is redirecting the user back to the login page for MAS. Follow <a href="https://www.ibm.com/support/pages/node/6841623">Updating LTPA timeout in Manage</a> to increase the default value. </p>
+<h2 id="websphere-liberty">WebSphere Liberty<a class="headerlink" href="#websphere-liberty" title="Permanent link"></a></h2>
+<p>Due to the architecture change, Maximo 8.x (MAS Manage app) is deployed on WebSphere Liberty Base 21.0.0.5 with OpenJ9. As of WebSphere Liberty 18.0.0.1, the thread growth algorithm is enhanced to grow thread capacity more aggressively to react more rapidly to peak loads. For many environments, this autonomic tuning provided by the Open Liberty thread pool works well with no configuration or tuning by the operator. If necessary, you can adjust <code>coreThreads</code> and <code>maxThreads</code> value by <a href="https://www.ibm.com/docs/en/was-liberty/core?topic=tuning-liberty">tuning liberty</a>.</p>
+<h3 id="configure-jvm-options-in-manage-app">Configure JVM options in Manage app<a class="headerlink" href="#configure-jvm-options-in-manage-app" title="Permanent link"></a></h3>
+<p>Follow <a href="https://www.ibm.com/docs/en/maximo-manage/continuous-delivery?topic=application-configuring-jvm-options">this link</a> to configure JVM options</p>
+<h2 id="db">DB<a class="headerlink" href="#db" title="Permanent link"></a></h2>
+<h3 id="disk">Disk<a class="headerlink" href="#disk" title="Permanent link"></a></h3>
+<p>disk performance is critial for db performance. Recommend a storage or disk with</p>
+<ul>
+<li>disk throughput: &gt; 250 MB/s</li>
+<li>IOPS: 10 IOPS/GB to 100 IOPS/GB (depending on volume size)</li>
+</ul>
+<p>To measure disk performance on Linux use the <code>dd</code> command. The sample command below measures disk performance of the data volume inside a db2 pod running in OCP</p>
+<div class="admonition info">
+<p class="admonition-title"><strong>CAUTION</strong></p>
+<p>Make sure that <code>ddtest</code> filename is appended to the end of the data path or the dd command will wipe the db2 data directory.</p>
+</div>
+<div class="highlight"><pre><span></span><code>[db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$ dd if=/dev/zero of=path_of_db2_data_directory/ddtest bs=128K count=8192
+8192+0 records in
+8192+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 2.84314 s, 378 MB/s
+[db2inst1@c-db2wh-manage-db2u-0 - Db2U bludata0]$
+</code></pre></div>
+<h3 id="network-latency-between-app-and-db-server">Network latency between app and db server<a class="headerlink" href="#network-latency-between-app-and-db-server" title="Permanent link"></a></h3>
+<p>Reducing network latency is key to optimizing performance. Confirm latency is below 50ms by conducting a ping test. For production env, strongly recommend keeping the latency below 10ms and having app and db server in the same network segment. In cloud deployment scenarios, ensure both the database and OpenShift cluster are located within the same region, with the possibility of being in the same availability zone (AZ). Utilize the ping command to evaluate and pinpoint latency issues.</p>
+<h3 id="large-table-optimization">Large table optimization<a class="headerlink" href="#large-table-optimization" title="Permanent link"></a></h3>
+<p>When optimizing large tables in the Manage app, it is recommended to transfer these tables to a dedicated tablespace on high-throughput disks, coupled with a dedicated buffer cache for enhanced performance. The speed of the disks and the availability of memory play crucial roles in this optimization strategy. Additionally, ensure that index statistics are regularly updated, and address any problematic queries to further optimize the system.</p>
+<h3 id="db-db2db2wh">DB - DB2/DB2wh<a class="headerlink" href="#db-db2db2wh" title="Permanent link"></a></h3>
+<p>DB2 Tuning in <a href="../../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf">Maximo 7.6.x Best practice</a> is applicable. </p>
+<div class="admonition info">
+<p class="admonition-title"><strong>IMPORTANT</strong></p>
+<p>The containerized DB2U and DB2WH deployments do NOT support text search (Regular DB2 has text search).<br />
+As a result, some queries may perform poorly on containerized DB2 relative to Oracle DB and SQL Server, which both support text search.</p>
+<p>Searching records by Description on the list page is a typical scenario whose performance can benefit from text search capability of the database, especially if no other indexed attributes are included in the query. </p>
+<p>Adding a non-unique index on Description can help if an exact search can be made (Maximo search type = EXACT or user types is "=" before the search string, eg =Text) or the search can be done based on the beginning of the string (user types '%' at end of the string, eg Text%).  If possible, adding other fields to the query (either by user typing them or as part of the default, where those attributes are part of an index can also help.  In addition, adding Description to the end of one of these indexes can also show improvement.</p>
+</div>
+<p><strong>Highlights:</strong></p>
+<ul>
+<li>increase maxsequence cache to 50</li>
+<li>run runstats and/or reorg to update index periodically</li>
+<li>separate system storage, user storage, backup storage, transaction logs storage, temporary tablespace storage on different disks if possible. </li>
+<li>Use <a href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a> to troubleshoot and tuning the db and SQL.</li>
+<li>Manage requires <strong>row-organized</strong> tables. Check db2w db setting (by default it uses column based) and update the setting by <code>db2 update db cfg using DFT_TABLE_ORG ROW</code></li>
+<li><strong>Manage</strong> does <strong>NOT</strong> support MMP or table partition in the current version, but consider to archive records over 1-year old. Optim is the one of the tools can be used for archiving. see <a href="https://www.ibm.com/support/pages/installing-ibm-maximo-archiving-751-ibm-maximo-asset-management-v76">this guide</a> and <a href="https://www.youtube.com/watch?v=qr_0SpWrabc">this video</a> for details. </li>
+<li>Increase the concurrently running statements allowed for a DB2 application. This issue occcurs when loading a large amount of data via MIF or api call. See <a href="https://www.ibm.com/support/pages/how-many-concurrently-running-statements-allowed-db2-java-application-and-how-increase-it">this link</a> for the tuning. </li>
+<li><strong>storageclass</strong><ul>
+<li>for ibm cloud: performance block storage (custom or gold, depending on volume size), block silver for backup</li>
+<li>for aws cloud: if using EFS for db, consider Provisioned mode to have a constant throughput. For more disk options, see details in this <a href="https://docs.aws.amazon.com/efs/latest/ug/performance.html">page</a></li>
+</ul>
+</li>
+<li>For db2 registry (db2set):<ul>
+<li>Set <strong>db2_workload=maximo</strong>. That makes db cfg variable <strong>WLM_ADMISSION_CTRL</strong> is set to <strong>NO</strong></li>
+<li>Do NOT change the default values for <strong>DB2_OVERRIDE_NUM_CPUS and DB2_OVERRIDE_THREADING_DEGREE</strong>.</li>
+</ul>
+</li>
+<li>Verify db2 db cfg variable <strong>WLM_ADMISSION_CTRL</strong> is set to <strong>NO</strong></li>
+<li>For db2ucluster CR<ul>
+<li>Do <strong>NOT</strong> set db2 instance memory. The operator will automatically calculate it based on the container memory limit.</li>
+<li>(Optional) for performance stability, set the same value to both container resource request and limit.</li>
+</ul>
+</li>
+<li><strong>For db2 monitor switches</strong><ul>
+<li>The best practice is turn off all monitor switches except the Timestamp in dbm cfg.</li>
+<li>If turn on monitor switches in dbm cfg, will cause monitor switches are turned on by default for all DB2 sessions, this will bring 5%-10% overhead on the overall database performance, depends on the workload and database server hardware spec. 
+So we should not turn on monitor switches in dbm cfg.</li>
+<li>When we need to take DB2 monitor data, we should only turn on monitor switches in a specific session by the following command:<br />
+   db2 update monitor switches using BUFFERPOOL on LOCK on SORT on STATEMENT on TIMESTAMP on TABLE on UOW on<br />
+And turn off all monitor switches immediately after getting required monitor data by the following command: <br />
+   db2 update monitor switches using BUFFERPOOL off LOCK off SORT off STATEMENT off TIMESTAMP off TABLE off UOW off</li>
+</ul>
+</li>
+</ul>
+<h3 id="db-oracle">DB - Oracle<a class="headerlink" href="#db-oracle" title="Permanent link"></a></h3>
+<ul>
+<li><a href="../../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf">Maximo 7.6.x Best practice</a> is applicable</li>
+</ul>
+<h3 id="db-mssql">DB - MSSQL<a class="headerlink" href="#db-mssql" title="Permanent link"></a></h3>
+<ul>
+<li>
+<p><a href="../../../maximo-7/download/Maximo%20Best%20Practices%20for%20System%20Performance%207.6.x%20v1.3.pdf">Maximo 7.6.x Best practice</a> is applicable</p>
+</li>
+<li>
+<p>additional settings for MSSQL Server 2019</p>
+<ul>
+<li>compatibility level: if maximo db is upgraded from the old version and the performance degradation is observed after the upgrade, consider to set compatibility level to the old version to keep the execution plan same.</li>
+<li>isolation level: 
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB</span><span class="w"> </span><span class="n">NAME</span><span class="o">&gt;</span><span class="w">  </span>
+<span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">ALLOW_SNAPSHOT_ISOLATION</span><span class="w"> </span><span class="k">ON</span><span class="w">  </span>
+
+<span class="w">        </span><span class="k">ALTER</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB</span><span class="w"> </span><span class="n">NAME</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">READ_COMMITTED_SNAPSHOT</span><span class="w"> </span><span class="k">ON</span><span class="w">  </span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>recommend to place <code>tempdb</code> on dedicated fast disks.</p>
+</li>
+</ul>
+<h3 id="note">Note:<a class="headerlink" href="#note" title="Permanent link"></a></h3>
+<ul>
+<li>It is highly recommended to refresh index statistics after migrating Maximo from version 7 to version 8. In some cases, rebuilding indexes may also be necessary.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../iot/bestpractice/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../mobile/bestpractice/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
