@@ -11,3 +11,7 @@ chmod 755 /opt/app-root/src/healthcheck/collect-node-description.sh
 # fix mcpi dashboard bug
 curl -L -v -o /tmp/mcpi-dashboard-fix.sh https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/mcpi-dashboard-fix.sh > /dev/null 2>&1
 bash /tmp/mcpi-dashboard-fix.sh
+
+# add maximocpi-db utilities
+curl -L -v -o /tmp/maximocpi-db-update.sh https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/maximocpi-db-update.sh > /dev/null 2>&1
+bash /tmp/maximocpi-db-update.sh
