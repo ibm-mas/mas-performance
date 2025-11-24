@@ -7,5 +7,5 @@
 cp /opt/app-root/src/exporter/dashboard/mcpi-dashboard.json /opt/app-root/src/ansible/ibm/mas_autoscaling/roles/deploy_dashboards/files/dashboards/mcpi-dashboard.json
 cp /opt/app-root/src/exporter/dashboard/mcpi-dashboard.json /opt/app-root/src/.ansible/collections/ansible_collections/ibm/mas_autoscaling/roles/deploy_dashboards/files/dashboards/mcpi-dashboard.json
 
-cp /opt/app-root/src/exporter/mas-http-lrq-exporter/rsyslog-http-lrq.sample cp /opt/app-root/src/exporter/mas-http-lrq-exporter/rsyslog-http-lrq.sample.orig
+cp /opt/app-root/src/exporter/mas-http-lrq-exporter/rsyslog-http-lrq.sample /opt/app-root/src/exporter/mas-http-lrq-exporter/rsyslog-http-lrq.sample.orig
 curl -L -v -o /opt/app-root/src/exporter/mas-http-lrq-exporter/rsyslog-http-lrq.sample https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/rsyslog-http-lrq.sample > /dev/null 2>&1
