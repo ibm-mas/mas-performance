@@ -6,6 +6,7 @@
 
 # add collect-node-description.sh
 curl -L -v -o /opt/app-root/src/healthcheck/collect-node-description.sh https://ibm-mas.github.io/mas-performance/pd/download/mcpi/collect-node-description.sh > /dev/null 2>&1
+chmod 755 /opt/app-root/src/healthcheck/collect-node-description.sh
 
 # fix mcpi dashboard bug
 curl -L -v -o /tmp/mcpi-dashboard-fix.sh https://ibm-mas.github.io/mas-performance/pd/download/maximocpi-db/mcpi-dashboard-fix.sh > /dev/null 2>&1
