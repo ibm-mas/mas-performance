@@ -21,4 +21,4 @@ for NODE in $NODES; do
 done
 
 # show list
-echo -e " The node descriptions are stored in ${TMPDIR}/nodelog.\n If you need to create a zip file, use zip like this:\n zip /tmp/nodelog.zip ${TMPDIR}/nodelog"
+echo -e " The node descriptions are stored in ${TMPDIR}/nodelog.\n If you need to create a zip file, use zip like this:\n zip /tmp/nodelog.zip ${TMPDIR}/nodelog/*"
