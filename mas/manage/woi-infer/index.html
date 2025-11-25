@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/mas/manage/woi-infer/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Inferencing - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Inferencing";
+        var mkdocs_page_input_path = "mas/manage/woi-infer.md";
+        var mkdocs_page_url = "/mas-performance/mas/manage/woi-infer/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Best Practice</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >MAS Manage</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" >Work Order Intelligence (AI)</a>
+    <ul class="current">
+                <li class="toctree-l4"><a class="reference internal" href="../woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4 current"><a class="reference internal current" href="#">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MAS</li>
+          <li class="breadcrumb-item">Best Practice</li>
+          <li class="breadcrumb-item">MAS Manage</li>
+          <li class="breadcrumb-item">Work Order Intelligence (AI)</li>
+      <li class="breadcrumb-item active">Inferencing</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/mas/manage/woi-infer.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="work-order-intelligence-inferencing">Work Order Intelligence Inferencing<a class="headerlink" href="#work-order-intelligence-inferencing" title="Permanent link"></a></h1>
+<p>This was added to the MAS Manage application to assist users with problem code classification (PCC) for Work Orders. See the product documentation for more details.</p>
+<h2 id="pcc-model-inferencing-batch-mode-from-cron-task">PCC model inferencing (batch mode from cron task)<a class="headerlink" href="#pcc-model-inferencing-batch-mode-from-cron-task" title="Permanent link"></a></h2>
+<p>Inferencing is typically run more frequently than training, but is less resource intensive. By default, MAS Manage is configured with a single instance of the AIINFJOB cron task. This is recommended for most workloads.</p>
+<p>The predictor pod where inferencing/prediction occurs receives a batch of Work Orders to be inferenced from the MAS Manage cron pod running the AIINFJOB cron task. The batch size (or page size, defined on the MXAPIWODETAIL object structure query template) is the best way to control the rate at which Work Orders are inferenced. In the graph below you can see how the total time to inference 100K work orders is influenced by the batch size. With a batch size of 500 Work Orders/request and a 30 second interval for the AIINFJOB cron task 100K work orders were inferenced in approximately 1.6 hours. Compared to a batch size of 10 WO/request which took 83 hours.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The recommended batch size is 500 Work Orders/request and the recommended interval for the AIINFJOB cron task is 30 seconds.</p>
+</div>
+<p><img alt="pccinfer-batchsize" src="../pccinfer-batchsize.png" /></p>
+<h2 id="pcc-model-inferencing-required-resources-batch-mode-from-cron-task">PCC model inferencing required resources (batch mode from cron task)<a class="headerlink" href="#pcc-model-inferencing-required-resources-batch-mode-from-cron-task" title="Permanent link"></a></h2>
+<p>The graphs below show the CPU and memory resource utilization of the predictor pod based on the batch size. As you can see, the CPU utilization of the predictor pod increases with the batch size, but the memory utilization remains fairly consistent (i.e. between 4GB - 5GB)</p>
+<p><img alt="pccinfer-cpu" src="../pccinfer-cpu.png" /></p>
+<p><img alt="pccinfer-memory" src="../pccinfer-memory.png" /></p>
+<h2 id="pcc-model-inferencing-batch-cron-processing-vs-on-demand-single-inference">PCC model inferencing: batch cron processing vs on-demand single inference<a class="headerlink" href="#pcc-model-inferencing-batch-cron-processing-vs-on-demand-single-inference" title="Permanent link"></a></h2>
+<p>For bulk inferencing of large numbers of Work Orders it is recommended to use the AIINFJOB cron task. However, UI users can also request problem code inferencing on a single work order. In this case the predictor pod will receive a single work order and as a result the overhead of processing a single work order is much higher.  For example, to inference a batch of 10 or more work orders will result in an average inferencing time of 20 milliseconds per work order in the predictor pod, but the inference time for a single work order from the UI is about 120 milliseconds (in the predictor pod). The total time including the MAS Manage API request is about 750 milliseconds. It is therefore much more efficient to inference large numbers of work orders asynchronously using the AIINFJOB cron task and a page size of 500. In other words, don't use the API from a script.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../woi-train/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../mvi/bestpractice/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

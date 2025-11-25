@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/mas/aws/bestpractice/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>AWS - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "AWS";
+        var mkdocs_page_input_path = "mas/aws/bestpractice.md";
+        var mkdocs_page_url = "/mas-performance/mas/aws/bestpractice/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Best Practice</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >MAS Manage</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../manage/bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">AWS</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#instance-type">Instance Type</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#classic-load-balancer-idle-timeout">Classic Load Balancer Idle Timeout</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#amazon-documentdb">Amazon DocumentDB</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#amazon-msk">Amazon MSK</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aws-storage">AWS Storage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#self-managed-ocp-vs-aws-rosa">Self-managed OCP vs AWS ROSA</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MAS</li>
+          <li class="breadcrumb-item">Best Practice</li>
+      <li class="breadcrumb-item active">AWS</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/mas/aws/bestpractice.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="aws">AWS<a class="headerlink" href="#aws" title="Permanent link"></a></h1>
+<h2 id="instance-type">Instance Type<a class="headerlink" href="#instance-type" title="Permanent link"></a></h2>
+<p>There are many instance types available in AWS. Based on the benchmark, recommend <strong>M5, M6</strong> instances (e.g.M5.4xlarge) as master or worker nodes and <strong>P3, P4</strong> as GPU nodes. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Depending on the regions, some instances may not be available. Use <a href="https://calculator.aws/#/">AWS Pricing Calculator</a> to check the instance availability and cost. </li>
+<li><strong>g4dn</strong> can be used as GPU node for test/dev env, but not recommended for production env.</li>
+<li>If the application requires a good network performance, check <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/general-purpose-instances.html#general-purpose-network-performance">Amazon EC2 instance network bandwidth site</a> for more details. For production env, an instance with 10GB ethernet is recommended. </li>
+</ul>
+</div>
+<h2 id="classic-load-balancer-idle-timeout">Classic Load Balancer Idle Timeout<a class="headerlink" href="#classic-load-balancer-idle-timeout" title="Permanent link"></a></h2>
+<p>Each OCP cluster creates 1 class load balancer and 2 network load balancers in AWS. AWS classic load balancer has a default idle time <strong>60</strong> seconds. In some cases, this value is not enough for a long time transaction (e.g. asset health check notebook). Consider to adjust this value to what the application needs (e.g. 300 seconds).</p>
+<p>Also, monitoring classic load-balance performance is strongly recommend, particularly with IoT related app. (Note: Surge Queue Length's defaults to a hardcoded limit of <strong>1024</strong>. When queue is fully, the tcp handshake will fail)</p>
+<h2 id="amazon-documentdb">Amazon DocumentDB<a class="headerlink" href="#amazon-documentdb" title="Permanent link"></a></h2>
+<p>DocumentDB is a fully managed MongoDB compatibility database. It can be used by both IBM Suite License Service (SLS) and MAS Core. However, there are functional differences between DocumentDB and MongoDB. Check <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/functional-differences.html">this link</a> for more details.</p>
+<p><strong>Note:</strong> When using DocumentDB, it requires to set <code>RetryWrite=false</code> in SLS and Suite CRs. </p>
+<h2 id="amazon-msk">Amazon MSK<a class="headerlink" href="#amazon-msk" title="Permanent link"></a></h2>
+<p>MAS supports MSK which is a fully managed apache Kafka service. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>monitor MSK performance via CloudWatch is strongly recommended. Key metrics include <strong>Disk usage by broker, CPU (User) usage by broker, Active Controller Count, Network RX packets by broker, Network TX packets by broker</strong>.</li>
+<li>define an appropriate config for Kafka, MSK and topics. e.g. retention.ms, retention.bytes, partitions and replics to support the workload.</li>
+</ul>
+</div>
+<h2 id="aws-storage">AWS Storage<a class="headerlink" href="#aws-storage" title="Permanent link"></a></h2>
+<p><strong>EBS storages</strong> like gp2, gp3 are supported by OCP in AWS. <strong>Note:</strong> EBS storage is ReadWriteOnce. The volume can be mounted as read-write by a single node. <strong>io1</strong> and <strong>io2</strong> are SSD-based EBS that provides the higher performance. Check <a href="https://aws.amazon.com/ebs/volume-types/">Amazon EBS volume types</a> for extra info like throughput, tuning and cost. </p>
+<p>Below is a <strong>sample yaml</strong> to create io1 storageclass with <strong>100 iopsPerGB</strong>. </p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io1</span>
+<span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/aws-ebs</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">encrypted</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
+<span class="w">  </span><span class="nt">iopsPerGB</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;100&#39;</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io1</span>
+<span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete</span>
+<span class="nt">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Immediate</span>
+</code></pre></div>
+<p><strong>EFS Storage</strong> can be used as <strong>ReadWriteMany</strong> storageclass. EFS has different metered throughput modes.</p>
+<ul>
+<li>Bursting Throughput mode is the default. It is inexpensive, but does <strong>NOT</strong> perform well if all burst credits are used. Monitor <strong>BurstCreditBalance</strong> metric in CloudWatch. </li>
+<li>Provisioned Throughput mode is relatively expensive. It can drive up to 3 GiBps for read operations and 1 GiBps for write operations per file system</li>
+<li>More info can be found at <a href="https://docs.aws.amazon.com/efs/latest/ug/performance.html">Amazon EFS performance</a></li>
+</ul>
+<h2 id="self-managed-ocp-vs-aws-rosa">Self-managed OCP vs AWS ROSA<a class="headerlink" href="#self-managed-ocp-vs-aws-rosa" title="Permanent link"></a></h2>
+<p>A self-managed OCP Cluster can be created by the installer cli tool that supports both IPI and UPI mode. It requires self maintenance and upgrades. Alternatively, ROSA is a managed Red Hat OpenShift Service. Each ROSA cluster comes with a fully managed control plane and compute nodes. Installation, management, maintenance, and upgrades are performed by Red Hat site reliability engineers (SRE) with joint Red Hat and Amazon support.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../mvi/bestpractice/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../ibmcloud/bestpractice/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

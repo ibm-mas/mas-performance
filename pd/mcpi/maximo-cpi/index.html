@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/pd/mcpi/maximo-cpi/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Maximo cpi - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Maximo cpi";
+        var mkdocs_page_input_path = "pd/mcpi/maximo-cpi.md";
+        var mkdocs_page_url = "/mas-performance/pd/mcpi/maximo-cpi/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Best Practice</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../mas/ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../mas/core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../mas/iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >MAS Manage</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../../mas/manage/bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../../mas/mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../mas/mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../mas/mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../mas/manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../mas/manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../../mas/manage/woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../../mas/manage/woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../mas/mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../mas/aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../mas/ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../mas/azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../mas/mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../mas/sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../mas/monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Maximo cpi</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/pd/mcpi/maximo-cpi.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>📢 <strong>Announcement: IBM Maximo CPI (Cluster Performance Insight) is available for Redhat Marketplace. Chech <a href="https://swc.saas.ibm.com/en-us/redhat-marketplace/products/ibm-maximo-cluster-performance-insights">here</a> for more details.</strong></p>
+<div class="admonition danger">
+<p class="admonition-title">Critical Note</p>
+<p><strong>IBM Maximo Cluster Performance Insights is offered "AS IS", WITH NO WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING THE WARRANTY OF TITLE, NON-INFRINGEMENT OR NON-INTERFERENCE AND THE IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</strong></p>
+<p>The IBM Product Support you have purchased with your IBM Maximo Application Suite Product does not cover this Application extension. <strong>Do not attempt to submit an IBM support ticket.</strong></p>
+<p>The IBM TechXChange Maximo Community discussions can be leveraged to crowd-source assistance from Maximo Experts.</p>
+</div>
+<h3 id="what-is-ibm-maximo-cluster-performance-insights">What is IBM Maximo Cluster Performance Insights<a class="headerlink" href="#what-is-ibm-maximo-cluster-performance-insights" title="Permanent link"></a></h3>
+<p><strong>IBM Maximo Cluster Performance Insights (Maximo CPI)</strong>, is a new utility that use short and long term snapshots to addresses specific best practices for deployment of Maximo App Suite. It can assist in pinpointing areas that need improvement and provide actionable insights for optimizing the MAS deployment. </p>
+<p>Maximo Clients can conduct a self-assessment to ensure adherence to best practices, optimize resource use, and diagnose performance issues. This process helps in evaluating current practices, identifying areas for improvement, and enhancing overall efficiency and effectiveness.</p>
+<p>The utility gathers only metrics data, excluding any sensitive information. It is containerized for ease of use.</p>
+<h3 id="ibm-maximo-cluster-performance-insights-main-features">IBM Maximo Cluster Performance Insights Main Features<a class="headerlink" href="#ibm-maximo-cluster-performance-insights-main-features" title="Permanent link"></a></h3>
+<ul>
+<li>Identify any missing or incorrect settings that not follows <a href="https://ibm-mas.github.io/mas-performance/mas/ocp/bestpractice/">MAS Best Practice</a></li>
+<li>Offer an in-depth evaluation of the deployed MAS system's performance</li>
+<li>Provide recommendations for minimizing the size of the MAS deployment to reduce infrastructure costs</li>
+<li>Identify certificates that have expired or are about to expire</li>
+<li>Provide suggestion for rebalancing the node resource utilization to optimize the workload</li>
+<li>Capacity to send a notification via slack</li>
+<li>Offer a platform for customized MAS Manage schedule scaling</li>
+</ul>
+<h3 id="maximo-cpi-playbook">Maximo CPI Playbook<a class="headerlink" href="#maximo-cpi-playbook" title="Permanent link"></a></h3>
+<p><a href="https://ibm-mas.github.io/mcpi/">Maximo CPI Playbook</a> Offering a centralized platform for user guidance, issue discussions, new feature exploration, diagnostic methods, and essential tooling introduction.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

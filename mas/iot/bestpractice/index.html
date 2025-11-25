@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/mas/iot/bestpractice/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>MAS IoT - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MAS IoT";
+        var mkdocs_page_input_path = "mas/iot/bestpractice.md";
+        var mkdocs_page_url = "/mas-performance/mas/iot/bestpractice/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Best Practice</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">MAS IoT</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#mqtt-vs-http-messaging">MQTT vs HTTP Messaging</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#best-practice-messaging-pattern">Best practice messaging pattern</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#messaging-anti-pattern">Messaging Anti-pattern</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-ingest-rates-devices-and-connections">Data Ingest rates, devices, and connections</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#iot-fair-use-policy">IoT Fair Use Policy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#messaging-qos">Messaging QoS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#summary-of-factors-that-influence-data-ingestion-rate">Summary of factors that influence data ingestion rate</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#iot-deployment">IoT Deployment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#connection-and-openshift-ingress-controllers">Connection and OpenShift Ingress Controllers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kafka">Kafka</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#aws-msk">AWS MSK</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#message-rate-and-ethernet-network-bandwidth">Message Rate and Ethernet Network Bandwidth</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >MAS Manage</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../manage/bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MAS</li>
+          <li class="breadcrumb-item">Best Practice</li>
+      <li class="breadcrumb-item active">MAS IoT</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/mas/iot/bestpractice.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mas-iot">MAS IoT<a class="headerlink" href="#mas-iot" title="Permanent link"></a></h1>
+<h2 id="mqtt-vs-http-messaging">MQTT vs HTTP Messaging<a class="headerlink" href="#mqtt-vs-http-messaging" title="Permanent link"></a></h2>
+<p>The MQTT protocol is the preferred messaging protocol for data ingest in to the MAS IoT service. HTTP messaging support was added to MAS IoT for low volume scenarios and is not designed to be used for message rates greater than 1K msgs/sec.</p>
+<p>MQTT message ingest rates are 2-3 orders of magnitude faster than HTTP. The primary reason being that HTTP messaging requires a TLS handshake and authentication on every message published. The authentication requires a database lookup for the device authentication token.  As such, HTTP messaging puts a strain on the authentication service and the IoT database.</p>
+<p>In order to achieve high data ingest rates with MAS IoT service, use the MQTT protocol and keep the device connection open while publishing messages.  </p>
+<h3 id="best-practice-messaging-pattern">Best practice messaging pattern<a class="headerlink" href="#best-practice-messaging-pattern" title="Permanent link"></a></h3>
+<div class="highlight"><pre><span></span><code>MQTT CONNECT
+MQTT PUBLISH (in loop until all messages are published)
+</code></pre></div>
+<h3 id="messaging-anti-pattern">Messaging Anti-pattern<a class="headerlink" href="#messaging-anti-pattern" title="Permanent link"></a></h3>
+<div class="highlight"><pre><span></span><code>MQTT CONNECT
+MQTT PUBLISH
+MQTT DISCONNECT
+MQTT CONNECT
+MQTT PUBLISH
+MQTT DISCONNECT
+...
+</code></pre></div>
+<h2 id="data-ingest-rates-devices-and-connections">Data Ingest rates, devices, and connections<a class="headerlink" href="#data-ingest-rates-devices-and-connections" title="Permanent link"></a></h2>
+<p>The MQTT service in MAS IoT was designed to handle many device connections, each publishing at low rates. As such, when designing a data ingest application for MAS IoT it should distribute the load over many MQTT devices or applications in order to maximize message rates. Single device or application connections will be throttled based on the IoT Fair use policy (see below).</p>
+<h2 id="iot-fair-use-policy">IoT Fair Use Policy<a class="headerlink" href="#iot-fair-use-policy" title="Permanent link"></a></h2>
+<p>IoT data ingest throttling limits are per device and are based on the device class (i.e. Device, Gateway, Application).  These limits are in place to prevent DoS attacks from rogue (i.e. badly behaving) devices. The throttling limits do not scale with the MAS IoT deployment size. For more information on MAS IoT messaging quotas see <a href="https://www.ibm.com/docs/en/mapms/1_cloud?topic=features-quotas">https://www.ibm.com/docs/en/mapms/1_cloud?topic=features-quotas</a></p>
+<h2 id="messaging-qos">Messaging QoS<a class="headerlink" href="#messaging-qos" title="Permanent link"></a></h2>
+<p>The messaging QoS specified when publishing an MQTT message also has a strong impact on messaging rates.</p>
+<p>QoS in order of fastest to slowest:</p>
+<ul>
+<li>QoS 0 - at most once (data loss possible, no message persistence or ACKs)</li>
+<li>QoS 1 - at least once (duplicates are possible, messages persisted and ACKed)</li>
+<li>QoS 2 - exactly once (application client required to maintain state, messages persisted and two phase commit between client/server)</li>
+</ul>
+<p>QoS &gt;0 performance considerations</p>
+<ul>
+<li>requires disk persistence in MAS IoT messaging components and therefore disk I/O performance becomes critical with QoS &gt;0.</li>
+<li>the MQTT specification provides a kind of protocol level flow control negotiation between client and server. The number of unacked messages allowed on the session is negotiated between client and server and if the client has no more available msg ids it must pause publishing until msg IDs become available. Msg IDs become available when messages ACKs are received. See MQTT spec for details: <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_QoS_1:_At">https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html#_QoS_1:_At</a></li>
+</ul>
+<h2 id="summary-of-factors-that-influence-data-ingestion-rate">Summary of factors that influence data ingestion rate<a class="headerlink" href="#summary-of-factors-that-influence-data-ingestion-rate" title="Permanent link"></a></h2>
+<ul>
+<li>Choice of messaging protocol: MQTT (high volume) vs HTTP (low volume)</li>
+<li>Messaging Pattern: do NOT close MQTT sessions after each message published. leave connections open.</li>
+<li>Number of devices: Higher message rates are possible when the load is distributed over more connections</li>
+<li>Choice of device class: Fair use quotas are based on device class (https://www.ibm.com/docs/en/mapms/1_cloud?topic=features-quotas)[https://www.ibm.com/docs/en/mapms/1_cloud?topic=features-quotas]</li>
+<li>Choice of QoS: high levels of messaging guarantees come with higher costs </li>
+</ul>
+<h2 id="iot-deployment">IoT Deployment<a class="headerlink" href="#iot-deployment" title="Permanent link"></a></h2>
+<ul>
+<li>IoT CRD defines 3 default size deployments: <strong>dev, small, medium</strong> that controls the default settings for pod replics, cpu and memory. For production, <strong>medium</strong> is required.
+Sample yaml for medium deployment in IoT CR 
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iot.ibm.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IoT</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">masinst1</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mas-masinst1-iot</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bindings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">jdbc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">    </span><span class="nt">kafka</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">    </span><span class="nt">mongo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">  </span><span class="nt">settings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">deployment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+</code></pre></div></li>
+<li>If need to adjust the default setting for a deployment, go the iot-operator pod, then change the corresponding yaml files under <code>/opt/ansible/roles/&lt;ibm-iot-operator&gt;/vars</code> folder, e.g. <code>/opt/ansible/roles/ibm-iot-actions/vars/size_medium.yml</code></li>
+</ul>
+<h2 id="connection-and-openshift-ingress-controllers">Connection and OpenShift Ingress Controllers<a class="headerlink" href="#connection-and-openshift-ingress-controllers" title="Permanent link"></a></h2>
+<p>Openshift HAProxy supports 20k connection per pod. The total connection determinants how many end devices can connect to IoT MSProxy. </p>
+<ul>
+<li>By default, <strong>IBM ROKS</strong> deploys 3 router members that supports 3x20k = 60K connection</li>
+<li>By default, <strong>AWS ROSA</strong> deploys 2 router members that supports 2x20k = 40K connection<ul>
+<li>use the below command to scale up to 3 router members:
+<code>oc patch -n openshift-ingress-operator ingresscontroller/default --patch '{"spec":{"replicas": 3}}' --type=merge</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="kafka">Kafka<a class="headerlink" href="#kafka" title="Permanent link"></a></h2>
+<p>IoT uses Kafka to process the messages. Follow the <a href="https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html#retention-ms">Kafka Configuration Reference</a> to configure best value for Kafka/Topics <code>retention.ms, retention.bytes, partitions, replics</code> to support the workload. </p>
+<h2 id="aws-msk">AWS MSK<a class="headerlink" href="#aws-msk" title="Permanent link"></a></h2>
+<ul>
+<li>configuration details can be found at <a href="https://docs.aws.amazon.com/msk/latest/developerguide/msk-default-configuration.html">https://docs.aws.amazon.com/msk/latest/developerguide/msk-default-configuration.html</a></li>
+<li><a href="../../aws/bestpractice/#amazon-msk">monitoring MSK</a> is strongly recommended</li>
+<li><a href="../../aws/bestpractice/#classic-load-balancer-idle-timeout">monitoring classic load-balance</a> is strongly recommend </li>
+</ul>
+<h2 id="message-rate-and-ethernet-network-bandwidth">Message Rate and Ethernet Network Bandwidth<a class="headerlink" href="#message-rate-and-ethernet-network-bandwidth" title="Permanent link"></a></h2>
+<p>Depending on the cloud providers, worker node instance has different network bandwidth. It determines how fast the end devices can send the request. Message rate is limited by the message size and the bandwidth of ethernet network. To achieve higher rates and/or larger messages it will require a 10GB ethernet. The network bandwidth also impacts the response latency. The higher bandwidth, the lower latency.  </p>
+<p>Below deployment configurations are recommended as starting value with medium and large workload. </p>
+<ul>
+<li>MSProxy - 4 MSProxies with 1 CPU and 4GB</li>
+<li>MessageGateWay - 1 MGW 6 CPUs and 16GB along with 4 TcpIop threads</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../core/bestpractice/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../manage/bestpractice/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

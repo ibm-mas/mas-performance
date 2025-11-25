@@ -1,0 +1,26 @@
+
+# customization for {masinstancename}
+
+# set template for {masinstancename}
+template(name="mc_{masinstancename_lc}" type="string" string="/var/log/rsyslog/{masinstancename}/mas-core-%$YEAR%-%$MONTH%-%$DAY%.log")
+template(name="mm_{masinstancename_lc}" type="string" string="/var/log/rsyslog/{masinstancename}/mas-manage-%$YEAR%-%$MONTH%-%$DAY%.log")
+template(name="mlr_{masinstancename_lc}" type="string" string="/var/log/rsyslog/{masinstancename}/manage-lrquery-%$YEAR%-%$MONTH%-%$DAY%.log")
+
+
+# add mas core access log for {masinstancename}
+if ($msg contains "mas-{masinstancename}-core") then {
+    action(type="omfile" dynaFile="mc_{masinstancename_lc}")
+    stop
+}
+
+# add mas manage ui access log for {masinstancename}
+if ($msg contains "mas-{masinstancename}-manage") then {
+    action(type="omfile" dynaFile="mm_{masinstancename_lc}")
+    stop
+}
+
+# add mas manage long runing query log for {masinstancename}
+if ($syslogtag contains "manage-lrquery") then {
+    action(type="omfile" dynaFile="mlr_{masinstancename_lc}")
+    stop
+}

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/mas/ocp/bestpractice/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>OpenShift Container Platform - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "OpenShift Container Platform";
+        var mkdocs_page_input_path = "mas/ocp/bestpractice.md";
+        var mkdocs_page_url = "/mas-performance/mas/ocp/bestpractice/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Best Practice</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">OpenShift Container Platform</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#cluster-insights-advisor">Cluster Insights Advisor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pid-limit-for-docker">PID limit for docker</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#haproxy-router">HAProxy Router</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#ingress-controller">Ingress Controller</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#max-connection">Max Connection</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#load-balance-algorithm">Load Balance Algorithm</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#master-and-worker-nodes-consideration">Master and Worker Nodes Consideration</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >MAS Manage</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../manage/bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MAS</li>
+          <li class="breadcrumb-item">Best Practice</li>
+      <li class="breadcrumb-item active">OpenShift Container Platform</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/mas/ocp/bestpractice.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="openshift-container-platform">OpenShift Container Platform<a class="headerlink" href="#openshift-container-platform" title="Permanent link"></a></h1>
+<h2 id="cluster-insights-advisor">Cluster Insights Advisor<a class="headerlink" href="#cluster-insights-advisor" title="Permanent link"></a></h2>
+<p>Highly recommend to use OpenShift cluster Insights Advisor that to check for any issue related to the current version, nodes and mis-configurations. It is the first step for the problem diagnosis. </p>
+<p>Steps:</p>
+<ul>
+<li>Login on OpenShift Console</li>
+<li>Go to Administration -&gt; Cluster Settings</li>
+<li>Click OpenShift Cluster Manager in Subscription section. It redirects the url to RedHat Hybrid Cloud Console</li>
+<li>Click Insights Advisor</li>
+</ul>
+<h2 id="pid-limit-for-docker">PID limit for docker<a class="headerlink" href="#pid-limit-for-docker" title="Permanent link"></a></h2>
+<p>This settings control how many processes can be run within one single container. If it is too small, it can cause folk bomb issue. E.g. db2w instance may be unavailable when there are thousands of connections/agents upcoming or Openshift Container Storage not behaving well with a large amount of PVCs. </p>
+<p><strong>OOB value for OCP platforms:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Platform Version</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IBM ROKS (4.8)</td>
+<td>231239</td>
+</tr>
+<tr>
+<td>AWS ROSA</td>
+<td><a href="https://access.redhat.com/articles/7033551">4096 in OpenShift 4.11 and higher</a></td>
+</tr>
+<tr>
+<td>Azure Self-Managed OCP</td>
+<td>1024</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Steps to check or update PID limit:</strong>
+<div class="highlight"><pre><span></span><code>$ oc debug node/$NODE_NAME
+$ chroot /host
+$ cat /etc/crio/crio.conf
+# add / modify the line &quot;pids_limit = &lt;new value&gt;&quot;
+# run belows commands to reboot services and worker nodes
+$ systemctl daemon-reload
+$ systemctl restart crio
+$ shutdown -r now
+</code></pre></div></p>
+<h2 id="haproxy-router">HAProxy Router<a class="headerlink" href="#haproxy-router" title="Permanent link"></a></h2>
+<h3 id="ingress-controller">Ingress Controller<a class="headerlink" href="#ingress-controller" title="Permanent link"></a></h3>
+<p>Openshift HAProxy supports up to 20k connections per pod. Consider to scale up ingress pod for any app (like IoT) with a high volume connection workload. </p>
+<p><strong>Scale up ingress controller</strong></p>
+<ul>
+<li><strong>command:</strong>  <code>oc patch -n openshift-ingress-operator ingresscontroller/default --patch '{"spec":{"replicas": 3}}' --type=merge</code></li>
+</ul>
+<h3 id="max-connection">Max Connection<a class="headerlink" href="#max-connection" title="Permanent link"></a></h3>
+<p>One of the most important tunable parameters for HAProxy scalability is the <code>maxconn</code> parameter. The router can handle a maximum number of 20k concurrent connections by using <code>oc adm router --max-connections=xxxxx</code>. This parameter will be impacted by node settings <code>sysctl fs.nr_open</code> and <code>sysctl fs.file-max</code>. HAproxy will not start if maxconn is high, but node setting is low. </p>
+<p><strong>Note:</strong> OpenShift Container Platform <strong>no longer</strong> supports modifying Ingress Controller deployments by setting environment variables such as ROUTER_THREADS, ROUTER_DEFAULT_TUNNEL_TIMEOUT, ROUTER_DEFAULT_CLIENT_TIMEOUT, ROUTER_DEFAULT_SERVER_TIMEOUT, and RELOAD_INTERVAL. You can modify the Ingress Controller deployment, but if the Ingress Operator is enabled, the configuration is overwritten.</p>
+<h3 id="load-balance-algorithm">Load Balance Algorithm<a class="headerlink" href="#load-balance-algorithm" title="Permanent link"></a></h3>
+<p>Starting from OCP 4.10, there have been four load-balancing algorithms available: <strong>source, roundrobin, random, and leastconn</strong>. The default algorithm is set to <strong>random</strong>. In earlier versions of OCP, before 4.10, there were three load-balancing algorithms: <strong>source, roundrobin, and leastconn</strong>. The default algorithm in those versions was <strong>leastconn</strong>. Set up annotations for each route to change the default algorithm if needed. e.g. <code>haproxy.router.openshift.io/balance=roundrobin</code></p>
+<h2 id="master-and-worker-nodes-consideration">Master and Worker Nodes Consideration<a class="headerlink" href="#master-and-worker-nodes-consideration" title="Permanent link"></a></h2>
+<p>There are a wide selection instance types that comprise varying combinations of CPU, memory, disk and network. Below are a few considerations:</p>
+<ul>
+<li>Each worker node will reserve about 1 core for internal services. In order to avoid the side effect of overcommit, 16core/64G is a good starting type for a normal worker node. A 8-core instance may not have insufficent capacity while 32-core instance may lose a big cluster capacity due to an outage or failure.   </li>
+<li>Using balanced CPU-memory worder nodes typically fits our work load -the ratio of CPU to memory is 1 to 4.</li>
+<li>An instance with a higher memory/cpu ratio e.g. 8:1 is recommended for database nodes. </li>
+<li>The number of worker nodes &gt;=3. This will give a high availability needing a smaller built in redundant capacity.</li>
+<li>For the product env, a 8core/32G is recommended for master nodes to avoid any bottleneck for the internal services. </li>
+<li>An instance with 10GB ethernet is strongly recommended for the production env. </li>
+<li>A minimum of 300GB storage per worker node is strongly recommended to accommodate MAS app build process requirements.</li>
+<li>Check the GPU chip type for gpu node selection. </li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../core/bestpractice/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

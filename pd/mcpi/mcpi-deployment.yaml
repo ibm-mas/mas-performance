@@ -1,0 +1,66 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: maximo-cpi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcpi-deployment
+  namespace: maximo-cpi
+  labels:
+    app: mcpi
+spec:
+  replicas: 1
+  imagePullPolicy: Always
+  selector:
+    matchLabels:
+      app: mcpi
+  template:
+    metadata:
+      labels:
+        app: mcpi
+    spec:
+      #securityContext:
+      #  runAsUser: 0  # no specify, the openshift uses the restricted by default
+      # serviceAccountName: mcpi
+      #imagePullSecrets:
+      #  - name: ibm-entitlement
+      containers:
+        - name: mcpi
+          image: quay.io/brianzhu_ibm/mcpi:latest
+          env:
+            - name: INCLUSTER
+              value: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcpi-service
+  namespace: maximo-cpi
+spec:
+  selector:
+    app: mcpi
+  ports:
+    - name: viewer-port
+      protocol: TCP
+      port: 8888
+      targetPort: 8888
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: mcpi-viewer-route
+  namespace: maximo-cpi
+  labels: {}
+spec:
+  to:
+    kind: Service
+    name: mcpi-service
+    weight: 100
+  port:
+    targetPort: viewer-port
+  tls:
+    termination: edge
+  wildcardPolicy: None

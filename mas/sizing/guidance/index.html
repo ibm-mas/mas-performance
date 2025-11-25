@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/mas/sizing/guidance/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Sizing Guidance - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Sizing Guidance";
+        var mkdocs_page_input_path = "mas/sizing/guidance.md";
+        var mkdocs_page_url = "/mas-performance/mas/sizing/guidance/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >Best Practice</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >MAS Manage</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../manage/bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Sizing Guidance</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#sizing-calculation-sheet">Sizing Calculation Sheet</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#factors-that-impact-the-sizing-consideration">Factors that impact the sizing consideration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#openshift">OpenShift</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ocs-openshift-container-storage">OCS (OpenShift Container Storage)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#odf-openshift-data-foundation">ODF (OpenShift Data Foundation)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cp4ddb2w-minimum-resource-requirement">CP4D/DB2W Minimum Resource Requirement</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mas-manage">MAS Manage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ai-service">AI Service</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mas-resource-statistics">MAS Resource Statistics</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MAS</li>
+      <li class="breadcrumb-item active">Sizing Guidance</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/mas/sizing/guidance.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sizing-guidance">Sizing Guidance<a class="headerlink" href="#sizing-guidance" title="Permanent link"></a></h1>
+<div class="admonition danger">
+<p class="admonition-title">Critical Note</p>
+<ul>
+<li>The sizing number in this page is based on a standard workload. Used as reference only.</li>
+<li>The current calculator lacks information about the storage size for worker nodes. We are working on an update now. A minimum of 300GB of storage per worker node is strongly recommended to meet the requirements of the MAS app build process. </li>
+</ul>
+</div>
+<h2 id="sizing-calculation-sheet">Sizing Calculation Sheet<a class="headerlink" href="#sizing-calculation-sheet" title="Permanent link"></a></h2>
+<p>Use <a href="https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=premises-requirements-capacity-planning">Sizing Calculation Sheet</a> for MAS sizing. </p>
+<h2 id="factors-that-impact-the-sizing-consideration">Factors that impact the sizing consideration<a class="headerlink" href="#factors-that-impact-the-sizing-consideration" title="Permanent link"></a></h2>
+<ul>
+<li>storage operator: e.g. ocs, odf...</li>
+<li>cp4d services: e.g. db2w, watson studio...</li>
+<li>mongodb service</li>
+<li>kafka service</li>
+</ul>
+<h3 id="openshift">OpenShift<a class="headerlink" href="#openshift" title="Permanent link"></a></h3>
+<p>It is recommended to keep the CPU limit and Memory limit overcommit levels below 300% to prevent potential node pressure. In most cases, if the CPU limit and Memory limit overcommit levels below 300% this should be sufficient to avoid node pressure.</p>
+<h3 id="ocs-openshift-container-storage">OCS (OpenShift Container Storage)<a class="headerlink" href="#ocs-openshift-container-storage" title="Permanent link"></a></h3>
+<p>If using OCS to manage the storage class, OCS service itself requires minimum 3 nodes with 14 core / 32G (Note: this is the total request amount, not per node).</p>
+<h3 id="odf-openshift-data-foundation">ODF (OpenShift Data Foundation)<a class="headerlink" href="#odf-openshift-data-foundation" title="Permanent link"></a></h3>
+<p>3 OCP nodes will run ODF services. (NOTE: OCP clusters often contain additional OCP worker nodes which do not run ODF services.)
+Each OCP node running ODF services has:16 core / 64 GB memory</p>
+<h3 id="cp4ddb2w-minimum-resource-requirement">CP4D/DB2W Minimum Resource Requirement<a class="headerlink" href="#cp4ddb2w-minimum-resource-requirement" title="Permanent link"></a></h3>
+<ul>
+<li>When running CP4D/DB2W on OpenShift's worknode, each instance requires at least <strong>6.1 core and 18G ram</strong>. Note: an instance pod cannot be scheduled if the node's (total capacity - total limit) is less than 6.1 core or 18G ram,</li>
+<li>a dedicated worker node or external db is recommended. </li>
+<li>db2 operator is an alternative. </li>
+</ul>
+<h2 id="mas-manage">MAS Manage<a class="headerlink" href="#mas-manage" title="Permanent link"></a></h2>
+<p>Based on the benchmark results, for sizing we recommend 50 - 75 user load per MAS Manage UI server bundle pod, which is equivalent to a JVM with 2 core on Maximo 7.6.x.</p>
+<h2 id="ai-service">AI Service<a class="headerlink" href="#ai-service" title="Permanent link"></a></h2>
+<p>Based on the benchmark results, nl2oslc models should be configured with 20 workers and 8Gi of memory (MAX_INFERENCE_MEMORY), to improve parallelism of inference requests. At the time of this writing the Watson X service is the primary bottleneck. Additionally, the Watson X service imposes an upper limit of 8 requests per second per apikey.</p>
+<h2 id="mas-resource-statistics">MAS Resource Statistics<a class="headerlink" href="#mas-resource-statistics" title="Permanent link"></a></h2>
+<ul>
+<li>use below values as reference only. </li>
+<li>the footprint is based on the loads and spec settings. e.g. IoT T-shirt size, Manage bundle and replic #</li>
+<li>the value below is based on IoT small T-shirt size and Manage with only all-in-one bundle and replic =1</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>App</th>
+<th>CPU Request (core)</th>
+<th>CPU   Limits (core)</th>
+<th>Memory Rquest (GB)</th>
+<th>Memory Limits(GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add</td>
+<td>6</td>
+<td>12</td>
+<td>13</td>
+<td>26</td>
+</tr>
+<tr>
+<td>Assist</td>
+<td>12.4</td>
+<td>57.7</td>
+<td>19.46</td>
+<td>62.38</td>
+</tr>
+<tr>
+<td>Core</td>
+<td>1.5</td>
+<td>18.95</td>
+<td>6.27</td>
+<td>32.5</td>
+</tr>
+<tr>
+<td>Health</td>
+<td>2.9</td>
+<td>15.6</td>
+<td>7.12</td>
+<td>30.84</td>
+</tr>
+<tr>
+<td>IoT</td>
+<td>19.66</td>
+<td>214.65</td>
+<td>57.08</td>
+<td>269</td>
+</tr>
+<tr>
+<td>Manage</td>
+<td>2.9</td>
+<td>11.1</td>
+<td>4.04</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Monitor</td>
+<td>5.4</td>
+<td>32.4</td>
+<td>12.84</td>
+<td>55.5</td>
+</tr>
+<tr>
+<td>Optimizer</td>
+<td>7.4</td>
+<td>19.3</td>
+<td>25.57</td>
+<td>117</td>
+</tr>
+<tr>
+<td>Predict</td>
+<td>3.1</td>
+<td>12.5</td>
+<td>6.13</td>
+<td>24.5</td>
+</tr>
+<tr>
+<td><strong>Additional cost</strong></td>
+<td>- - - - - - -</td>
+<td>- - - - - - -</td>
+<td>- - - - - - - - - - -</td>
+<td>- - - - - - - - - - -</td>
+</tr>
+<tr>
+<td>ocs*</td>
+<td>14</td>
+<td>32</td>
+<td>14</td>
+<td>32</td>
+</tr>
+<tr>
+<td>cp4d (with 2 db2w instances)*</td>
+<td>31.59</td>
+<td>40.7</td>
+<td>235.39</td>
+<td>249.70</td>
+</tr>
+<tr>
+<td>each additional manage pod*</td>
+<td>1</td>
+<td>6</td>
+<td>2</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../mongodb/bestpractice/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../monitoring/guidance/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

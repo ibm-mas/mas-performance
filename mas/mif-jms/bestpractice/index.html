@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/mas/mif-jms/bestpractice/" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>JMS - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "JMS";
+        var mkdocs_page_input_path = "mas/mif-jms/bestpractice.md";
+        var mkdocs_page_url = "/mas-performance/mas/mif-jms/bestpractice/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" >Best Practice</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" >MAS Manage</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../../manage/bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" >Integration Framework (MIF)</a>
+    <ul class="current">
+                <li class="toctree-l4 current"><a class="reference internal current" href="#">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../manage/woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://ibm-maximo-dev.github.io/maximo-autoscript-documentation/bestpractice/overview">Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../../pd/dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../pd/jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">MAS</li>
+          <li class="breadcrumb-item">Best Practice</li>
+          <li class="breadcrumb-item">MAS Manage</li>
+          <li class="breadcrumb-item">Integration Framework (MIF)</li>
+      <li class="breadcrumb-item active">JMS</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/mas/mif-jms/bestpractice.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mas-manage-mifjms">MAS Manage MIF/JMS<a class="headerlink" href="#mas-manage-mifjms" title="Permanent link"></a></h1>
+<h2 id="lab-result-highlights">Lab Result Highlights<a class="headerlink" href="#lab-result-highlights" title="Permanent link"></a></h2>
+<ul>
+<li>
+<p>The lab results indicate a significant correlation between the transaction per second (TPS) and database disk IO utilization. This correlation suggests that the level of transactional activity directly impacts the IO workload on the database disk. Conversely, the IO workload acts as a limitation on the system's ability to handle a larger volume of transactions.
+<img alt="TPS" src="../tps.png" /></p>
+</li>
+<li>
+<p>When IO is not the limiting factor, increasing the number of MEA Pods can positively impact the processing performance.</p>
+</li>
+<li>
+<p>Increasing the Message-Driven Bean (MDB) instances can potentially have a positive impact on system performance. It is recommended to adjust the number of records per message, the # of MDB and the batch size. By finding the right balance, you can target a resource usage of around 2 cores and 4-7GB of RAM that can help ensure efficient utilization without overburdening the MEA pods.</p>
+</li>
+<li>
+<p>Based on the lab results, it has been observed that a large number of internal error messages have a substantial impact on processing throughput.</p>
+</li>
+<li>
+<p>Under a certain circumstance, the configuration parameter mxe.int.splitdataonpost does not demonstrate a positive impact. To validate its effectiveness, it is recommended to perform a dry run in your specific environment for verification.</p>
+</li>
+</ul>
+<h2 id="performance-troubleshooting-checklist">Performance Troubleshooting Checklist<a class="headerlink" href="#performance-troubleshooting-checklist" title="Permanent link"></a></h2>
+<p>To troubleshoot and optimize performance, follow this checklist:</p>
+<ul>
+<li>Ensure adherence to best practices for optimizing performance in your DB, Openshift, and MAS environments.</li>
+<li>Monitor disk IO utilization of the database and maintain it within acceptable limits to avoid performance degradation due to saturated disk resources.</li>
+<li>Adjust the number of records per message and the MDB/batch size to effectively manage resource utilization of MEA pods. Aim for a resource consumption range of approximately 2 cores and 4-7 GB.</li>
+<li>Regularly check the message queue to prevent it from becoming empty, ensuring a steady flow of messages for processing.</li>
+<li>Minimize the occurrence of integration error messages as they can significantly impact processing throughput. Pay attention to a high volume of internal error messages and investigate the message reprocessing application for further insights.</li>
+<li>Set a sufficiently large value for <code>maxMessageDepth</code> to avoid message queue overflow. It is recommended to match SIBus's default value of at least 500,000.</li>
+<li>When the need for additional MEA pods arises, consider scaling up the number of worker nodes to accommodate the increased demand effectively.</li>
+</ul>
+<h2 id="test-methodologies">Test Methodologies<a class="headerlink" href="#test-methodologies" title="Permanent link"></a></h2>
+<ul>
+<li>
+<p>Establish a monitoring system to track essential performance metrics throughout the testing process.</p>
+</li>
+<li>
+<p>Begin with a dry run using a single MEA pod to establish a baseline benchmark for performance evaluation.</p>
+</li>
+<li>
+<p>Adjust the Message-Driven Bean (MDB) and BatchSize parameters to optimize resource utilization within an appropriate range for the MEA pod.</p>
+</li>
+<li>
+<p>Scale up the number of MEA pods as needed to meet performance requirements and accommodate increased workload.</p>
+</li>
+<li>
+<p>Continuously monitor and assess the performance of both the database and the application to identify any bottlenecks or areas for improvement.</p>
+</li>
+</ul>
+<p>By following these test methodologies, you can effectively monitor and optimize the performance of your system, ensuring efficient resource utilization and maintaining satisfactory levels of performance.</p>
+<h2 id="major-performance-related-factors-for-mif">Major Performance Related Factors for MIF<a class="headerlink" href="#major-performance-related-factors-for-mif" title="Permanent link"></a></h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Configuration</th>
+<th>Adjustable or Scalable</th>
+<th>Observeration &amp; Best   Practice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JMS /   MIF</td>
+<td>maxMessageDepth</td>
+<td>Yes</td>
+<td>Make it large enough. If it is   too small, when the queue is full, the process fails and may be hard to   recover. Recommend 500,000 same as SIBus</td>
+</tr>
+<tr>
+<td></td>
+<td>maxEndpoints</td>
+<td>Yes</td>
+<td>Limit the maxConcurrency</td>
+</tr>
+<tr>
+<td></td>
+<td>MDB(maxConcurrency)</td>
+<td>Yes</td>
+<td>Alone with BatchSize will   impact processing speed and MEA pods resouce utliitzation</td>
+</tr>
+<tr>
+<td></td>
+<td>BatchSize(maxBatchSize)</td>
+<td>Yes</td>
+<td>Alone with MDB will impact   processing speed and MEA pods resouce utliitzation</td>
+</tr>
+<tr>
+<td>Maximo</td>
+<td>#   of JMS Pod</td>
+<td>Yes</td>
+<td>1 JMS Server works well in   benchmark test. It does not consume a significant resource</td>
+</tr>
+<tr>
+<td></td>
+<td># of MEA Pod</td>
+<td>Yes</td>
+<td>Able to linear scale</td>
+</tr>
+<tr>
+<td></td>
+<td>MEA CPU / MEM   Usage</td>
+<td>Yes</td>
+<td>Adjust JMS/MDB and BatchSize to   control MEA pods resources in a reasonable range e.g. (2 - 3 core / 4 -7G)</td>
+</tr>
+<tr>
+<td></td>
+<td>JMS CPU / MEM   Usage</td>
+<td>Yes</td>
+<td>Default setting works well in   the benchmark test</td>
+</tr>
+<tr>
+<td></td>
+<td>DB CPU / MEM   Usage</td>
+<td>Yes</td>
+<td>Ensure DB has sufficient   resource</td>
+</tr>
+<tr>
+<td></td>
+<td>DB Disk IO Util   %</td>
+<td>Yes, but sometime it is hard to adjust</td>
+<td>Disk IO throughput is critial   for the overall processing</td>
+</tr>
+<tr>
+<td></td>
+<td>DB Lock Holds</td>
+<td>N/A</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>DB Tuning: Long   Running Query, # of Appl, Memory..</td>
+<td>Yes</td>
+<td>Follow the best practice to   tune DB</td>
+</tr>
+<tr>
+<td></td>
+<td>Maximo Sequence   Cache</td>
+<td>Yes</td>
+<td>a reasonable # e.g. 20 or 50   can reduce the db cpu and processing time</td>
+</tr>
+<tr>
+<td></td>
+<td>mxe.int.splitdataonpost</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td>Message</td>
+<td>#   of record per Message</td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>data structure   (complexity of the record)</td>
+<td>N/A</td>
+<td>Impacts performance because of   business logic check</td>
+</tr>
+<tr>
+<td></td>
+<td>Record Quality   (record cannot be processed)</td>
+<td>Yes</td>
+<td>A large amount of int error   messages slow down the overall processing speed</td>
+</tr>
+<tr>
+<td>Misc</td>
+<td>Method   &amp; Speed to post message into queue</td>
+<td>Yes</td>
+<td>Ensure message post (writing to   queue) as fast as possible. A slow pacing lowes the env processing capacity.</td>
+</tr>
+<tr>
+<td></td>
+<td>Any other   concurrent transactions</td>
+<td>N/A</td>
+<td>other concurrency workloads   impact the processing time</td>
+</tr>
+<tr>
+<td></td>
+<td>Worker Node   Capacity</td>
+<td>Yes</td>
+<td>Worker Node Capacity may limit   working pod (e.g. MEA) capacity. Pod distribution should also be considered.</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../mobile/bestpractice/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../mif-kafka/bestpractice/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
