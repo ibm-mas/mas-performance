@@ -7,6 +7,7 @@ The following are the key components/dependencies that require scaling as the nu
 - MongoDB (used extensively by coreidp, api-licensing, adoptionusage, and other MAS/SLS microservices)
 - MAS core namespace:
     - coreidp pods
+    - coreidp-login pod
     - licencing-mediator pods
     - coreapi pods (if users directly login to a MAS application, bypassing the Suite navigator page, this decreases the load on coreapi pods)
 - SLS namespace:
@@ -84,6 +85,12 @@ The table below provides some general guidance on scaling the coreidp service ba
 |300                       |1                 |6                 |1                          |
 |600                       |2                 |6                 |2                          |
 |1200                      |4                 |6                 |3                          |
+
+### Scaling coreidp-login service (MAS core namespace)
+For larger workloads it may be necessary to scale the cpu and memory limits of coreidp-login pod as follows:
+
+- cpu limit: "2"
+- memory limit: 1Gi
 
 ### Scaling licensing-mediator service (MAS core namespace)
 The table below provides some general guidance on scaling the licensing-mediator service based on number of concurrent users and login rate. The coreidp service calls the licensing-mediator service which in turn calls the api-licensing service in the SLS namespace for license checkin/checkout operations. To scale the licensing-mediator service use the [podTemplates workload customization](https://www.ibm.com/docs/en/mas-cd/continuous-delivery?topic=workloads-supported-pods) feature in MAS.
