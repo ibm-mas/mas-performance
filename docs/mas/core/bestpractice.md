@@ -122,5 +122,8 @@ The table below provides some general guidance on scaling the coreapi service ba
 |75                        |3                 |1                 |2                         |
 |150                       |3                 |1                 |2                         |
 |300                       |3                 |1                 |2                         |
-|600                       |3                 |2                 |2                         |
-|1200                      |3                 |3                 |2                         |
+|600                       |3                 |2                 |4                         |
+|1200                      |4                 |2                 |4                         |
+
+!!!NOTE
+    For most workloads it is recommended to maintain a cpu:memory pod limit ratio of 1 core:2Gi memory.
