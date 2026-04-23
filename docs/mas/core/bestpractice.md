@@ -126,4 +126,4 @@ The table below provides some general guidance on scaling the coreapi service ba
 |1200                      |4                 |2                 |4                         |
 
 !!!NOTE
-    For most workloads it is recommended to maintain a cpu:memory pod limit ratio of 1 core:2Gi memory.
+    For most workloads it is recommended to maintain a cpu:memory pod limit ratio of 1 core:2Gi memory for coreapi pods.
