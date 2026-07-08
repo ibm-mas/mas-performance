@@ -24,6 +24,200 @@ To troubleshoot and optimize performance, follow this checklist:
 - Minimize the occurrence of integration error messages as they can significantly impact processing throughput. Pay attention to a high volume of internal error messages and investigate the message reprocessing application for further insights.
 - Set a sufficiently large value for `maxMessageDepth` to avoid message queue overflow. It is recommended to match SIBus's default value of at least 500,000.
 - When the need for additional MEA pods arises, consider scaling up the number of worker nodes to accommodate the increased demand effectively.
+- Make sure the JMS pod is writing/reading to disk storage with 10 MB/s IOPs write throughput and sub-millisecond average and median disk write latency. Here are directions for checking the performance of your JMS pod:
+    - Find the pod name of the JMS pod: ```oc -n mas-masinst1-manage get pods -l "mas.ibm.com/appTypeName=jms" -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'```
+    - Create a file called `disk-iops-and-latency-test.py` that contains the following content:
+```python
+#!/usr/bin/env python3
+"""
+Disk Write IOPS and Latency Tester for Linux
+Tests random write performance with configurable parameters
+"""
+
+import os
+import sys
+import time
+import statistics
+
+def test_disk_performance(filename, iterations=1000, block_size=4096, use_direct_io=True):
+    """
+    Test disk write IOPS and latency
+    
+    Args:
+        filename: Path to test file
+        iterations: Number of write operations
+        block_size: Size of each write in bytes (default 4KB)
+        use_direct_io: Use O_DIRECT to bypass cache (default True)
+    """
+    latencies = []
+    
+    # Open file with appropriate flags
+    flags = os.O_WRONLY | os.O_CREAT | os.O_TRUNC
+    if use_direct_io:
+        flags |= os.O_DIRECT | os.O_SYNC
+    
+    try:
+        fd = os.open(filename, flags)
+    except OSError as e:
+        print(f"Error opening file: {e}")
+        print("Note: O_DIRECT may require block-aligned I/O or may not be supported on all filesystems")
+        return
+    
+    # Prepare data buffer (must be aligned for O_DIRECT)
+    data = b'x' * block_size
+    
+    print("Testing disk write performance...")
+    print(f"File: {filename}")
+    print(f"Block size: {block_size} bytes")
+    print(f"Iterations: {iterations}")
+    print(f"Direct I/O: {use_direct_io}")
+    print("\nRunning test...\n")
+    
+    # Measure total time and individual write latencies
+    start_time = time.perf_counter()
+    
+    for i in range(iterations):
+        write_start = time.perf_counter()
+        try:
+            os.write(fd, data)
+        except OSError as e:
+            print(f"Write error at iteration {i}: {e}")
+            break
+        write_end = time.perf_counter()
+        latencies.append((write_end - write_start) * 1000)  # Convert to ms
+        
+        # Progress indicator every 100 iterations
+        # if (i + 1) % 100 == 0:
+        #     print(f"Progress: {i + 1}/{iterations} writes completed")
+    
+    total_time = time.perf_counter() - start_time
+    os.close(fd)
+    
+    # Calculate metrics
+    if not latencies:
+        print("No successful writes completed")
+        return
+    
+    iops = len(latencies) / total_time
+    avg_latency = statistics.mean(latencies)
+    median_latency = statistics.median(latencies)
+    stdev_latency = statistics.stdev(latencies) if len(latencies) > 1 else 0
+    min_latency = min(latencies)
+    max_latency = max(latencies)
+    
+    # Calculate percentiles
+    sorted_latencies = sorted(latencies)
+    p50 = sorted_latencies[int(len(sorted_latencies) * 0.50)]
+    p95 = sorted_latencies[int(len(sorted_latencies) * 0.95)]
+    p99 = sorted_latencies[int(len(sorted_latencies) * 0.99)]
+    p999 = sorted_latencies[int(len(sorted_latencies) * 0.999)]
+    
+    # Calculate throughput
+    total_bytes = len(latencies) * block_size
+    throughput_mbs = (total_bytes / (1024 * 1024)) / total_time
+    
+    # Print results
+    print("="*60)
+    print("DISK WRITE PERFORMANCE RESULTS")
+    print("="*60)
+    print("\nIOPS Metrics:")
+    print(f"  Write IOPS:           {iops:,.2f} ops/sec")
+    print(f"  Throughput:           {throughput_mbs:.2f} MB/s")
+    print(f"  Total operations:     {len(latencies):,}")
+    print(f"  Total time:           {total_time:.2f} seconds")
+    print(f"  Total data written:   {total_bytes / (1024*1024):.2f} MB")
+    
+    print("\nLatency Metrics (milliseconds):")
+    print(f"  Average:              {avg_latency:.3f} ms")
+    print(f"  Median (P50):         {median_latency:.3f} ms")
+    print(f"  Std Deviation:        {stdev_latency:.3f} ms")
+    print(f"  Minimum:              {min_latency:.3f} ms")
+    print(f"  Maximum:              {max_latency:.3f} ms")
+    
+    print("\nLatency Percentiles:")
+    print(f"  P50 (median):         {p50:.3f} ms")
+    print(f"  P95:                  {p95:.3f} ms")
+    print(f"  P99:                  {p99:.3f} ms")
+    print(f"  P99.9:                {p999:.3f} ms")
+    print("="*60)
+    
+    # Cleanup
+    try:
+        os.remove(filename)
+        print(f"\nTest file removed: {filename}")
+    except OSError:
+        print(f"\nWarning: Could not remove test file: {filename}")
+
+def main():
+    # Parse command line arguments
+    if len(sys.argv) < 2:
+        print("Usage: python3 disk_test.py <test_file_path> [iterations] [block_size]")
+        print("\nExample:")
+        print("  python3 disk_test.py /tmp/test_file 1000 4096")
+        print("\nArguments:")
+        print("  test_file_path: Path where test file will be created")
+        print("  iterations:     Number of write operations (default: 1000)")
+        print("  block_size:     Size of each write in bytes (default: 4096)")
+        print("  use_direct_io:  Specify 0 to disable use Direct IO (default: 1)")
+        sys.exit(1)
+    
+    filename = sys.argv[1]
+    iterations = int(sys.argv[2]) if len(sys.argv) > 2 else 1000
+    block_size = int(sys.argv[3]) if len(sys.argv) > 3 else 4096
+    use_direct_io = int(sys.argv[4]) if len(sys.argv) > 4 else 1
+    if use_direct_io == 1:
+        use_direct_io = True
+    else:
+        use_direct_io = False
+    
+    # Run the test
+    test_disk_performance(filename, iterations, block_size, use_direct_io)
+
+if __name__ == "__main__":
+    main()
+```
+
+- Make the script executable: `chmod +x disk-iops-and-latency-test.py`
+- Copy this file to the /tmp directory on the JMS pod: ```oc -n <mas_manage_namespace> cp disk-iops-and-latency-test.py <manage_jms_pod_name>:/tmp/disk-iops-and-latency-test.py```
+- Run the script using oc exec: ```oc -n <mas_manage_namespace> exec -it <manage_jms_pod_name> -- /tmp/disk-iops-and-latency-test.py /jms/write-test.out 1000 4096```
+- You should see output similar to this (although, the numbers were almost certainly be different, of course):
+```bash
+============================================================
+DISK WRITE PERFORMANCE RESULTS
+============================================================
+
+IOPS Metrics:
+  Write IOPS:           2,076.37 ops/sec
+  Throughput:           8.11 MB/s
+  Total operations:     1,000
+  Total time:           0.48 seconds
+  Total data written:   3.91 MB
+
+Latency Metrics (milliseconds):
+  Average:              0.480 ms
+  Median (P50):         0.499 ms
+  Std Deviation:        0.064 ms
+  Minimum:              0.342 ms
+  Maximum:              1.054 ms
+
+Latency Percentiles:
+  P50 (median):         0.500 ms
+  P95:                  0.549 ms
+  P99:                  0.601 ms
+  P99.9:                1.054 ms
+============================================================
+```
+- The fields to play attention to are the "Write IOPS" and "Average" and "Median" Latency Metrics.
+- If you get an error like this while running it:
+```bash
+Write error at iteration 0: [Errno 22] Invalid argument
+```
+you may be testing storage that does not support Direct I/O, so you will need to call the script like this:
+```bash
+oc -n mas-masinst1-manage exec -it masinst1-tenant1-jms-0 -- /tmp/disk-iops-and-latency-test.py /jms/write-test.out 1000 4096 0
+```
+The additional "0" argument at the end disables Direct I/O.
+
 
 ## Test Methodologies
 
