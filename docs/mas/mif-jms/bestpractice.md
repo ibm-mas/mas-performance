@@ -24,9 +24,9 @@ To troubleshoot and optimize performance, follow this checklist:
 - Minimize the occurrence of integration error messages as they can significantly impact processing throughput. Pay attention to a high volume of internal error messages and investigate the message reprocessing application for further insights.
 - Set a sufficiently large value for `maxMessageDepth` to avoid message queue overflow. It is recommended to match SIBus's default value of at least 500,000.
 - When the need for additional MEA pods arises, consider scaling up the number of worker nodes to accommodate the increased demand effectively.
-- Make sure the JMS pod is writing/reading to disk storage with at least 10 MB/s IOPs write throughput and sub-millisecond average and median disk write latency. Here are directions for checking the disk performance of your JMS pod:
+- Ensure the persistent volume used by the JMS pod supports a minimum disk throughput of 10 MB/s and provides sub-millisecond average disk write latency. Here are directions for checking the disk performance of your JMS pod:
     - Find the pod name of the JMS pod: ```oc -n mas-masinst1-manage get pods -l "mas.ibm.com/appTypeName=jms" -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}'```
-    - Download the `disk-iops-and-latency-test.py` script with curl: ```curl -L -v -o run-dbtest-in-maxinst-pod.sh https://ibm-mas.github.io/mas-performance/pd/download/disk-iops-and-latency-test.py```
+    - Download the [disk-iops-and-latency-test.py](../../pd/download/disk-iops-and-latency-test.py) script with curl: ```curl -L -v -o disk-iops-and-latency-test.py https://ibm-mas.github.io/mas-performance/pd/download/disk-iops-and-latency-test.py```
     - Make the script executable: ```chmod +x disk-iops-and-latency-test.py```
     - Copy this file to the /tmp directory on the JMS pod: ```oc -n <mas_manage_namespace> cp disk-iops-and-latency-test.py <manage_jms_pod_name>:/tmp/disk-iops-and-latency-test.py```
     - Run the script using oc exec: ```oc -n <mas_manage_namespace> exec -it <manage_jms_pod_name> -- /tmp/disk-iops-and-latency-test.py /jms/write-test.out 1000 4096```
@@ -38,9 +38,9 @@ DISK WRITE PERFORMANCE RESULTS
 
 IOPS Metrics:
   Write IOPS:           2,076.37 ops/sec
-  Throughput:           8.11 MB/s
+  Throughput:           10.28 MB/s
   Total operations:     1,000
-  Total time:           0.48 seconds
+  Total time:           0.38 seconds
   Total data written:   3.91 MB
 
 Latency Metrics (milliseconds):
@@ -57,7 +57,7 @@ Latency Percentiles:
   P99.9:                1.054 ms
 ============================================================
 ```
-- The fields to focus on are "Throughput" and "Average" and "Median" Latency Metrics.
+- The fields to focus on are "Throughput" and "Average" Latency Metrics.
 
 ## Test Methodologies
 
