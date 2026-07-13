@@ -42,7 +42,7 @@ nav:
       - 'MAS Manage': pd/dbtest.md
       - 'Maximo 7.6': pd/dbtest-76.md
     - 'PingTest Utility': pd/pingtest.md
-    - 'Disk IOPS and Latency Checker': pd/disk-iops-and-latency-test.md
+    - 'Disk IOPS and Latency Checker': pd/disk-iops-and-latency.md
     - 'IBM Maximo Cluster Performance Insights': https://ibm-mas.github.io/mcpi/ #pd/mcpi/maximo-cpi.md
     - 'JVM Performance Insight': pd/jvm-performance-insight.md
   - 'Reference':

@@ -24,7 +24,7 @@ To troubleshoot and optimize performance, follow this checklist:
 - Minimize the occurrence of integration error messages as they can significantly impact processing throughput. Pay attention to a high volume of internal error messages and investigate the message reprocessing application for further insights.
 - Set a sufficiently large value for `maxMessageDepth` to avoid message queue overflow. It is recommended to match SIBus's default value of at least 500,000.
 - When the need for additional MEA pods arises, consider scaling up the number of worker nodes to accommodate the increased demand effectively.
-- Ensure the persistent volume used by the JMS pod supports sub-millisecond average disk write latency.
+- Ensure the persistent volume used by the JMS pod supports sub-millisecond average disk write latency. See the [Disk IOPS and latency checker script](../../pd/disk-iops-and-latency.md) for a tool to check for write latency of storage.
 ## Test Methodologies
 
 - Establish a monitoring system to track essential performance metrics throughout the testing process.
