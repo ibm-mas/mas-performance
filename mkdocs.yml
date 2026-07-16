@@ -27,7 +27,9 @@ nav:
         - "Automation Scripting Best Practice": https://www.ibm.com/docs/en/masv-and-l/maximo-manage/cd?topic=scripts-scripting-best-practices
       - 'MAS Visual Inspection': mas/mvi/bestpractice.md
       - 'AWS': mas/aws/bestpractice.md
-      - 'IBM Cloud': mas/ibmcloud/bestpractice.md
+      - 'IBM Cloud':
+          - 'Best practices': mas/ibmcloud/bestpractice.md
+          - 'ROKS Storage (VPC vs Classic infrastructure) comparative benchmark': mas/ibmcloud/vpc-vs-classic-storage.md
       - 'Azure': mas/azure/bestpractice.md
       - 'MongoDB': mas/mongodb/bestpractice.md
     - 'Sizing Guidance': mas/sizing/guidance.md

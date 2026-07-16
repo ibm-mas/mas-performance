@@ -2,7 +2,7 @@
 
 ## IBM Storage
 
-IBM Cloud provides both block and file storages for OCP. Both storages support ReadWriteMany access. If the app requires a high-performance disks, consider to setup custom performance storageclass as blow:
+IBM Cloud provides both block and file storages for OCP. Both storages support ReadWriteMany access. If the app requires a high-performance disks, consider to setup custom performance storageclass as below:
 
 
 **block storage sample yaml**
