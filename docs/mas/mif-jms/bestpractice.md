@@ -24,17 +24,27 @@ To troubleshoot and optimize performance, follow this checklist:
 - Minimize the occurrence of integration error messages as they can significantly impact processing throughput. Pay attention to a high volume of internal error messages and investigate the message reprocessing application for further insights.
 - Set a sufficiently large value for `maxMessageDepth` to avoid message queue overflow. It is recommended to match SIBus's default value of at least 500,000.
 - When the need for additional MEA pods arises, consider scaling up the number of worker nodes to accommodate the increased demand effectively.
-- Ensure the persistent volume used by the JMS pod supports sub-millisecond average disk write latency. See the [Disk IOPS and latency checker script](../../pd/disk-iops-and-latency.md) for a tool to check for write latency of storage.
+- JMS commit delays caused by high fsync latency and insufficient IOPS on the message store volume can be a major contributor to poor performance. Ensure the persistent volume used by the JMS pod supports sub-millisecond average disk write latency. See the [Disk IOPS and latency checker script](../../pd/disk-iops-and-latency.md) for a tool to check for write latency of storage. You can check the thread dumps in the cron pods and look for `psdi/iface/jms/JMSClient.commitTx` in the thread stacks, which might indicate a delay in the JMS commit.  Also check thread dumps in the JMS pod for `LogBuffer.waitForFlush` in the thread stacks, which might indicate a delay in flushing the commit to disk. The flow is as follows:
+
+```
+Producer thread:  exchange() → waitToComplete() [blocked, network]
+        ↓ (request delivered)
+ME dispatcher thread: rcvXACommit() → ... → LogBuffer.waitForFlush() [blocked HERE, this stack]
+        ↓ (waiting on)
+FlushHelper thread: fsync() the log file to disk
+        ↓ (once done, notifies LogBuffer)
+ME dispatcher thread: resumes, sends commit-ack back over JFAP
+        ↓
+Producer thread: waitToComplete() returns
+```
+
+
 ## Test Methodologies
 
 - Establish a monitoring system to track essential performance metrics throughout the testing process.
-
 - Begin with a dry run using a single MEA pod to establish a baseline benchmark for performance evaluation.
-
 - Adjust the Message-Driven Bean (MDB) and BatchSize parameters to optimize resource utilization within an appropriate range for the MEA pod.
-
 - Scale up the number of MEA pods as needed to meet performance requirements and accommodate increased workload.
-
 - Continuously monitor and assess the performance of both the database and the application to identify any bottlenecks or areas for improvement.
 
 By following these test methodologies, you can effectively monitor and optimize the performance of your system, ensuring efficient resource utilization and maintaining satisfactory levels of performance.
