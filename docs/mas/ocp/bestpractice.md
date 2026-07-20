@@ -13,7 +13,7 @@ Steps:
 
 ## PID limit for docker
 
-This settings control how many processes can be run within one single container. If it is too small, it can cause folk bomb issue. E.g. db2w instance may be unavailable when there are thousands of connections/agents upcoming or Openshift Container Storage not behaving well with a large amount of PVCs. 
+This settings control how many processes can be run within one single container. If it is too small, it can cause fork bomb issue. E.g. db2w instance may be unavailable when there are thousands of connections/agents upcoming or Openshift Container Storage not behaving well with a large amount of PVCs. 
 
 
 **OOB value for OCP platforms:**
