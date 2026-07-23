@@ -40,6 +40,8 @@ Each OCP node running ODF services has:16 core / 64 GB memory
 
 Based on the benchmark results, for sizing we recommend 50 - 75 user load per MAS Manage UI server bundle pod, which is equivalent to a JVM with 2 core on Maximo 7.6.x.
 
+**Note:** The recommendation of **50–75 users per JVM** is a general guideline based on a typical mix of workloads. For heavier workloads—such as complex Work Order applications or the Scheduler application—the recommended sizing is lower, typically around **30–40 users per JVM**. These numbers should be used as guidance rather than strict rules, as the optimal sizing depends on the specific workload characteristics and environment.
+
 Network bandwidth requirements for MAS Manage are comparable to Maximo EAM, specifically between the application server and DB. The same is true for communications between client and application server. In Maximo EAM, the network communication is between client and IBM Http Server and in MAS the network communicaition is between client and Openshift Ingress. The client may see more transactions during the initial login because of additional user profile data for MAS, but overall the network bandwidth requirements are comparable.
 
 ## AI Service
