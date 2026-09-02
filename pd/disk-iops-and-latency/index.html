@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ibm-mas.github.io/mas-performance/pd/disk-iops-and-latency/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Disk IOPS and Latency Checker - Maximo Application Suite (MAS) Performance Wiki</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Disk IOPS and Latency Checker";
+        var mkdocs_page_input_path = "pd/disk-iops-and-latency.md";
+        var mkdocs_page_url = "/mas-performance/pd/disk-iops-and-latency/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Maximo Application Suite (MAS) Performance Wiki
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">MAS</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >Best Practice</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/ocp/bestpractice/">OpenShift Container Platform</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/core/bestpractice/">MAS Core</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/iot/bestpractice/">MAS IoT</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" >MAS Manage</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../mas/manage/bestpractice/">Overview</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../mas/mobile/bestpractice/">Mobile</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Integration Framework (MIF)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mas/mif-jms/bestpractice/">JMS</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mas/mif-kafka/bestpractice/">Kafka</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Industry Solutions</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mas/manage-industry-solutions/ong-hse/bestpractice/">Oil and Gas/HSE</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mas/manage-industry-solutions/transportation/bestpractice/">Transportation</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" >Work Order Intelligence (AI)</a>
+    <ul>
+                <li class="toctree-l4"><a class="reference internal" href="../../mas/manage/woi-train/">Training</a>
+                </li>
+                <li class="toctree-l4"><a class="reference internal" href="../../mas/manage/woi-infer/">Inferencing</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="" href="https://www.ibm.com/docs/en/masv-and-l/maximo-manage/cd?topic=scripts-scripting-best-practices">Automation Scripting Best Practice</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/mvi/bestpractice/">MAS Visual Inspection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/aws/bestpractice/">AWS</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/ibmcloud/bestpractice/">IBM Cloud</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/azure/bestpractice/">Azure</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../mas/mongodb/bestpractice/">MongoDB</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mas/sizing/guidance/">Sizing Guidance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mas/monitoring/guidance/">Monitoring</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Maximo 7.x</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../maximo-7/bestpractice/">Best Practice</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Performance Diagnosis</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ptbp/">Performance Test Best Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../checklist/">Diagnosis Check List</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../db2-performance-diagnosis/">DB2 Performance Diagnosis</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >DBTest Utility</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../dbtest/">MAS Manage</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../dbtest-76/">Maximo 7.6</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pingtest/">PingTest Utility</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Disk IOPS and Latency Checker</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#directions-for-using-the-disk-iops-and-latency-testpy-script">Directions for using the disk-iops-and-latency-test.py script</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="" href="https://ibm-mas.github.io/mcpi/">IBM Maximo Cluster Performance Insights</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../jvm-performance-insight/">JVM Performance Insight</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="" href="https://github.com/zxue/upgrade-ibm-maximo-to-mas-on-vsphere">Upgrade IBM Maximo to MAS on VMware vSphere - Lessons Learned</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Maximo Application Suite (MAS) Performance Wiki</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Performance Diagnosis</li>
+      <li class="breadcrumb-item active">Disk IOPS and Latency Checker</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ibm-mas/mas-performance/blob/master/docs/pd/disk-iops-and-latency.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="python-script-for-checking-disk-iops-and-write-latency">Python script for checking disk IOPS and write latency<a class="headerlink" href="#python-script-for-checking-disk-iops-and-write-latency" title="Permanent link"></a></h1>
+<p>Different Maximo components require different minimal disk performance abilities in order to see optimal performance. The <a href="https://ibm-mas.github.io/mas-performance/pd/download/disk-iops-and-latency-test.py">python script found here</a> can be used to test important disk (ie, physical volume) characteristics on pods that contain python.</p>
+<h3 id="directions-for-using-the-disk-iops-and-latency-testpy-script">Directions for using the disk-iops-and-latency-test.py script<a class="headerlink" href="#directions-for-using-the-disk-iops-and-latency-testpy-script" title="Permanent link"></a></h3>
+<ul>
+<li>Make sure the pod that mounts the storage that you wish test has python installed in it:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;pod_name&gt;<span class="w"> </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">'python V'</span>
+Python<span class="w"> </span><span class="m">3</span>.12.13
+</code></pre></div>
+<ul>
+<li>If python isn't available in the container (or not installed into the $PATH) you may receive the following error:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>bash:<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>python:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
+<span class="nb">command</span><span class="w"> </span>terminated<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">127</span>
+</code></pre></div>
+<ul>
+<li>If Python is available inside the container, download <a href="https://ibm-mas.github.io/mas-performance/pd/download/disk-iops-and-latency-test.py">this python script</a> either via the browser or using curl, like this:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-L<span class="w"> </span>-v<span class="w"> </span>-o<span class="w"> </span>disk-iops-and-latency-test.py<span class="w"> </span>https://ibm-mas.github.io/mas-performance/pd/download/disk-iops-and-latency-test.py
+</code></pre></div>
+<ul>
+<li>Make sure the script is executable:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>disk-iops-and-latency-test.py
+</code></pre></div>
+<ul>
+<li>Copy the script to the /tmp directory inside the container:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w"> </span>cp<span class="w"> </span>disk-iops-and-latency-test.py<span class="w"> </span>&lt;pod_name&gt;:/tmp/disk-iops-and-latency-test.py<span class="sb">`</span>
+</code></pre></div>
+<ul>
+<li>Determine which file system inside the container is mounting the storage you wish to test:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;pod_name&gt;<span class="w"> </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">'mount'</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Run the python script using oc exec specifying the following parameters:</p>
+<ul>
+<li>The full path to the python script on the container; example:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>/tmp/disk-iops-and-latency-test.py
+</code></pre></div>
+<ul>
+<li>The file you wish to write to test the disk characteristics. This should be written to a directory in the file system that mounts the physical volume you wish to test. Example:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>/jms/write-test.out
+</code></pre></div>
+<ul>
+<li>The number of write iterations (default is 1000)</li>
+<li>The size of data written per iteration (default is 4096 bytes)</li>
+<li>Enable/disable Direct I/O: (optional): 1 or 0 whether you want to disable Direct I/O (some file systems don't support Direct I/O in which case you must pass in 0 for this parameter to make the script  work).</li>
+</ul>
+</li>
+<li>
+<p>Full example:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>-n<span class="w"> </span>&lt;mas_manage_namespace&gt;<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;manage_jms_pod_name&gt;<span class="w"> </span>--<span class="w"> </span>/tmp/disk-iops-and-latency-test.py<span class="w"> </span>/jms/write-test.out<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<ul>
+<li>When the script executes successfully, you should see output similar to this:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>DISK<span class="w"> </span>WRITE<span class="w"> </span>PERFORMANCE<span class="w"> </span><span class="nv">RESULTS</span>
+<span class="o">============================================================</span>
+
+IOPS<span class="w"> </span>Metrics:
+Write<span class="w"> </span>IOPS:<span class="w">           </span><span class="m">2</span>,076.37<span class="w"> </span>ops/sec
+Throughput:<span class="w">           </span><span class="m">10</span>.28<span class="w"> </span>MB/s
+Total<span class="w"> </span>operations:<span class="w">     </span><span class="m">1</span>,000
+Total<span class="w"> </span>time:<span class="w">           </span><span class="m">0</span>.38<span class="w"> </span>seconds
+Total<span class="w"> </span>data<span class="w"> </span>written:<span class="w">   </span><span class="m">3</span>.91<span class="w"> </span>MB
+
+Latency<span class="w"> </span>Metrics<span class="w"> </span><span class="o">(</span>milliseconds<span class="o">)</span>:
+Average:<span class="w">              </span><span class="m">0</span>.480<span class="w"> </span>ms
+Median<span class="w"> </span><span class="o">(</span>P50<span class="o">)</span>:<span class="w">         </span><span class="m">0</span>.499<span class="w"> </span>ms
+Std<span class="w"> </span>Deviation:<span class="w">        </span><span class="m">0</span>.064<span class="w"> </span>ms
+Minimum:<span class="w">              </span><span class="m">0</span>.342<span class="w"> </span>ms
+Maximum:<span class="w">              </span><span class="m">1</span>.054<span class="w"> </span>ms
+
+Latency<span class="w"> </span>Percentiles:
+P50<span class="w"> </span><span class="o">(</span>median<span class="o">)</span>:<span class="w">         </span><span class="m">0</span>.500<span class="w"> </span>ms
+P95:<span class="w">                  </span><span class="m">0</span>.549<span class="w"> </span>ms
+P99:<span class="w">                  </span><span class="m">0</span>.601<span class="w"> </span>ms
+P99.9:<span class="w">                </span><span class="m">1</span>.054<span class="w"> </span><span class="nv">ms</span>
+<span class="o">============================================================</span>
+</code></pre></div>
+<ul>
+<li>Fields to pay special attention are:<ul>
+<li>"Throughput" (under "IOPS Metrics")</li>
+<li>"Average" and "Median" values under "Latency Metrics" (for JMS pods, for example)</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ibm-mas/mas-performance" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../pingtest/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../jvm-performance-insight/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
